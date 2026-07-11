@@ -1721,8 +1721,12 @@ def render_override_panel(esi, key_prefix="latest", patient_id=None):
     if not esi:
         return
 
-    safe_prefix = str(key_prefix).replace(" ", "_").replace("-", "_")
     resolved_patient_id = patient_id or st.session_state.get("last_patient_id")
+    if not resolved_patient_id or resolved_patient_id == "Not assigned":
+        st.info("Run an evaluation to assign a patient ID before saving an override.")
+        return
+
+    safe_prefix = str(key_prefix).replace(" ", "_").replace("-", "_")
     recommended_level = _safe_int(esi.get("esi_level"), 3)
     recommended_index = max(0, min(4, recommended_level - 1))
     esi_options = ["ESI-1", "ESI-2", "ESI-3", "ESI-4", "ESI-5"]
@@ -1772,6 +1776,7 @@ def render_override_panel(esi, key_prefix="latest", patient_id=None):
     )
 
     if save_clicked:
+        st.warning("Save clicked block entered!")
         if accept_mismatch:
             st.error("Save blocked: either keep the final nurse ESI equal to the AI recommendation, or choose upgrade/downgrade.")
         elif high_risk_downgrade and not str(reason or "").strip():
@@ -1793,15 +1798,19 @@ def render_override_panel(esi, key_prefix="latest", patient_id=None):
 
             updated_patient = apply_nurse_override_to_queue(resolved_patient_id, override_record)
 
+            if not updated_patient:
+                st.session_state["override_save_notice"] = f"⚠️ Could not find patient {resolved_patient_id} in the Live Queue. Has the queue been cleared?"
+                st.rerun()
+                return
+
             audit_details = dict(override_record)
-            if updated_patient:
-                audit_details.update({
-                    "queue_status_after_override": updated_patient.get("status"),
-                    "board_visible_esi_level": updated_patient.get("esi_level"),
-                    "board_visible_esi_label": updated_patient.get("esi_label"),
-                    "original_ai_esi_label": updated_patient.get("ai_esi_label"),
-                    "safety_flag": updated_patient.get("safety_flag"),
-                })
+            audit_details.update({
+                "queue_status_after_override": updated_patient.get("status"),
+                "board_visible_esi_level": updated_patient.get("esi_level"),
+                "board_visible_esi_label": updated_patient.get("esi_label"),
+                "original_ai_esi_label": updated_patient.get("ai_esi_label"),
+                "safety_flag": updated_patient.get("safety_flag"),
+            })
 
             post_audit_event(
                 event_type="nurse_acuity_confirmation",
@@ -1810,7 +1819,7 @@ def render_override_panel(esi, key_prefix="latest", patient_id=None):
                 details=audit_details,
             )
             st.session_state["override_save_notice"] = (
-                f"Nurse decision saved. {resolved_patient_id or 'Patient'} is now shown in the Live Queue as {final_esi}."
+                f"✅ Nurse decision saved. {resolved_patient_id} is now shown in the Live Queue as {final_esi}."
             )
             st.rerun()
     st.markdown('</div>', unsafe_allow_html=True)
