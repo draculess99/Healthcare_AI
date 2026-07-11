@@ -1,0 +1,200 @@
+{
+  "stage": "Stage 6 - What-If Surge Simulator",
+  "description": "Demo scenario playbooks. Each scenario modifies the selected telemetry then runs the adjusted case through Stages 2-5.",
+  "scenarios": [
+    {
+      "scenario_id": "ED_SURGE_40",
+      "scenario_name": "ED Surge +40%",
+      "severity": "High",
+      "affected_departments": [
+        "Emergency Department"
+      ],
+      "affected_categories": [
+        "IV Supplies",
+        "PPE",
+        "Respiratory",
+        "Lab Supplies"
+      ],
+      "spillover_factor": 0.35,
+      "modifiers": {
+        "multipliers": {
+          "patient_volume": 1.4,
+          "recent_usage_rate": 1.35,
+          "procedure_count": 1.2
+        },
+        "adders": {
+          "acuity_level": 0.25,
+          "supplier_delay_days": 0.5
+        },
+        "set_fields": {
+          "scenario_tag": "ED surge"
+        }
+      },
+      "recommended_play": "Pre-pack ED IV/PPE/respiratory supplies and check transfer candidates before the surge window peaks."
+    },
+    {
+      "scenario_id": "ICU_RESPIRATORY_SPIKE",
+      "scenario_name": "ICU Respiratory Spike",
+      "severity": "High",
+      "affected_departments": [
+        "ICU"
+      ],
+      "affected_categories": [
+        "Respiratory",
+        "Monitoring",
+        "IV Supplies"
+      ],
+      "spillover_factor": 0.25,
+      "modifiers": {
+        "multipliers": {
+          "patient_volume": 1.25,
+          "recent_usage_rate": 1.6,
+          "procedure_count": 1.25
+        },
+        "adders": {
+          "acuity_level": 0.6,
+          "supplier_delay_days": 0.75
+        },
+        "set_fields": {
+          "scenario_tag": "ICU respiratory spike"
+        }
+      },
+      "recommended_play": "Move respiratory inventory closer to ICU, validate oxygen-delivery substitutes, and escalate supplier timing for critical items."
+    },
+    {
+      "scenario_id": "FLU_SEASON_DEMAND",
+      "scenario_name": "Flu Season Demand",
+      "severity": "Medium",
+      "affected_departments": [],
+      "affected_categories": [
+        "PPE",
+        "Respiratory",
+        "IV Supplies"
+      ],
+      "spillover_factor": 1.0,
+      "modifiers": {
+        "multipliers": {
+          "patient_volume": 1.15,
+          "recent_usage_rate": 1.3,
+          "procedure_count": 1.1
+        },
+        "adders": {
+          "supplier_delay_days": 0.5
+        },
+        "set_fields": {
+          "season": "Winter",
+          "scenario_tag": "flu season"
+        }
+      },
+      "recommended_play": "Raise PAR levels for PPE/respiratory lines, watch expirations, and avoid emergency-buying by using planned replenishment."
+    },
+    {
+      "scenario_id": "SUPPLIER_DELAY_5D",
+      "scenario_name": "Supplier Delay +5 Days",
+      "severity": "Medium",
+      "affected_departments": [],
+      "affected_categories": [],
+      "spillover_factor": 1.0,
+      "modifiers": {
+        "multipliers": {
+          "supplier_reliability_score": 0.85
+        },
+        "adders": {
+          "supplier_delay_days": 5.0
+        },
+        "set_fields": {
+          "scenario_tag": "supplier delay"
+        }
+      },
+      "recommended_play": "Do not wait on the primary vendor for short-window shortages; evaluate internal transfer and backup/emergency vendors."
+    },
+    {
+      "scenario_id": "MASS_CASUALTY_MODE",
+      "scenario_name": "Mass Casualty Mode",
+      "severity": "Critical",
+      "affected_departments": [
+        "Emergency Department",
+        "ICU",
+        "Surgery"
+      ],
+      "affected_categories": [],
+      "spillover_factor": 0.55,
+      "modifiers": {
+        "multipliers": {
+          "patient_volume": 2.0,
+          "recent_usage_rate": 1.75,
+          "procedure_count": 1.6,
+          "pack_time_minutes": 1.2
+        },
+        "adders": {
+          "acuity_level": 1.0,
+          "supplier_delay_days": 1.0,
+          "clinical_criticality": 1
+        },
+        "stock_reduction_pct": 0.1,
+        "set_fields": {
+          "scenario_tag": "mass casualty"
+        }
+      },
+      "recommended_play": "Switch to command mode: pre-stage critical supplies, trigger transfer plan, rush-order residual gaps, and escalate unresolved P0/P1 items."
+    },
+    {
+      "scenario_id": "WEEKEND_STAFFING_CONSTRAINT",
+      "scenario_name": "Weekend Staffing Constraint",
+      "severity": "Medium",
+      "affected_departments": [],
+      "affected_categories": [],
+      "spillover_factor": 1.0,
+      "modifiers": {
+        "multipliers": {
+          "pack_time_minutes": 1.45,
+          "recent_usage_rate": 1.1
+        },
+        "adders": {
+          "supplier_delay_days": 1.0
+        },
+        "set_fields": {
+          "scenario_tag": "weekend staffing"
+        }
+      },
+      "recommended_play": "Start packing earlier, reduce avoidable transfers, and escalate tasks with short response windows."
+    },
+    {
+      "scenario_id": "SURGERY_SCHEDULE_SPIKE",
+      "scenario_name": "Surgery Schedule Spike",
+      "severity": "High",
+      "affected_departments": [
+        "Surgery"
+      ],
+      "affected_categories": [
+        "Surgical Supplies",
+        "IV Supplies",
+        "Catheterization",
+        "Wound Care"
+      ],
+      "spillover_factor": 0.2,
+      "modifiers": {
+        "multipliers": {
+          "procedure_count": 1.8,
+          "recent_usage_rate": 1.35,
+          "patient_volume": 1.2
+        },
+        "adders": {
+          "acuity_level": 0.2
+        },
+        "set_fields": {
+          "scenario_tag": "surgery schedule spike"
+        }
+      },
+      "recommended_play": "Pre-stage procedure-linked supplies and avoid pulling transfer stock from Surgery if it creates a secondary shortage."
+    }
+  ],
+  "custom_modifier_schema": {
+    "demand_multiplier": "Multiplies patient_volume, recent_usage_rate, and procedure_count.",
+    "supplier_delay_add_days": "Adds days to supplier_delay_days.",
+    "stock_reduction_units": "Subtracts units from current_stock.",
+    "stock_reduction_pct": "Subtracts percent of current_stock; use 0.10 for 10%.",
+    "acuity_delta": "Adds to acuity_level, capped at 4.0.",
+    "pack_time_multiplier": "Multiplies pack_time_minutes."
+  }
+}

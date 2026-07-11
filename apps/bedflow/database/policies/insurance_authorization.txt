@@ -1,0 +1,5 @@
+HOSPITAL POLICY: Insurance Authorization Delays
+
+If a patient is clinically cleared for discharge but is facing an insurance authorization bottleneck, the patient should be flagged for Utilization Management (UM) review immediately. 
+If the hospital's current bed occupancy is above 90% or ED boarding count exceeds 15, operations managers are authorized to escalate the case to the Chief Medical Officer (CMO) for an administrative peer-to-peer override to expedite the payer approval.
+Patients with high discharge delay risk due to insurance should not have their bed marked as "pending cleaning" until the authorization is formally secured.

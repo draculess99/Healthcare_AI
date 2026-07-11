@@ -1,0 +1,13 @@
+**EMERGENCY DEPARTMENT RESPIRATORY GUIDELINES**
+
+**1. Asthma and COPD Exacerbations**
+Patients presenting with wheezing, shortness of breath, or increased work of breathing due to asthma or COPD should be triaged as ESI-2 or ESI-3 based on severity. Immediate administration of inhaled bronchodilators (albuterol/ipratropium) and systemic corticosteroids should be considered. 
+
+**2. Hypoxia and Oxygen Therapy**
+Any patient with an oxygen saturation (SpO2) < 90% on room air should receive immediate supplemental oxygen (ESI-2). The goal is to maintain SpO2 > 92% (or 88-92% in patients with known chronic CO2 retention like severe COPD).
+
+**3. Pulmonary Embolism (PE) Suspicion**
+Patients presenting with sudden onset shortness of breath, pleuritic chest pain, and tachycardia without a clear alternate cause should be evaluated for pulmonary embolism (ESI-2). Apply the Wells' Criteria or PERC rule. If moderate/high risk, order a D-dimer or CT Pulmonary Angiogram (CTPA).
+
+**4. Anaphylaxis**
+Patients presenting with respiratory distress (wheezing, stridor) combined with hives, facial swelling, or hypotension following an allergen exposure must be treated immediately for anaphylaxis (ESI-1 or ESI-2). First-line treatment is IM Epinephrine (0.3-0.5 mg) in the anterolateral thigh.

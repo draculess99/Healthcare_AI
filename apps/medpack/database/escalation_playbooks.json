@@ -1,0 +1,49 @@
+{
+  "stage": "Stage 5 - Agentic Command Center Playbooks",
+  "description": "Editable demo playbooks for MedPack AI command-center timing, owners, escalation, and response cadence.",
+  "risk_playbooks": {
+    "Critical": {
+      "priority_code": "P0",
+      "command_status": "RED - Command action now",
+      "response_window_minutes": 15,
+      "primary_owner": "Materials Supervisor",
+      "escalation_owner": "Clinical Operations Lead",
+      "cadence": "Update every 15 minutes until resolved"
+    },
+    "High": {
+      "priority_code": "P1",
+      "command_status": "ORANGE - Act this shift",
+      "response_window_minutes": 30,
+      "primary_owner": "Supply Tech Lead",
+      "escalation_owner": "Charge Nurse",
+      "cadence": "Update within 30 minutes"
+    },
+    "Medium": {
+      "priority_code": "P2",
+      "command_status": "YELLOW - Preventive action",
+      "response_window_minutes": 90,
+      "primary_owner": "Warehouse / PAR Tech",
+      "escalation_owner": "Supply Chain Coordinator",
+      "cadence": "Review during next supply round"
+    },
+    "Low": {
+      "priority_code": "P3",
+      "command_status": "GREEN - Monitor",
+      "response_window_minutes": 240,
+      "primary_owner": "Inventory Analyst",
+      "escalation_owner": "None unless trend worsens",
+      "cadence": "Monitor next forecast refresh"
+    }
+  },
+  "default_owners": {
+    "forecast_validation": "Inventory Analyst",
+    "usable_stock_check": "Supply Chain Coordinator",
+    "packing": "Warehouse / PAR Tech",
+    "transfer": "Supply Tech Lead",
+    "supplier_order": "Buyer / Procurement",
+    "substitute_review": "Charge Nurse + Supply Chain",
+    "waste_rotation": "Materials Supervisor",
+    "finance_review": "Operations Manager",
+    "escalation": "Clinical Operations Lead"
+  }
+}

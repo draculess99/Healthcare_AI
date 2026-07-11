@@ -1,0 +1,12 @@
+flask
+streamlit
+pandas
+scikit-learn
+xgboost
+python-dotenv
+google-genai
+groq
+matplotlib
+requests
+chromadb
+sentence-transformers

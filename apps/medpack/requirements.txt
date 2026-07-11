@@ -1,0 +1,14 @@
+flask
+flask-cors
+streamlit
+pandas
+numpy
+scikit-learn
+xgboost
+joblib
+requests
+pytest
+gunicorn
+plotly
+faiss-cpu>=1.7.4
+sentence-transformers>=2.5.0

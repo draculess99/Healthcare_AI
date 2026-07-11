@@ -1,0 +1,19 @@
+{
+  "project": "MedPack AI / MedAIM",
+  "primary_public_source": "Kaggle Hospital Supply Chain dataset if provided locally at database/raw/kaggle_hospital_supply_chain.csv",
+  "optional_proxy_source": "UCI Online Retail dataset can be used later for SKU/order-flow and warehouse packing behavior",
+  "synthetic_components": [
+    "patient_volume",
+    "acuity_level",
+    "procedure_count",
+    "supplier_delay_days",
+    "recent_usage_rate",
+    "actual_usage_next_24h",
+    "clinical_criticality",
+    "pack_time_minutes",
+    "shortage risk labels",
+    "packing priority score"
+  ],
+  "phi_status": "No PHI. Synthetic/no-PHI operational simulation.",
+  "purpose": "Healthcare logistics capstone demonstration for supply demand forecasting, shortage risk detection, packing priority, and agentic recommendation."
+}

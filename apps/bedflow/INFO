@@ -1,0 +1,26 @@
+BedFlow AI portfolio platform
+
+Current feature set:
+    Model-scored discharge queue, three XGBoost predictions, readiness
+    checklist, role-owned tasks, agentic review, authenticated human decisions,
+    FHIR-shaped export, capacity what-if simulator, system observability,
+    CI/security packaging, and persistent JSON volume support.
+
+Persistence:
+    Local default: database/
+    Railway/Docker: BEDFLOW_DATA_DIR=/data with a volume mounted at /data
+    Keep one application replica when using JSON storage.
+
+Run locally:
+    pip install -r requirements.txt
+    python app.py
+
+Validation:
+    24 automated tests plus the full backend smoke test.
+
+Remaining priorities:
+    Model calibration and patient-group validation, formal SHAP explanations,
+    screenshots/demo video/GitHub Pages, and optional stronger real-world data.
+
+See README.md, UPGRADE_SUMMARY.md, CHANGELOG.md, and
+ docs/PERSISTENT_JSON_STORAGE.md.

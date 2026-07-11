@@ -1,0 +1,145 @@
+{
+  "overall_status": "PASS",
+  "timestamp": "2026-06-29T12:13:17.290324",
+  "tests": [
+    {
+      "test_name": "app.py exists",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "dashboard.py exists",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Flask backend imports",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data File: data_sources.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data File: esi_seasonal_patterns.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data File: bed_boarding_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data File: arrival_surge_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data File: fast_track_flow.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Module functions return valid outputs",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "committee_evidence created",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "active agents generated",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "debate summary generated",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "intervention plan generated",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset exists: 1. Normal Evening Baseline",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset 1. Normal Evening Baseline has operational fields",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset exists: 2. Winter Flu Surge + Staff Call-Out",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset 2. Winter Flu Surge + Staff Call-Out has operational fields",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset exists: 3. Friday Night Waiting Room Overflow",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset 3. Friday Night Waiting Room Overflow has operational fields",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset exists: 4. Boarding Gridlock / No Inpatient Beds",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset 4. Boarding Gridlock / No Inpatient Beds has operational fields",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset exists: 5. Night Shift Shortage + High Acuity",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset 5. Night Shift Shortage + High Acuity has operational fields",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset exists: 6. Mass Casualty Intake / Multi-Ambulance Surge",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset 6. Mass Casualty Intake / Multi-Ambulance Surge has operational fields",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset 2 produces at least 2 nurses",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Preset 6 produces 3-4 nurses",
+      "status": "PASS",
+      "details": ""
+    }
+  ],
+  "summary": {
+    "passed": 27,
+    "failed": 0
+  }
+}

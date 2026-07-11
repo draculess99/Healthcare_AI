@@ -1,0 +1,10 @@
+**EMERGENCY DEPARTMENT TOXICOLOGY GUIDELINES**
+
+**1. Opioid Overdose**
+Patients presenting with respiratory depression (RR < 10), pinpoint pupils, and depressed mental status must be treated immediately (ESI-1). Administer Naloxone (Narcan) IV/IM/IN titrated to restore adequate spontaneous ventilation, not necessarily full consciousness.
+
+**2. Acetaminophen (Tylenol) Toxicity**
+Any intentional ingestion of acetaminophen requires triage as ESI-2 for rapid evaluation and lab draws. Serum acetaminophen levels must be drawn at least 4 hours post-ingestion. If levels fall above the treatment line on the Rumack-Matthew nomogram, initiate N-acetylcysteine (NAC) therapy immediately.
+
+**3. Sympathomimetic Overdose**
+Patients who have overdosed on cocaine, methamphetamines, or other stimulants often present with severe tachycardia, hypertension, diaphoresis, and agitation. Triage as ESI-2. First-line treatment is liberal use of intravenous benzodiazepines. Avoid beta-blockers due to the risk of unopposed alpha receptor stimulation causing critical hypertension.

@@ -1,0 +1,50 @@
+=== ADK workflow core Test ===
+Success: dict_keys(['xgboost_predicted_wait_time', 'base_staffing_risk', 'esi_pressure', 'esi_adjustment', 'esi_explanation', 'boarding_pressure', 'boarding_adjustment', 'boarding_explanation', 'arrival_surge_pressure', 'arrival_adjustment', 'arrival_explanation', 'fast_track_pressure', 'fast_track_adjustment', 'fast_track_explanation', 'nurse_fatigue_pressure', 'nurse_compliance_status', 'cost_pressure', 'adjusted_operational_risk_score', 'adjusted_operational_risk', 'recommended_interventions', 'data_sources', 'esi_timeline_match_level', 'esi_source_type', 'boarding_timeline_match_level', 'boarding_source_type', 'arrival_timeline_match_level', 'arrival_source_type', 'fast_track_timeline_match_level', 'fast_track_source_type', 'selected_demo_preset', 'scenario_month', 'scenario_day_of_week', 'scenario_hour', 'patient_inflow_multiplier', 'nurse_callout_rate', 'waiting_room_count', 'arrival_surge_multiplier', 'ed_occupancy_percent', 'boarding_count', 'boarding_hours_avg', 'low_acuity_percent', 'fast_track_open', 'fast_track_queue', 'base_nurses_from_wait_time', 'operational_pressure_nurse_increments', 'final_additional_nurses_needed', 'nurse_increment_reasons', 'base_nurses_needed', 'research_adjusted_nurses_needed', 'nurse_adjustment_reasons', 'nurse_adjustment_note', 'intervention_cost_summary'])
+
+
+
+=== API route Test (Flask server must be active) ===
+Status: 200
+Keys in committee_evidence: ['adjusted_operational_risk', 'adjusted_operational_risk_score', 'arrival_adjustment', 'arrival_explanation', 'arrival_source_type', 'arrival_surge_multiplier', 'arrival_surge_pressure', 'arrival_timeline_match_level', 'base_nurses_from_wait_time', 'base_nurses_needed', 'base_staffing_risk', 'boarding_adjustment', 'boarding_count', 'boarding_explanation', 'boarding_hours_avg', 'boarding_pressure', 'boarding_source_type', 'boarding_timeline_match_level', 'cost_pressure', 'data_sources', 'ed_occupancy_percent', 'esi_adjustment', 'esi_explanation', 'esi_pressure', 'esi_source_type', 'esi_timeline_match_level', 'fast_track_adjustment', 'fast_track_explanation', 'fast_track_open', 'fast_track_pressure', 'fast_track_queue', 'fast_track_source_type', 'fast_track_timeline_match_level', 'final_additional_nurses_needed', 'intervention_cost_summary', 'low_acuity_percent', 'nurse_adjustment_note', 'nurse_adjustment_reasons', 'nurse_callout_rate', 'nurse_compliance_status', 'nurse_fatigue_pressure', 'nurse_increment_reasons', 'operational_pressure_nurse_increments', 'patient_inflow_multiplier', 'recommended_interventions', 'research_adjusted_nurses_needed', 'scenario_day_of_week', 'scenario_hour', 'scenario_month', 'selected_demo_preset', 'waiting_room_count', 'xgboost_predicted_wait_time']
+FOUND AI COMMITTEE COORDINATOR STEP!
+Output: The XGBoost predicted wait time is 120.0 mins, establishing a base staffing risk of High. After evaluating operational modules, the adjusted operational risk is Critical (Score: 100). The highest operational pressure point is ARRIVAL Pressure (Critical). 
+
+**Staffing Recommendation Details:**
+- **Base nurses from wait-time gap**: 1
+- **Operational increments**: 3
+- **Final additional nurses needed**: 4
+- **Reasons for additional nurses**: Adjusted operational risk is Critical: +1 nurse, Arrival surge pressure is Critical: +1 nurse, Fatigue pressure requires relief or replacement nurse coverage
+- **Human supervisor approval requirement**: Required when adjusted operational risk is Critical or staffing is adjusted.
+
+
+Committee Positions:
+- Wait-Time Forecast Agent: Wait-time is forecast at 120.0 mins. Immediate triage required.
+- Staffing Planner Agent: Base staffing risk is High. Must assign standard coverage.
+- Patient Safety Agent: Operational risk is Critical. Maintain strict ratio safety.
+- Compliance Guard: Ensure selected nurses do not exceed maximum safe hour limits.
+- Human Supervisor Review: Review AI recommendations and assert final decision.
+- Acuity / ESI Agent: High proportion of critical patients requires prioritizing ER-certified trauma nurses.
+- Bed Flow / Boarding Agent: Nurse staffing improves safety coverage, but wait-time reduction may be limited unless inpatient bed flow is addressed.
+- Demand Surge Agent: Waiting room is filling rapidly. Needs dedicated triage sorting nurse to prevent unseen decompensation.
+- Fatigue Risk Agent: High fatigue detected across roster. Avoid consecutive 12h shifts.
+
+Final Recommendation:
+Adjusted operational risk is Critical. The XGBoost wait-time gap requires 1 additional nurse(s). Operational pressure signals add 3 more nurse requirement(s) because of Adjusted operational risk is Critical: +1 nurse, Arrival surge pressure is Critical: +1 nurse, Fatigue pressure requires relief or replacement nurse coverage. Final recommendation: add 4 nurse(s) and require human supervisor approval.
+
+#### Operational Signal Impact Summary
+
+**XGBoost Predicted Wait Time:** 120.0 mins
+**Base Staffing Risk:** High
+- **ESI Pressure (High)**: ESI pressure is High, so prioritize ER-certified nurses with acuity-capable coverage.
+- **Boarding Pressure (High)**: Boarding pressure is High, so add bed-flow escalation / inpatient bed management support.
+- **Arrival Surge Pressure (Critical)**: Arrival surge pressure is Critical, so add triage support, float-pool support, or waiting-room monitoring.
+- **Nurse Fatigue Pressure (High)**: Nurse fatigue pressure is High, so avoid overtime-heavy or consecutive 12-hour assignments.
+- **Adjusted Operational Risk (Critical)**: Human supervisor approval is required before roster commitment.
+
+**Final Recommended Action List:**
+- deploying matched ER-certified nurse coverage
+- adding bed-flow escalation / inpatient bed management support
+- adding triage support
+- avoiding fatigue-risk assignments
+- requiring human supervisor approval because adjusted operational risk is Critical
+

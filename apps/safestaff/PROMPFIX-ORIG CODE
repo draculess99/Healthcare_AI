@@ -1,0 +1,32 @@
+Please fix two bugs related to the "Update Memory With Actual Inflow" feature that cause manual memory updates to vanish from the UI history log. 
+
+First, fix the backend to ensure manual updates are logged to the history file:
+In `backend/inflow_memory.py`, inside the `update_inflow_memory_after_actual` function, right after it calls `save_inflow_memory(updated_memory)` but before it returns `updated_memory`, it needs to construct a history event and append it to the log. 
+
+Please add the following code:
+```python
+    history_event = {
+        "timestamp": datetime.datetime.now().isoformat(),
+        "event_type": "manual_actual_update",
+        "scenario_signature": None,
+        "forecasted_volume": forecasted_volume,
+        "actual_or_observed_volume": actual_volume,
+        "prediction_delta": last_delta,
+        "previous_memory": previous_memory,
+        "updated_memory": updated_memory,
+        "staffing_recommendation": None,
+        "memory_reasoning": f"Manual update: Delta was {last_delta}, trend updated to {trend}."
+    }
+    append_inflow_history(history_event)
+
+Second, fix the frontend so the UI cache clears instantly: In frontend/dashboard.py, locate the if st.button("Update Memory With Actual Inflow"): block. Inside that block, right after updated_mem = update_inflow_memory_state(...), please add:
+
+python
+get_inflow_history.clear()
+This forces Streamlit to clear its 120-second cache on the get_inflow_history function, so the new event we just logged in the backend will immediately render in the UI's "Recent Inflow Memory History" list.
+
+***
+That prompt gives the agent the exact files, functions, and code snippets needed to instantly resolve the issue on your live version!
+
+
+----------------------------------------------------

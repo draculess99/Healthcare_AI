@@ -1,0 +1,657 @@
+[
+    {
+        "model_version": "bedflow-xgb-20260710T231351Z",
+        "trained_at_utc": "2026-07-10T23:13:51+00:00",
+        "dataset_hash": "f3b9d1c407b17d84",
+        "feature_count": 44,
+        "metrics": {
+            "discharge_delay": {
+                "xgboost": {
+                    "accuracy": 0.93,
+                    "precision": 0.9375,
+                    "recall": 0.9523809523809523,
+                    "f1": 0.9448818897637795,
+                    "roc_auc": 0.9802659802659802
+                },
+                "baseline": {
+                    "accuracy": 0.63,
+                    "precision": 0.63,
+                    "recall": 1.0,
+                    "f1": 0.7730061349693251
+                }
+            },
+            "readmission_risk": {
+                "xgboost": {
+                    "accuracy": 0.96,
+                    "precision": 0.9534883720930233,
+                    "recall": 1.0,
+                    "f1": 0.9761904761904762,
+                    "roc_auc": 0.9979674796747968
+                },
+                "baseline": {
+                    "accuracy": 0.82,
+                    "precision": 0.82,
+                    "recall": 1.0,
+                    "f1": 0.9010989010989011
+                }
+            },
+            "expected_delay_hours": {
+                "xgboost": {
+                    "mae": 1.8930107555389404,
+                    "rmse": 2.513287061267117,
+                    "r2": 0.8707593944004238
+                },
+                "baseline": {
+                    "mae": 5.808000000000001,
+                    "rmse": 7.115321496601542,
+                    "r2": -0.03586664578065801
+                }
+            }
+        }
+    },
+    {
+        "model_version": "bedflow-xgb-20260710T232854Z",
+        "trained_at_utc": "2026-07-10T23:28:54+00:00",
+        "dataset_hash": "f3b9d1c407b17d84",
+        "feature_count": 44,
+        "training_strategy": "Hybrid Stage 6 training: BedFlow operational data for delay models; public diabetes hospital data for readmission model.",
+        "model_training_sources": {
+            "discharge_delay": "database/bedflow_patient_data.csv",
+            "expected_delay_hours": "database/bedflow_patient_data.csv",
+            "readmission_risk": "database/readmission_training_data.csv",
+            "readmission_raw_public_source": "dataset_diabetes/diabetic_data.csv"
+        },
+        "data_sources": {
+            "stage": "Stage 6 \u2014 Public / Realistic Data Upgrade",
+            "training_strategy": "Hybrid: operational models use synthetic BedFlow data; readmission model uses a public clinical readmission dataset transformed into the BedFlow feature schema.",
+            "bedflow_operational_data": {
+                "path": "database/bedflow_patient_data.csv",
+                "exists": true,
+                "rows": 500,
+                "columns": 34,
+                "hash": "f3b9d1c407b17d84",
+                "delayed_discharge_rate": 0.604
+            },
+            "public_readmission_raw_data": {
+                "path": "dataset_diabetes/diabetic_data.csv",
+                "exists": true,
+                "rows": 101766,
+                "columns": 50,
+                "hash": "0689e7ec031237dc",
+                "readmitted_lt_30_rate": 0.1116,
+                "readmitted_distribution": {
+                    "NO": 54864,
+                    ">30": 35545,
+                    "<30": 11357
+                }
+            },
+            "public_readmission_training_data": {
+                "path": "database/readmission_training_data.csv",
+                "exists": true,
+                "rows": 99340,
+                "columns": 34,
+                "hash": "afe1ebb76fc9a22d",
+                "readmitted_30_days_rate": 0.1139
+            },
+            "privacy_note": "No PHI is used. Demographic fields such as race and gender are intentionally not included in the transformed model features.",
+            "limitations": [
+                "The public diabetes dataset is used only for the readmission-risk training demonstration.",
+                "Operational blockers such as pharmacy, transport, insurance, and bed pressure remain synthetic/proxy features.",
+                "This is not a clinically validated model and must remain human-supervised decision support."
+            ]
+        },
+        "metrics": {
+            "discharge_delay": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "accuracy": 0.95,
+                    "precision": 0.9365079365079365,
+                    "recall": 0.9833333333333333,
+                    "f1": 0.959349593495935,
+                    "roc_auc": 0.9916666666666667
+                },
+                "baseline": {
+                    "accuracy": 0.6,
+                    "precision": 0.6,
+                    "recall": 1.0,
+                    "f1": 0.75
+                }
+            },
+            "readmission_risk": {
+                "training_source": "Public diabetes 130-US hospitals readmission dataset transformed into BedFlow schema",
+                "positive_label": "readmitted <30 days",
+                "xgboost": {
+                    "accuracy": 0.8858969196698209,
+                    "precision": 0.4473684210526316,
+                    "recall": 0.007512152010605391,
+                    "f1": 0.01477618426770969,
+                    "roc_auc": 0.6632994282270521
+                },
+                "baseline": {
+                    "accuracy": 0.8860982484397021,
+                    "precision": 0.0,
+                    "recall": 0.0,
+                    "f1": 0.0
+                }
+            },
+            "expected_delay_hours": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "mae": 1.8930107555389404,
+                    "rmse": 2.513287061267117,
+                    "r2": 0.8707593944004238
+                },
+                "baseline": {
+                    "mae": 5.808000000000001,
+                    "rmse": 7.115321496601542,
+                    "r2": -0.03586664578065801
+                }
+            }
+        }
+    },
+    {
+        "model_version": "bedflow-xgb-20260710T232927Z",
+        "trained_at_utc": "2026-07-10T23:29:27+00:00",
+        "dataset_hash": "f3b9d1c407b17d84",
+        "feature_count": 44,
+        "training_strategy": "Hybrid Stage 6 training: BedFlow operational data for delay models; public diabetes hospital data for readmission model.",
+        "model_training_sources": {
+            "discharge_delay": "database/bedflow_patient_data.csv",
+            "expected_delay_hours": "database/bedflow_patient_data.csv",
+            "readmission_risk": "database/readmission_training_data.csv",
+            "readmission_raw_public_source": "dataset_diabetes/diabetic_data.csv"
+        },
+        "data_sources": {
+            "stage": "Stage 6 \u2014 Public / Realistic Data Upgrade",
+            "training_strategy": "Hybrid: operational models use synthetic BedFlow data; readmission model uses a public clinical readmission dataset transformed into the BedFlow feature schema.",
+            "bedflow_operational_data": {
+                "path": "database/bedflow_patient_data.csv",
+                "exists": true,
+                "rows": 500,
+                "columns": 34,
+                "hash": "f3b9d1c407b17d84",
+                "delayed_discharge_rate": 0.604
+            },
+            "public_readmission_raw_data": {
+                "path": "dataset_diabetes/diabetic_data.csv",
+                "exists": true,
+                "rows": 101766,
+                "columns": 50,
+                "hash": "0689e7ec031237dc",
+                "readmitted_lt_30_rate": 0.1116,
+                "readmitted_distribution": {
+                    "NO": 54864,
+                    ">30": 35545,
+                    "<30": 11357
+                }
+            },
+            "public_readmission_training_data": {
+                "path": "database/readmission_training_data.csv",
+                "exists": true,
+                "rows": 99340,
+                "columns": 34,
+                "hash": "afe1ebb76fc9a22d",
+                "readmitted_30_days_rate": 0.1139
+            },
+            "privacy_note": "No PHI is used. Demographic fields such as race and gender are intentionally not included in the transformed model features.",
+            "limitations": [
+                "The public diabetes dataset is used only for the readmission-risk training demonstration.",
+                "Operational blockers such as pharmacy, transport, insurance, and bed pressure remain synthetic/proxy features.",
+                "This is not a clinically validated model and must remain human-supervised decision support."
+            ]
+        },
+        "metrics": {
+            "discharge_delay": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "accuracy": 0.95,
+                    "precision": 0.9365079365079365,
+                    "recall": 0.9833333333333333,
+                    "f1": 0.959349593495935,
+                    "roc_auc": 0.9916666666666667
+                },
+                "baseline": {
+                    "accuracy": 0.6,
+                    "precision": 0.6,
+                    "recall": 1.0,
+                    "f1": 0.75
+                }
+            },
+            "readmission_risk": {
+                "training_source": "Public diabetes 130-US hospitals readmission dataset transformed into BedFlow schema",
+                "positive_label": "readmitted <30 days",
+                "decision_threshold_for_metrics": 0.25,
+                "xgboost": {
+                    "accuracy": 0.1320213408496074,
+                    "precision": 0.11576733688961838,
+                    "recall": 0.997348652231551,
+                    "f1": 0.20745438669056482,
+                    "roc_auc": 0.66335284172749
+                },
+                "baseline": {
+                    "accuracy": 0.8860982484397021,
+                    "precision": 0.0,
+                    "recall": 0.0,
+                    "f1": 0.0
+                }
+            },
+            "expected_delay_hours": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "mae": 1.8930107555389404,
+                    "rmse": 2.513287061267117,
+                    "r2": 0.8707593944004238
+                },
+                "baseline": {
+                    "mae": 5.808000000000001,
+                    "rmse": 7.115321496601542,
+                    "r2": -0.03586664578065801
+                }
+            }
+        }
+    },
+    {
+        "model_version": "bedflow-xgb-20260710T233014Z",
+        "trained_at_utc": "2026-07-10T23:30:14+00:00",
+        "dataset_hash": "f3b9d1c407b17d84",
+        "feature_count": 44,
+        "training_strategy": "Hybrid Stage 6 training: BedFlow operational data for delay models; public diabetes hospital data for readmission model.",
+        "model_training_sources": {
+            "discharge_delay": "database/bedflow_patient_data.csv",
+            "expected_delay_hours": "database/bedflow_patient_data.csv",
+            "readmission_risk": "database/readmission_training_data.csv",
+            "readmission_raw_public_source": "dataset_diabetes/diabetic_data.csv"
+        },
+        "data_sources": {
+            "stage": "Stage 6 \u2014 Public / Realistic Data Upgrade",
+            "training_strategy": "Hybrid: operational models use synthetic BedFlow data; readmission model uses a public clinical readmission dataset transformed into the BedFlow feature schema.",
+            "bedflow_operational_data": {
+                "path": "database/bedflow_patient_data.csv",
+                "exists": true,
+                "rows": 500,
+                "columns": 34,
+                "hash": "f3b9d1c407b17d84",
+                "delayed_discharge_rate": 0.604
+            },
+            "public_readmission_raw_data": {
+                "path": "dataset_diabetes/diabetic_data.csv",
+                "exists": true,
+                "rows": 101766,
+                "columns": 50,
+                "hash": "0689e7ec031237dc",
+                "readmitted_lt_30_rate": 0.1116,
+                "readmitted_distribution": {
+                    "NO": 54864,
+                    ">30": 35545,
+                    "<30": 11357
+                }
+            },
+            "public_readmission_training_data": {
+                "path": "database/readmission_training_data.csv",
+                "exists": true,
+                "rows": 99340,
+                "columns": 34,
+                "hash": "afe1ebb76fc9a22d",
+                "readmitted_30_days_rate": 0.1139
+            },
+            "privacy_note": "No PHI is used. Demographic fields such as race and gender are intentionally not included in the transformed model features.",
+            "limitations": [
+                "The public diabetes dataset is used only for the readmission-risk training demonstration.",
+                "Operational blockers such as pharmacy, transport, insurance, and bed pressure remain synthetic/proxy features.",
+                "This is not a clinically validated model and must remain human-supervised decision support."
+            ]
+        },
+        "metrics": {
+            "discharge_delay": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "accuracy": 0.95,
+                    "precision": 0.9365079365079365,
+                    "recall": 0.9833333333333333,
+                    "f1": 0.959349593495935,
+                    "roc_auc": 0.9916666666666667
+                },
+                "baseline": {
+                    "accuracy": 0.6,
+                    "precision": 0.6,
+                    "recall": 1.0,
+                    "f1": 0.75
+                }
+            },
+            "readmission_risk": {
+                "training_source": "Public diabetes 130-US hospitals readmission dataset transformed into BedFlow schema",
+                "positive_label": "readmitted <30 days",
+                "decision_threshold_for_metrics": 0.55,
+                "xgboost": {
+                    "accuracy": 0.7318804107106905,
+                    "precision": 0.20229304314030314,
+                    "recall": 0.46000883782589486,
+                    "f1": 0.281009582939668,
+                    "roc_auc": 0.66335284172749
+                },
+                "baseline": {
+                    "accuracy": 0.8860982484397021,
+                    "precision": 0.0,
+                    "recall": 0.0,
+                    "f1": 0.0
+                }
+            },
+            "expected_delay_hours": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "mae": 1.8930107555389404,
+                    "rmse": 2.513287061267117,
+                    "r2": 0.8707593944004238
+                },
+                "baseline": {
+                    "mae": 5.808000000000001,
+                    "rmse": 7.115321496601542,
+                    "r2": -0.03586664578065801
+                }
+            }
+        }
+    },
+    {
+        "model_version": "bedflow-xgb-20260711T054738Z",
+        "trained_at_utc": "2026-07-11T05:47:38+00:00",
+        "dataset_hash": "f3b9d1c407b17d84",
+        "feature_count": 44,
+        "training_strategy": "Hybrid Stage 6 training: BedFlow operational data for delay models; public diabetes hospital data for readmission model.",
+        "model_training_sources": {
+            "discharge_delay": "database/bedflow_patient_data.csv",
+            "expected_delay_hours": "database/bedflow_patient_data.csv",
+            "readmission_risk": "database/readmission_training_data.csv",
+            "readmission_raw_public_source": "dataset_diabetes/diabetic_data.csv"
+        },
+        "data_sources": {
+            "stage": "Stage 6 \u2014 Public / Realistic Data Upgrade",
+            "training_strategy": "Hybrid: operational models use synthetic BedFlow data; readmission model uses a public clinical readmission dataset transformed into the BedFlow feature schema.",
+            "bedflow_operational_data": {
+                "path": "database/bedflow_patient_data.csv",
+                "exists": true,
+                "rows": 500,
+                "columns": 34,
+                "hash": "f3b9d1c407b17d84",
+                "delayed_discharge_rate": 0.604
+            },
+            "public_readmission_raw_data": {
+                "path": "dataset_diabetes/diabetic_data.csv",
+                "exists": true,
+                "rows": 101766,
+                "columns": 50,
+                "hash": "0689e7ec031237dc",
+                "readmitted_lt_30_rate": 0.1116,
+                "readmitted_distribution": {
+                    "NO": 54864,
+                    ">30": 35545,
+                    "<30": 11357
+                }
+            },
+            "public_readmission_training_data": {
+                "path": "database/readmission_training_data.csv",
+                "exists": true,
+                "rows": 99340,
+                "columns": 34,
+                "hash": "afe1ebb76fc9a22d",
+                "readmitted_30_days_rate": 0.1139
+            },
+            "privacy_note": "No PHI is used. Demographic fields such as race and gender are intentionally not included in the transformed model features.",
+            "limitations": [
+                "The public diabetes dataset is used only for the readmission-risk training demonstration.",
+                "Operational blockers such as pharmacy, transport, insurance, and bed pressure remain synthetic/proxy features.",
+                "This is not a clinically validated model and must remain human-supervised decision support."
+            ]
+        },
+        "metrics": {
+            "discharge_delay": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "accuracy": 0.95,
+                    "precision": 0.9365079365079365,
+                    "recall": 0.9833333333333333,
+                    "f1": 0.959349593495935,
+                    "roc_auc": 0.9916666666666667
+                },
+                "baseline": {
+                    "accuracy": 0.6,
+                    "precision": 0.6,
+                    "recall": 1.0,
+                    "f1": 0.75
+                }
+            },
+            "readmission_risk": {
+                "training_source": "Public diabetes 130-US hospitals readmission dataset transformed into BedFlow schema",
+                "positive_label": "readmitted <30 days",
+                "decision_threshold_for_metrics": 0.55,
+                "xgboost": {
+                    "accuracy": 0.7318804107106905,
+                    "precision": 0.20229304314030314,
+                    "recall": 0.46000883782589486,
+                    "f1": 0.281009582939668,
+                    "roc_auc": 0.66335284172749
+                },
+                "baseline": {
+                    "accuracy": 0.8860982484397021,
+                    "precision": 0.0,
+                    "recall": 0.0,
+                    "f1": 0.0
+                }
+            },
+            "expected_delay_hours": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "mae": 1.8930107555389404,
+                    "rmse": 2.513287061267117,
+                    "r2": 0.8707593944004238
+                },
+                "baseline": {
+                    "mae": 5.808000000000001,
+                    "rmse": 7.115321496601542,
+                    "r2": -0.03586664578065801
+                }
+            }
+        }
+    },
+    {
+        "model_version": "bedflow-xgb-20260711T054958Z",
+        "trained_at_utc": "2026-07-11T05:49:58+00:00",
+        "dataset_hash": "f3b9d1c407b17d84",
+        "feature_count": 44,
+        "training_strategy": "Hybrid Stage 6 training: BedFlow operational data for delay models; public diabetes hospital data for readmission model.",
+        "model_training_sources": {
+            "discharge_delay": "database/bedflow_patient_data.csv",
+            "expected_delay_hours": "database/bedflow_patient_data.csv",
+            "readmission_risk": "database/readmission_training_data.csv",
+            "readmission_raw_public_source": "dataset_diabetes/diabetic_data.csv"
+        },
+        "data_sources": {
+            "stage": "Stage 6 \u2014 Public / Realistic Data Upgrade",
+            "training_strategy": "Hybrid: operational models use synthetic BedFlow data; readmission model uses a public clinical readmission dataset transformed into the BedFlow feature schema.",
+            "bedflow_operational_data": {
+                "path": "database/bedflow_patient_data.csv",
+                "exists": true,
+                "rows": 500,
+                "columns": 34,
+                "hash": "f3b9d1c407b17d84",
+                "delayed_discharge_rate": 0.604
+            },
+            "public_readmission_raw_data": {
+                "path": "dataset_diabetes/diabetic_data.csv",
+                "exists": true,
+                "rows": 101766,
+                "columns": 50,
+                "hash": "0689e7ec031237dc",
+                "readmitted_lt_30_rate": 0.1116,
+                "readmitted_distribution": {
+                    "NO": 54864,
+                    ">30": 35545,
+                    "<30": 11357
+                }
+            },
+            "public_readmission_training_data": {
+                "path": "database/readmission_training_data.csv",
+                "exists": true,
+                "rows": 99340,
+                "columns": 34,
+                "hash": "afe1ebb76fc9a22d",
+                "readmitted_30_days_rate": 0.1139
+            },
+            "privacy_note": "No PHI is used. Demographic fields such as race and gender are intentionally not included in the transformed model features.",
+            "limitations": [
+                "The public diabetes dataset is used only for the readmission-risk training demonstration.",
+                "Operational blockers such as pharmacy, transport, insurance, and bed pressure remain synthetic/proxy features.",
+                "This is not a clinically validated model and must remain human-supervised decision support."
+            ]
+        },
+        "metrics": {
+            "discharge_delay": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "accuracy": 0.95,
+                    "precision": 0.9365079365079365,
+                    "recall": 0.9833333333333333,
+                    "f1": 0.959349593495935,
+                    "roc_auc": 0.9916666666666667
+                },
+                "baseline": {
+                    "accuracy": 0.6,
+                    "precision": 0.6,
+                    "recall": 1.0,
+                    "f1": 0.75
+                }
+            },
+            "readmission_risk": {
+                "training_source": "Public diabetes 130-US hospitals readmission dataset transformed into BedFlow schema",
+                "positive_label": "readmitted <30 days",
+                "decision_threshold_for_metrics": 0.55,
+                "xgboost": {
+                    "accuracy": 0.7318804107106905,
+                    "precision": 0.20229304314030314,
+                    "recall": 0.46000883782589486,
+                    "f1": 0.281009582939668,
+                    "roc_auc": 0.66335284172749
+                },
+                "baseline": {
+                    "accuracy": 0.8860982484397021,
+                    "precision": 0.0,
+                    "recall": 0.0,
+                    "f1": 0.0
+                }
+            },
+            "expected_delay_hours": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "mae": 1.8930107555389404,
+                    "rmse": 2.513287061267117,
+                    "r2": 0.8707593944004238
+                },
+                "baseline": {
+                    "mae": 5.808000000000001,
+                    "rmse": 7.115321496601542,
+                    "r2": -0.03586664578065801
+                }
+            }
+        }
+    },
+    {
+        "model_version": "bedflow-xgb-20260711T055014Z",
+        "trained_at_utc": "2026-07-11T05:50:14+00:00",
+        "dataset_hash": "f3b9d1c407b17d84",
+        "feature_count": 44,
+        "training_strategy": "Hybrid Stage 6 training: BedFlow operational data for delay models; public diabetes hospital data for readmission model.",
+        "model_training_sources": {
+            "discharge_delay": "database/bedflow_patient_data.csv",
+            "expected_delay_hours": "database/bedflow_patient_data.csv",
+            "readmission_risk": "database/readmission_training_data.csv",
+            "readmission_raw_public_source": "dataset_diabetes/diabetic_data.csv"
+        },
+        "data_sources": {
+            "stage": "Stage 6 \u2014 Public / Realistic Data Upgrade",
+            "training_strategy": "Hybrid: operational models use synthetic BedFlow data; readmission model uses a public clinical readmission dataset transformed into the BedFlow feature schema.",
+            "bedflow_operational_data": {
+                "path": "database/bedflow_patient_data.csv",
+                "exists": true,
+                "rows": 500,
+                "columns": 34,
+                "hash": "f3b9d1c407b17d84",
+                "delayed_discharge_rate": 0.604
+            },
+            "public_readmission_raw_data": {
+                "path": "dataset_diabetes/diabetic_data.csv",
+                "exists": true,
+                "rows": 101766,
+                "columns": 50,
+                "hash": "0689e7ec031237dc",
+                "readmitted_lt_30_rate": 0.1116,
+                "readmitted_distribution": {
+                    "NO": 54864,
+                    ">30": 35545,
+                    "<30": 11357
+                }
+            },
+            "public_readmission_training_data": {
+                "path": "database/readmission_training_data.csv",
+                "exists": true,
+                "rows": 99340,
+                "columns": 34,
+                "hash": "afe1ebb76fc9a22d",
+                "readmitted_30_days_rate": 0.1139
+            },
+            "privacy_note": "No PHI is used. Demographic fields such as race and gender are intentionally not included in the transformed model features.",
+            "limitations": [
+                "The public diabetes dataset is used only for the readmission-risk training demonstration.",
+                "Operational blockers such as pharmacy, transport, insurance, and bed pressure remain synthetic/proxy features.",
+                "This is not a clinically validated model and must remain human-supervised decision support."
+            ]
+        },
+        "metrics": {
+            "discharge_delay": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "accuracy": 0.95,
+                    "precision": 0.9365079365079365,
+                    "recall": 0.9833333333333333,
+                    "f1": 0.959349593495935,
+                    "roc_auc": 0.9916666666666667
+                },
+                "baseline": {
+                    "accuracy": 0.6,
+                    "precision": 0.6,
+                    "recall": 1.0,
+                    "f1": 0.75
+                }
+            },
+            "readmission_risk": {
+                "training_source": "Public diabetes 130-US hospitals readmission dataset transformed into BedFlow schema",
+                "positive_label": "readmitted <30 days",
+                "decision_threshold_for_metrics": 0.55,
+                "xgboost": {
+                    "accuracy": 0.7318804107106905,
+                    "precision": 0.20229304314030314,
+                    "recall": 0.46000883782589486,
+                    "f1": 0.281009582939668,
+                    "roc_auc": 0.66335284172749
+                },
+                "baseline": {
+                    "accuracy": 0.8860982484397021,
+                    "precision": 0.0,
+                    "recall": 0.0,
+                    "f1": 0.0
+                }
+            },
+            "expected_delay_hours": {
+                "training_source": "Synthetic/proxy BedFlow operations dataset",
+                "xgboost": {
+                    "mae": 1.8930107555389404,
+                    "rmse": 2.513287061267117,
+                    "r2": 0.8707593944004238
+                },
+                "baseline": {
+                    "mae": 5.808000000000001,
+                    "rmse": 7.115321496601542,
+                    "r2": -0.03586664578065801
+                }
+            }
+        }
+    }
+]

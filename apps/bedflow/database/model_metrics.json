@@ -1,0 +1,361 @@
+{
+    "training_strategy": {
+        "stage": "Stage 6 \u2014 Public / Realistic Data Upgrade",
+        "discharge_delay_source": "database/bedflow_patient_data.csv",
+        "expected_delay_hours_source": "database/bedflow_patient_data.csv",
+        "readmission_risk_source": "database/readmission_training_data.csv",
+        "readmission_raw_public_source": "dataset_diabetes/diabetic_data.csv",
+        "note": "Readmission risk uses public diabetes hospital encounter data transformed into the BedFlow schema; operational delay models remain synthetic/proxy."
+    },
+    "discharge_delay": {
+        "training_source": "Synthetic/proxy BedFlow operations dataset",
+        "xgboost": {
+            "accuracy": 0.95,
+            "precision": 0.9365079365079365,
+            "recall": 0.9833333333333333,
+            "f1": 0.959349593495935,
+            "roc_auc": 0.9916666666666667
+        },
+        "baseline": {
+            "accuracy": 0.6,
+            "precision": 0.6,
+            "recall": 1.0,
+            "f1": 0.75
+        }
+    },
+    "readmission_risk": {
+        "training_source": "Public diabetes 130-US hospitals readmission dataset transformed into BedFlow schema",
+        "positive_label": "readmitted <30 days",
+        "decision_threshold_for_metrics": 0.55,
+        "xgboost": {
+            "accuracy": 0.7318804107106905,
+            "precision": 0.20229304314030314,
+            "recall": 0.46000883782589486,
+            "f1": 0.281009582939668,
+            "roc_auc": 0.66335284172749
+        },
+        "baseline": {
+            "accuracy": 0.8860982484397021,
+            "precision": 0.0,
+            "recall": 0.0,
+            "f1": 0.0
+        }
+    },
+    "expected_delay_hours": {
+        "training_source": "Synthetic/proxy BedFlow operations dataset",
+        "xgboost": {
+            "mae": 1.8930107555389404,
+            "rmse": 2.513287061267117,
+            "r2": 0.8707593944004238
+        },
+        "baseline": {
+            "mae": 5.808000000000001,
+            "rmse": 7.115321496601542,
+            "r2": -0.03586664578065801
+        }
+    },
+    "feature_importance": {
+        "method": "Native XGBoost feature_importances_ from the active model set. Stage 5 loads saved artifacts when available and falls back to in-process training when needed.",
+        "model_version": "bedflow-xgb-20260711T055014Z",
+        "loaded_from_artifact": false,
+        "discharge_delay": [
+            {
+                "feature": "rehab_snf_placement_pending",
+                "reason": "Rehab/SNF placement pending",
+                "importance": 0.1319,
+                "rank": 1
+            },
+            {
+                "feature": "home_care_setup_pending",
+                "reason": "Home-care setup pending",
+                "importance": 0.0988,
+                "rank": 2
+            },
+            {
+                "feature": "insurance_authorization_pending",
+                "reason": "Insurance authorization pending",
+                "importance": 0.0805,
+                "rank": 3
+            },
+            {
+                "feature": "vital_sign_stability_flag_Unstable",
+                "reason": "Vital Sign Stability Flag: Unstable",
+                "importance": 0.0726,
+                "rank": 4
+            },
+            {
+                "feature": "lab_stability_flag_Stable",
+                "reason": "Lab Stability Flag: Stable",
+                "importance": 0.0648,
+                "rank": 5
+            },
+            {
+                "feature": "doctor_signoff_pending",
+                "reason": "Doctor signoff pending",
+                "importance": 0.0575,
+                "rank": 6
+            },
+            {
+                "feature": "social_work_pending",
+                "reason": "Social work review pending",
+                "importance": 0.0494,
+                "rank": 7
+            },
+            {
+                "feature": "pharmacy_med_rec_pending",
+                "reason": "Pharmacy medication reconciliation pending",
+                "importance": 0.0416,
+                "rank": 8
+            },
+            {
+                "feature": "discharge_destination_Rehab",
+                "reason": "Discharge Destination: Rehab",
+                "importance": 0.0398,
+                "rank": 9
+            },
+            {
+                "feature": "transport_pending",
+                "reason": "Transport pending",
+                "importance": 0.039,
+                "rank": 10
+            },
+            {
+                "feature": "family_pickup_pending",
+                "reason": "Family pickup pending",
+                "importance": 0.0337,
+                "rank": 11
+            },
+            {
+                "feature": "medication_complexity_Medium",
+                "reason": "Medication Complexity: Medium",
+                "importance": 0.0199,
+                "rank": 12
+            }
+        ],
+        "readmission_risk": [
+            {
+                "feature": "rehab_snf_placement_pending",
+                "reason": "Rehab/SNF placement pending",
+                "importance": 0.2856,
+                "rank": 1
+            },
+            {
+                "feature": "insurance_authorization_pending",
+                "reason": "Insurance authorization pending",
+                "importance": 0.1592,
+                "rank": 2
+            },
+            {
+                "feature": "ed_boarding_count",
+                "reason": "ED boarding count",
+                "importance": 0.0801,
+                "rank": 3
+            },
+            {
+                "feature": "prior_admissions_6mo",
+                "reason": "Prior admissions in last 6 months",
+                "importance": 0.0713,
+                "rank": 4
+            },
+            {
+                "feature": "transport_pending",
+                "reason": "Transport pending",
+                "importance": 0.0699,
+                "rank": 5
+            },
+            {
+                "feature": "current_bed_occupancy_percent",
+                "reason": "Current bed occupancy",
+                "importance": 0.0433,
+                "rank": 6
+            },
+            {
+                "feature": "mobility_status_Bedbound",
+                "reason": "Mobility Status: Bedbound",
+                "importance": 0.0423,
+                "rank": 7
+            },
+            {
+                "feature": "ed_wait_time_pressure_Low",
+                "reason": "Ed Wait Time Pressure: Low",
+                "importance": 0.039,
+                "rank": 8
+            },
+            {
+                "feature": "mobility_status_Independent",
+                "reason": "Mobility Status: Independent",
+                "importance": 0.028,
+                "rank": 9
+            },
+            {
+                "feature": "case_manager_available",
+                "reason": "Case manager available",
+                "importance": 0.0211,
+                "rank": 10
+            },
+            {
+                "feature": "discharge_destination_LTC",
+                "reason": "Discharge Destination: LTC",
+                "importance": 0.0186,
+                "rank": 11
+            },
+            {
+                "feature": "diagnosis_group_Orthopedics",
+                "reason": "Diagnosis Group: Orthopedics",
+                "importance": 0.0107,
+                "rank": 12
+            }
+        ],
+        "expected_delay_hours": [
+            {
+                "feature": "rehab_snf_placement_pending",
+                "reason": "Rehab/SNF placement pending",
+                "importance": 0.1933,
+                "rank": 1
+            },
+            {
+                "feature": "insurance_authorization_pending",
+                "reason": "Insurance authorization pending",
+                "importance": 0.0977,
+                "rank": 2
+            },
+            {
+                "feature": "doctor_signoff_pending",
+                "reason": "Doctor signoff pending",
+                "importance": 0.0868,
+                "rank": 3
+            },
+            {
+                "feature": "home_care_setup_pending",
+                "reason": "Home-care setup pending",
+                "importance": 0.0791,
+                "rank": 4
+            },
+            {
+                "feature": "lab_stability_flag_Stable",
+                "reason": "Lab Stability Flag: Stable",
+                "importance": 0.0707,
+                "rank": 5
+            },
+            {
+                "feature": "social_work_pending",
+                "reason": "Social work review pending",
+                "importance": 0.0599,
+                "rank": 6
+            },
+            {
+                "feature": "vital_sign_stability_flag_Unstable",
+                "reason": "Vital Sign Stability Flag: Unstable",
+                "importance": 0.0434,
+                "rank": 7
+            },
+            {
+                "feature": "lab_stability_flag_Unstable",
+                "reason": "Lab Stability Flag: Unstable",
+                "importance": 0.0406,
+                "rank": 8
+            },
+            {
+                "feature": "transport_pending",
+                "reason": "Transport pending",
+                "importance": 0.0381,
+                "rank": 9
+            },
+            {
+                "feature": "family_pickup_pending",
+                "reason": "Family pickup pending",
+                "importance": 0.0378,
+                "rank": 10
+            },
+            {
+                "feature": "pharmacy_med_rec_pending",
+                "reason": "Pharmacy medication reconciliation pending",
+                "importance": 0.0293,
+                "rank": 11
+            },
+            {
+                "feature": "ed_wait_time_pressure_Low",
+                "reason": "Ed Wait Time Pressure: Low",
+                "importance": 0.0153,
+                "rank": 12
+            }
+        ]
+    },
+    "governance": {
+        "status": "trained",
+        "model_version": "bedflow-xgb-20260711T055014Z",
+        "trained_at_utc": "2026-07-11T05:50:14+00:00",
+        "model_family": "XGBoost",
+        "training_mode": "Hybrid Stage 6 training: BedFlow operational data for delay models; public diabetes hospital data for readmission model.",
+        "dataset": {
+            "path": "database/bedflow_patient_data.csv",
+            "exists": true,
+            "row_count": 500,
+            "column_count": 34,
+            "dataset_hash": "f3b9d1c407b17d84",
+            "delayed_discharge_rate": 0.604,
+            "readmission_rate": 0.84
+        },
+        "data_sources": {
+            "stage": "Stage 6 \u2014 Public / Realistic Data Upgrade",
+            "training_strategy": "Hybrid: operational models use synthetic BedFlow data; readmission model uses a public clinical readmission dataset transformed into the BedFlow feature schema.",
+            "bedflow_operational_data": {
+                "path": "database/bedflow_patient_data.csv",
+                "exists": true,
+                "rows": 500,
+                "columns": 34,
+                "hash": "f3b9d1c407b17d84",
+                "delayed_discharge_rate": 0.604
+            },
+            "public_readmission_raw_data": {
+                "path": "dataset_diabetes/diabetic_data.csv",
+                "exists": true,
+                "rows": 101766,
+                "columns": 50,
+                "hash": "0689e7ec031237dc",
+                "readmitted_lt_30_rate": 0.1116,
+                "readmitted_distribution": {
+                    "NO": 54864,
+                    ">30": 35545,
+                    "<30": 11357
+                }
+            },
+            "public_readmission_training_data": {
+                "path": "database/readmission_training_data.csv",
+                "exists": true,
+                "rows": 99340,
+                "columns": 34,
+                "hash": "afe1ebb76fc9a22d",
+                "readmitted_30_days_rate": 0.1139
+            },
+            "privacy_note": "No PHI is used. Demographic fields such as race and gender are intentionally not included in the transformed model features.",
+            "limitations": [
+                "The public diabetes dataset is used only for the readmission-risk training demonstration.",
+                "Operational blockers such as pharmacy, transport, insurance, and bed pressure remain synthetic/proxy features.",
+                "This is not a clinically validated model and must remain human-supervised decision support."
+            ]
+        },
+        "model_training_sources": {
+            "discharge_delay": "database/bedflow_patient_data.csv",
+            "expected_delay_hours": "database/bedflow_patient_data.csv",
+            "readmission_risk": "database/readmission_training_data.csv",
+            "readmission_raw_public_source": "dataset_diabetes/diabetic_data.csv"
+        },
+        "feature_count": 44,
+        "feature_columns_path": "models/feature_columns.json",
+        "artifact_paths": {
+            "discharge_delay": "models/discharge_delay_xgb.joblib",
+            "readmission_risk": "models/readmission_xgb.joblib",
+            "expected_delay_hours": "models/delay_hours_xgb.joblib"
+        },
+        "metrics_path": "database/model_metrics.json",
+        "metrics_history_path": "database/model_metrics_history.json",
+        "model_card_path": "models/model_card.md",
+        "governance_notes": [
+            "Stage 6 uses a hybrid data strategy: synthetic/proxy operational data plus public clinical readmission data.",
+            "The public dataset is transformed into the BedFlow feature schema and excludes demographic features such as race and gender.",
+            "Predictions are decision support only and require human review.",
+            "Retraining is explicit through /api/train_models or training/train_models.py; prediction should load saved artifacts when present."
+        ]
+    }
+}

@@ -1,0 +1,10 @@
+Do it in this order:
+
+ESI-style acuity engine
+Red-flag safety rules
+ED waiting-room command board
+Resource / admission / fast-track prediction
+Nurse override + audit feedback
+FHIR/CDS Hooks simulator
+Fairness + model governance dashboard
+Deterioration monitoring

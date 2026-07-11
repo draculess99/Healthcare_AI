@@ -1,0 +1,13 @@
+**EMERGENCY DEPARTMENT STROKE PROTOCOLS**
+
+**1. Acute Ischemic Stroke (Code Stroke)**
+Any patient presenting with sudden onset of focal neurological deficits (e.g., facial droop, arm/leg weakness, speech difficulty, vision loss) within the last 24 hours must be triaged as ESI-2 and a "Code Stroke" should be activated. The time of "last known well" is critical.
+
+**2. Stroke Imaging Timeline**
+Upon arrival, a Code Stroke patient must receive a non-contrast Head CT within 20 minutes to rule out hemorrhage. Blood glucose must be checked immediately via fingerstick to rule out hypoglycemia, which can mimic a stroke.
+
+**3. Thrombolytic Eligibility**
+If the Head CT is negative for blood and the patient's symptoms started within 4.5 hours of their last known well time, they may be eligible for thrombolytic therapy (e.g., tPA/Tenecteplase). Blood pressure must be maintained below 185/110 mmHg prior to administration.
+
+**4. Transient Ischemic Attack (TIA)**
+Patients whose stroke-like symptoms have completely resolved by the time of ED arrival (TIA) should still be triaged as ESI-2 or ESI-3 (depending on vital signs) and require rapid evaluation to prevent an impending major stroke. Calculate the ABCD2 score to stratify risk.

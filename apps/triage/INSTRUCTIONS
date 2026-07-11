@@ -1,0 +1,20 @@
+Here is a quick breakdown of exactly how to use the dashboard and where the XGBoost model fits into the picture!
+
+### How to use the app:
+1. **Input Vitals:** On the left side of the screen, you'll see sliders and dropdowns for Age, Resting BP, Cholesterol, etc. Adjust these to represent a hypothetical patient.
+2. **Choose your Engine:** There is a toggle switch called `"Use Expert System (0 Tokens)"`. 
+   * If it is **ON**, the system will generate an assessment using hard-coded medical rules.
+   * If it is **OFF**, the system will use the LLM (Gemini) to generate a personalized clinical summary.
+3. **Click "Evaluate Patient":** Click the big primary button at the bottom of the form.
+
+### Where does XGBoost come in?
+The moment you click **"Evaluate Patient"**, the data from your sliders is sent to the backend. 
+1. First, the **XGBoost Forecaster** grabs those exact vitals and runs them through the model it trained on the UCI Heart Disease dataset.
+2. XGBoost outputs a **Probability Score** (e.g., "There is a 78% chance this patient has heart disease").
+3. That XGBoost probability is then handed off to either the Expert System or the LLM (depending on your toggle switch). 
+4. The LLM/Expert System takes the XGBoost prediction, scales it to a Priority Score out of 10, and generates the final readable report that you see on your screen!
+
+### The System Dashboard (0 Tokens)
+The System Dashboard on the right side is just a monitoring panel. It tracks the "Memory" of the multi-agent system and the total number of LLM tokens you have spent so far. 
+
+If you have the **Expert System** toggle turned **ON** and click Evaluate, you'll notice the Token Counter stays at `0` because no AI language model was called. If you turn the toggle **OFF** and evaluate again, you'll see the Token Counter jump up, because the XGBoost score was sent to the LLM to generate the report!

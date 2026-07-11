@@ -1,0 +1,235 @@
+{
+  "overall_status": "PASS",
+  "timestamp": "2026-06-27T17:04:02.258322",
+  "tests": [
+    {
+      "test_name": "File Existence: database/data_sources.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "File Existence: database/esi_seasonal_patterns.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "File Existence: database/bed_boarding_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "File Existence: database/arrival_surge_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "File Existence: database/fast_track_flow.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "File Existence: database/db.json",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "File Existence: app.py",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "File Existence: requirements.txt",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Columns: esi_seasonal_patterns.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data Quality (rows): esi_seasonal_patterns.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data Quality (notes): esi_seasonal_patterns.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Columns: bed_boarding_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data Quality (rows): bed_boarding_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data Quality (notes): bed_boarding_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Columns: arrival_surge_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data Quality (rows): arrival_surge_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data Quality (notes): arrival_surge_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Columns: fast_track_flow.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data Quality (rows): fast_track_flow.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Data Quality (notes): fast_track_flow.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Module Functions Returns",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Adjusted Operational Risk",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Committee Evidence Structure",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Dynamic Agent Activation",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Committee Debate Generation",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Intervention Planner",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Audit Log JSON Serialization",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Costing: Catalog Existence",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Costing: Catalog Structure",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Costing: Hourly Calculation",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Costing: Fixed Calculation",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Costing: Batch Mapping",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Existence: esi_seasonal_patterns.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Nulls Check: esi_seasonal_patterns.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Note Verification: esi_seasonal_patterns.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Existence: bed_boarding_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Nulls Check: bed_boarding_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Note Verification: bed_boarding_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Existence: arrival_surge_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Nulls Check: arrival_surge_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Note Verification: arrival_surge_pressure.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Existence: fast_track_flow.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Nulls Check: fast_track_flow.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Note Verification: fast_track_flow.csv",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "test_name": "Kaggle-Derived Integration Validation",
+      "status": "PASS",
+      "details": ""
+    }
+  ],
+  "summary": {
+    "passed": 45,
+    "failed": 0
+  }
+}

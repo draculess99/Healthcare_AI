@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="BedFlow AI — hospital discharge-flow intelligence, risk scoring, task escalation, human review, FHIR export, and capacity simulation." />
+    <meta name="theme-color" content="#08111f" />
+    <title>BedFlow AI | Hospital Flow Intelligence</title>
+    <style>
+        :root {
+            --bg: #121212;
+            --bg2: #181818;
+            --panel: #1f1f1f;
+            --line: rgba(255, 255, 255, .08);
+            --text: #f8fafc;
+            --muted: #a9b6c8;
+            --accent: #2dd4bf;
+            --accentSoft: rgba(45, 212, 191, .11);
+            --danger: #fb7185;
+            --shadow: 0 24px 70px rgba(0, 0, 0, .5);
+            --radius: 22px;
+            --max: 1180px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at 15% 0%, rgba(45, 212, 191, .08), transparent 28%), radial-gradient(circle at 90% 10%, rgba(148, 163, 184, .06), transparent 28%), var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none
+        }
+
+        .container {
+            width: min(calc(100% - 36px), var(--max));
+            margin: auto
+        }
+
+        .nav-wrap {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(18px);
+            background: rgba(8, 17, 31, .8);
+            border-bottom: 1px solid var(--line)
+        }
+
+        nav {
+            min-height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 850;
+            letter-spacing: -.03em
+        }
+
+        .brand-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(45, 212, 191, .45);
+            background: linear-gradient(145deg, rgba(45, 212, 191, .19), rgba(17, 31, 51, .75));
+            color: var(--accent);
+            font-weight: 900
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            color: var(--muted);
+            font-size: .93rem;
+            font-weight: 700
+        }
+
+        .nav-links a:hover {
+            color: var(--text)
+        }
+
+        .nav-cta {
+            padding: 10px 16px;
+            border: 1px solid rgba(45, 212, 191, .38);
+            border-radius: 999px;
+            color: var(--accent);
+            background: var(--accentSoft)
+        }
+
+        .hero {
+            padding: 90px 0 56px
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1.06fr) minmax(390px, .94fr);
+            align-items: center;
+            gap: 56px
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--accent);
+            font-size: .78rem;
+            text-transform: uppercase;
+            letter-spacing: .16em;
+            font-weight: 850;
+            margin-bottom: 18px
+        }
+
+        .eyebrow:before {
+            content: "";
+            width: 28px;
+            height: 1px;
+            background: var(--accent)
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin-top: 0;
+            letter-spacing: -.045em
+        }
+
+        h1 {
+            font-size: clamp(3.2rem, 7vw, 6.4rem);
+            line-height: .94;
+            margin-bottom: 24px;
+            max-width: 780px
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 1.04;
+            margin-bottom: 0
+        }
+
+        .accent {
+            color: var(--accent)
+        }
+
+        .hero-copy {
+            max-width: 680px;
+            font-size: clamp(1rem, 1.6vw, 1.22rem);
+            color: var(--muted);
+            margin-bottom: 30px
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 13px;
+            margin-bottom: 34px
+        }
+
+        .btn {
+            min-height: 48px;
+            padding: 0 19px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 850;
+            border: 1px solid transparent;
+            transition: .16s
+        }
+
+        .btn:hover {
+            transform: translateY(-2px)
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: #06211d;
+            box-shadow: 0 14px 38px rgba(45, 212, 191, .18)
+        }
+
+        .btn-secondary {
+            border-color: var(--line);
+            background: rgba(255, 255, 255, .02)
+        }
+
+        .hero-proof {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 20px;
+            color: var(--muted);
+            font-size: .88rem
+        }
+
+        .proof {
+            display: flex;
+            align-items: center;
+            gap: 8px
+        }
+
+        .dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 18px rgba(45, 212, 191, .65)
+        }
+
+        .dash-shell {
+            position: relative;
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            padding: 16px;
+            background: linear-gradient(145deg, rgba(21, 38, 61, .88), rgba(11, 22, 38, .96));
+            box-shadow: var(--shadow);
+            transform: rotate(.5deg)
+        }
+
+        .window {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 3px 14px;
+            color: var(--muted);
+            font-size: .76rem
+        }
+
+        .dots {
+            display: flex;
+            gap: 6px
+        }
+
+        .wdot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(169, 182, 200, .34)
+        }
+
+        .dashboard {
+            border-radius: 17px;
+            overflow: hidden;
+            background: var(--bg2);
+            border: 1px solid var(--line)
+        }
+
+        .dash-top {
+            padding: 18px;
+            border-bottom: 1px solid var(--line);
+            display: flex;
+            justify-content: space-between
+        }
+
+        .dash-title {
+            font-weight: 850
+        }
+
+        .dash-sub {
+            color: var(--muted);
+            font-size: .72rem
+        }
+
+        .ready {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: .68rem;
+            color: var(--accent);
+            border: 1px solid rgba(45, 212, 191, .28);
+            background: var(--accentSoft);
+            border-radius: 999px;
+            padding: 5px 9px;
+            font-weight: 800
+        }
+
+        .dash-body {
+            padding: 17px
+        }
+
+        .kpis {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 9px;
+            margin-bottom: 14px
+        }
+
+        .kpi {
+            padding: 13px;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .018)
+        }
+
+        .kpi small {
+            color: var(--muted)
+        }
+
+        .kpi strong {
+            display: block;
+            font-size: 1.26rem
+        }
+
+        .kpi em {
+            display: block;
+            color: var(--accent);
+            font-style: normal;
+            font-size: .62rem
+        }
+
+        .queue {
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            overflow: hidden
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: .9fr 1.15fr .8fr 1fr;
+            gap: 10px;
+            padding: 11px 12px;
+            align-items: center;
+            font-size: .68rem;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .row:last-child {
+            border: 0
+        }
+
+        .head {
+            background: rgba(255, 255, 255, .03);
+            color: var(--muted);
+            font-size: .61rem;
+            text-transform: uppercase;
+            letter-spacing: .08em;
+            font-weight: 850
+        }
+
+        .risk {
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+        .risk:before {
+            content: "";
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--danger)
+        }
+
+        .pill {
+            padding: 4px 7px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: var(--muted);
+            width: max-content
+        }
+
+        section {
+            padding: 74px 0
+        }
+
+        .section-head {
+            display: grid;
+            grid-template-columns: .75fr 1.25fr;
+            gap: 40px;
+            align-items: end;
+            margin-bottom: 34px
+        }
+
+        .section-head p {
+            color: var(--muted);
+            max-width: 670px;
+            justify-self: end;
+            margin: 0
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px
+        }
+
+        .card {
+            min-height: 225px;
+            padding: 24px;
+            border-radius: var(--radius);
+            border: 1px solid var(--line);
+            background: linear-gradient(155deg, rgba(21, 38, 61, .74), rgba(13, 24, 41, .82));
+            transition: .17s
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(45, 212, 191, .3)
+        }
+
+        .num {
+            font-size: .71rem;
+            color: var(--accent);
+            font-weight: 900;
+            letter-spacing: .12em;
+            margin-bottom: 34px
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 9px
+        }
+
+        .card p {
+            color: var(--muted);
+            margin: 0;
+            font-size: .93rem
+        }
+
+        .workflow-panel {
+            padding: 30px;
+            border-radius: 26px;
+            border: 1px solid var(--line);
+            background: rgba(13, 24, 41, .72);
+            box-shadow: var(--shadow)
+        }
+
+        .workflow {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px
+        }
+
+        .step {
+            position: relative;
+            min-height: 155px;
+            padding: 18px 15px;
+            border-radius: 16px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .018)
+        }
+
+        .step:not(:last-child):after {
+            content: "→";
+            position: absolute;
+            right: -13px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            font-weight: 900;
+            z-index: 2
+        }
+
+        .step b {
+            display: block;
+            color: var(--accent);
+            font-size: .68rem;
+            margin-bottom: 28px;
+            letter-spacing: .11em
+        }
+
+        .step strong {
+            display: block;
+            font-size: .91rem;
+            line-height: 1.25;
+            margin-bottom: 8px
+        }
+
+        .step span {
+            color: var(--muted);
+            font-size: .74rem;
+            line-height: 1.45
+        }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px
+        }
+
+        .panel {
+            border: 1px solid var(--line);
+            background: rgba(13, 24, 41, .75);
+            border-radius: 24px;
+            padding: 28px
+        }
+
+        .panel>p {
+            color: var(--muted)
+        }
+
+        .model-list {
+            display: grid;
+            gap: 12px;
+            margin-top: 22px
+        }
+
+        .model {
+            display: grid;
+            grid-template-columns: 42px 1fr auto;
+            gap: 13px;
+            align-items: center;
+            padding: 14px;
+            border: 1px solid var(--line);
+            border-radius: 14px
+        }
+
+        .model-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: var(--accentSoft);
+            border: 1px solid rgba(45, 212, 191, .22);
+            display: grid;
+            place-items: center;
+            color: var(--accent);
+            font-weight: 900
+        }
+
+        .model small {
+            color: var(--muted)
+        }
+
+        .type {
+            color: var(--accent);
+            font-size: .7rem;
+            font-weight: 850
+        }
+
+        .compare {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 15px;
+            align-items: center;
+            margin-top: 22px
+        }
+
+        .sim {
+            padding: 18px;
+            border-radius: 14px;
+            border: 1px solid var(--line);
+            background: rgba(255, 255, 255, .017)
+        }
+
+        .sim h4 {
+            color: var(--muted);
+            font-size: .7rem;
+            text-transform: uppercase;
+            letter-spacing: .09em
+        }
+
+        .stat {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            font-size: .78rem
+        }
+
+        .stat strong {
+            color: var(--accent)
+        }
+
+        .arrow {
+            color: var(--accent);
+            font-size: 1.5rem;
+            font-weight: 900
+        }
+
+        .architecture {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            gap: 18px
+        }
+
+        .arch {
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: rgba(13, 24, 41, .72);
+            padding: 28px
+        }
+
+        .arch p {
+            color: var(--muted)
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin-top: 23px
+        }
+
+        .tag {
+            padding: 7px 10px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            font-size: .72rem;
+            color: var(--muted)
+        }
+
+        .flow {
+            display: grid;
+            gap: 10px
+        }
+
+        .box {
+            position: relative;
+            padding: 15px 16px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            display: flex;
+            justify-content: space-between;
+            gap: 14px;
+            background: rgba(255, 255, 255, .017)
+        }
+
+        .box:not(:last-child):after {
+            content: "↓";
+            position: absolute;
+            bottom: -17px;
+            left: 50%;
+            color: var(--accent)
+        }
+
+        .box span {
+            color: var(--muted);
+            font-size: .72rem;
+            text-align: right
+        }
+
+        .notice {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 18px;
+            padding: 24px;
+            border-radius: 18px;
+            border: 1px solid rgba(45, 212, 191, .25);
+            background: var(--accentSoft)
+        }
+
+        .notice-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            display: grid;
+            place-items: center;
+            border: 1px solid rgba(45, 212, 191, .25);
+            color: var(--accent);
+            font-weight: 900
+        }
+
+        .notice h3 {
+            margin-bottom: 5px
+        }
+
+        .notice p {
+            margin: 0;
+            color: var(--muted)
+        }
+
+        .cta {
+            text-align: center;
+            padding: 58px 28px;
+            border-radius: 28px;
+            border: 1px solid rgba(45, 212, 191, .23);
+            background: radial-gradient(circle at 50% 0%, rgba(45, 212, 191, .13), transparent 46%), rgba(13, 24, 41, .78);
+            box-shadow: var(--shadow)
+        }
+
+        .cta p {
+            max-width: 680px;
+            margin: 0 auto 27px;
+            color: var(--muted)
+        }
+
+        .cta .actions {
+            justify-content: center;
+            margin-bottom: 0
+        }
+
+        footer {
+            padding: 34px 0 42px;
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+            font-size: .86rem
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 22px;
+            flex-wrap: wrap
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap
+        }
+
+        @media(max-width:980px) {
+
+            .hero-grid,
+            .section-head,
+            .architecture,
+            .two-col {
+                grid-template-columns: 1fr
+            }
+
+            .section-head p {
+                justify-self: start
+            }
+
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+
+            .workflow {
+                grid-template-columns: repeat(3, 1fr)
+            }
+
+            .step:nth-child(3):after {
+                display: none
+            }
+        }
+
+        @media(max-width:720px) {
+            .nav-links a:not(.nav-cta) {
+                display: none
+            }
+
+            .hero {
+                padding-top: 66px
+            }
+
+            h1 {
+                font-size: clamp(3rem, 16vw, 4.6rem)
+            }
+
+            .hero-grid,
+            .feature-grid,
+            .workflow {
+                grid-template-columns: 1fr
+            }
+
+            .dash-shell {
+                transform: none
+            }
+
+            .step:after {
+                display: none
+            }
+
+            .compare {
+                grid-template-columns: 1fr
+            }
+
+            .arrow {
+                transform: rotate(90deg);
+                text-align: center
+            }
+
+            .row {
+                grid-template-columns: .9fr 1fr .8fr
+            }
+
+            .row>*:last-child {
+                display: none
+            }
+
+            .kpis {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* Premium Dark Mode Enhancements */
+        @keyframes glowPulse {
+            0% {
+                box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(45, 212, 191, 0.5);
+            }
+
+            100% {
+                box-shadow: 0 0 15px rgba(45, 212, 191, 0.2);
+            }
+        }
+
+        @keyframes textShimmer {
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        h1 .accent {
+            background: linear-gradient(90deg, #2dd4bf, #0ea5e9, #2dd4bf);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: textShimmer 4s linear infinite;
+        }
+
+        .btn-primary {
+            animation: glowPulse 3s infinite;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(45, 212, 191, 0.4);
+        }
+
+        .card,
+        .arch,
+        .panel,
+        .sim {
+            backdrop-filter: blur(12px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card:hover,
+        .arch:hover,
+        .panel:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border-color: rgba(45, 212, 191, 0.5);
+        }
+
+        /* Neutral Dark Grey Overrides */
+        .nav-wrap {
+            background: rgba(18, 18, 18, 0.8) !important;
+        }
+
+        .brand-mark {
+            background: linear-gradient(145deg, rgba(45, 212, 191, .19), rgba(24, 24, 24, .75)) !important;
+        }
+
+        .dash-shell {
+            background: linear-gradient(145deg, rgba(28, 28, 28, 0.88), rgba(18, 18, 18, 0.96)) !important;
+        }
+
+        .workflow-panel {
+            background: rgba(22, 22, 22, 0.72) !important;
+        }
+
+        .panel {
+            background: rgba(22, 22, 22, 0.75) !important;
+        }
+
+        .arch {
+            background: rgba(22, 22, 22, 0.72) !important;
+        }
+
+        .cta {
+            background: radial-gradient(circle at 50% 0%, rgba(45, 212, 191, .13), transparent 46%), rgba(22, 22, 22, 0.78) !important;
+        }
+
+        .card {
+            background: linear-gradient(155deg, rgba(28, 28, 28, 0.74), rgba(18, 18, 18, 0.82)) !important;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="nav-wrap">
+        <nav class="container">
+            <a class="brand" href="#top"><span class="brand-mark">BF</span>BedFlow AI</a>
+            <div class="nav-links"><a href="#features">Features</a><a href="#workflow">Workflow</a><a
+                    href="#architecture">Architecture</a><a class="nav-cta" href="#demo">Explore Platform</a></div>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero">
+            <div class="container hero-grid">
+                <div>
+                    <div class="eyebrow">Hospital Flow Intelligence</div>
+                    <h1>Move patients safely. Recover beds <span class="accent">faster.</span></h1>
+                    <p class="hero-copy">BedFlow AI turns discharge-risk predictions into a prioritized, role-aware
+                        workflow—connecting operational blockers, assigned tasks, human accountability, capacity
+                        simulation, and auditable decisions in one command center.</p>
+                    <div class="actions"><a class="btn btn-primary"
+                            href="https://bedflowai-production.up.railway.app/">View the App</a><a
+                            class="btn btn-secondary" href="https://github.com/draculess99/BedFlow_AI" target="_blank"
+                            rel="noopener">View GitHub</a></div>
+                    <div class="hero-proof"><span class="proof"><span class="dot"></span>XGBoost scoring</span><span
+                            class="proof"><span class="dot"></span>Role-based workflow</span><span class="proof"><span
+                                class="dot"></span>FHIR-shaped export</span><span class="proof"><span
+                                class="dot"></span>Human decision control</span></div>
+                </div>
+
+                <div class="dash-shell">
+                    <div class="window">
+                        <div class="dots"><span class="wdot"></span><span class="wdot"></span><span class="wdot"></span>
+                        </div><span>Hospital Command Center</span>
+                    </div>
+                    <div class="dashboard">
+                        <div class="dash-top">
+                            <div>
+                                <div class="dash-title">Prioritized Discharge Queue</div>
+                                <div class="dash-sub">Model-scored operational review</div>
+                            </div>
+                            <div class="ready"><span class="dot"></span>Ready</div>
+                        </div>
+                        <div class="dash-body">
+                            <div class="kpis">
+                                <div class="kpi"><small>Occupancy</small><strong>87%</strong><em>Simulated hospital
+                                        view</em></div>
+                                <div class="kpi"><small>ED Boarders</small><strong>22</strong><em>Capacity pressure</em>
+                                </div>
+                                <div class="kpi"><small>Potential Beds</small><strong>8</strong><em>Scenario
+                                        estimate</em></div>
+                            </div>
+                            <div class="queue">
+                                <div class="row head">
+                                    <span>Patient</span><span>Risk</span><span>Delay</span><span>Action</span>
+                                </div>
+                                <div class="row"><strong>PT0447</strong><span
+                                        class="risk">Critical</span><span>25.1h</span><span class="pill">Escalate</span>
+                                </div>
+                                <div class="row"><strong>PT0235</strong><span
+                                        class="risk">Critical</span><span>22.2h</span><span
+                                        class="pill">Placement</span></div>
+                                <div class="row"><strong>PT0490</strong><span
+                                        class="risk">High</span><span>21.5h</span><span class="pill">Case review</span>
+                                </div>
+                                <div class="row"><strong>PT0166</strong><span
+                                        class="risk">High</span><span>19.8h</span><span class="pill">Home care</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow">Core capabilities</div>
+                        <h2>From prediction to accountable action.</h2>
+                    </div>
+                    <p>BedFlow AI is not just a model dashboard. It converts predictions into prioritized work, assigns
+                        responsibility, monitors escalation, supports human decisions, and preserves an audit trail.</p>
+                </div>
+                <div class="feature-grid">
+                    <article class="card">
+                        <div class="num">01 — COMMAND CENTER</div>
+                        <h3>Hospital flow visibility</h3>
+                        <p>Review simulated unit pressure, occupancy, pending discharges, delayed cases, and ED boarding
+                            from one operational view.</p>
+                    </article>
+                    <article class="card">
+                        <div class="num">02 — PREDICTIVE ANALYTICS</div>
+                        <h3>Three-model scoring</h3>
+                        <p>Estimate discharge-delay probability, expected delay hours, and 30-day readmission risk using
+                            saved XGBoost models.</p>
+                    </article>
+                    <article class="card">
+                        <div class="num">03 — WORKFLOW</div>
+                        <h3>Tasks and escalation</h3>
+                        <p>Turn incomplete readiness items into owned tasks with priorities, service levels, progress
+                            notes, and immutable event history.</p>
+                    </article>
+                    <article class="card">
+                        <div class="num">04 — AGENTIC REVIEW</div>
+                        <h3>Safety versus flow debate</h3>
+                        <p>Compare patient-safety and operations perspectives before presenting a final recommended
+                            action plan.</p>
+                    </article>
+                    <article class="card">
+                        <div class="num">05 — HUMAN CONTROL</div>
+                        <h3>Decision and accountability</h3>
+                        <p>Authenticated reviewers can accept, hold, escalate, override, or request more information
+                            with reasons captured for audit.</p>
+                    </article>
+                    <article class="card">
+                        <div class="num">06 — INTEROPERABILITY</div>
+                        <h3>FHIR-shaped export</h3>
+                        <p>Package patient, encounter, observation, task, care-plan, and location information into a
+                            de-identified bundle.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="workflow">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow">Operational workflow</div>
+                        <h2>A complete discharge-flow decision path.</h2>
+                    </div>
+                    <p>Every selected patient moves through the same transparent sequence—from model scoring and
+                        checklist review to task ownership, agent recommendation, and final human accountability.</p>
+                </div>
+                <div class="workflow-panel">
+                    <div class="workflow">
+                        <div class="step"><b>STEP 01</b><strong>Select Patient</strong><span>Choose a case from the
+                                prioritized operational queue.</span></div>
+                        <div class="step"><b>STEP 02</b><strong>Score Risk</strong><span>Run the three saved XGBoost
+                                prediction models.</span></div>
+                        <div class="step"><b>STEP 03</b><strong>Review Readiness</strong><span>Inspect completed and
+                                unresolved discharge requirements.</span></div>
+                        <div class="step"><b>STEP 04</b><strong>Assign Work</strong><span>Create role-owned tasks with
+                                urgency and escalation logic.</span></div>
+                        <div class="step"><b>STEP 05</b><strong>Agent Review</strong><span>Compare safety, policy, and
+                                hospital-flow perspectives.</span></div>
+                        <div class="step"><b>STEP 06</b><strong>Human Decision</strong><span>Record the final
+                                accountable action and rationale.</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="demo">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow">Decision intelligence</div>
+                        <h2>Understand the risk. Test the response.</h2>
+                    </div>
+                    <p>The platform pairs patient-level model scoring with a capacity what-if simulator so operational
+                        leaders can explore where intervention may create the greatest benefit.</p>
+                </div>
+                <div class="two-col">
+                    <div class="panel">
+                        <h3>Predictive model stack</h3>
+                        <p>The same patient features are evaluated by three independently trained models.</p>
+                        <div class="model-list">
+                            <div class="model">
+                                <div class="model-icon">01</div>
+                                <div><strong>Discharge Delay Risk</strong><br><small>How likely is a discharge
+                                        delay?</small></div><span class="type">Classifier</span>
+                            </div>
+                            <div class="model">
+                                <div class="model-icon">02</div>
+                                <div><strong>Expected Delay Hours</strong><br><small>How long could the delay
+                                        be?</small></div><span class="type">Regressor</span>
+                            </div>
+                            <div class="model">
+                                <div class="model-icon">03</div>
+                                <div><strong>30-Day Readmission Risk</strong><br><small>How likely is near-term
+                                        readmission?</small></div><span class="type">Classifier</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel">
+                        <h3>Capacity What-If Simulator</h3>
+                        <p>Apply hypothetical operational changes, rescore the affected queue, and compare estimated
+                            impact.</p>
+                        <div class="compare">
+                            <div class="sim">
+                                <h4>Current State</h4>
+                                <div class="stat"><span>Critical cases</span><strong>11</strong></div>
+                                <div class="stat"><span>Delay hours</span><strong>168h</strong></div>
+                                <div class="stat"><span>Open beds</span><strong>30</strong></div>
+                            </div>
+                            <div class="arrow">→</div>
+                            <div class="sim">
+                                <h4>Scenario Estimate</h4>
+                                <div class="stat"><span>Critical cases</span><strong>7</strong></div>
+                                <div class="stat"><span>Delay hours</span><strong>104h</strong></div>
+                                <div class="stat"><span>Potential beds</span><strong>38</strong></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="architecture">
+            <div class="container">
+                <div class="section-head">
+                    <div>
+                        <div class="eyebrow">Platform architecture</div>
+                        <h2>Built as a complete operational prototype.</h2>
+                    </div>
+                    <p>The system combines a Streamlit experience, Flask APIs, trained model artifacts, role-aware
+                        workflows, persistent JSON storage, interoperability, and observability.</p>
+                </div>
+                <div class="architecture">
+                    <div class="arch">
+                        <h3>Technology stack</h3>
+                        <p>BedFlow AI keeps prediction, operational workflow, human decision-making, and integration
+                            clearly separated.</p>
+                        <div class="tags"><span class="tag">Python</span><span class="tag">Streamlit</span><span
+                                class="tag">Flask</span><span class="tag">XGBoost</span><span class="tag">JSON
+                                Persistence</span><span class="tag">FHIR R4-shaped</span><span
+                                class="tag">Docker</span><span class="tag">Railway</span><span class="tag">GitHub
+                                Actions</span></div>
+                    </div>
+                    <div class="arch">
+                        <div class="flow">
+                            <div class="box"><strong>Streamlit Experience</strong><span>Command center, workflow,
+                                    simulator, review</span></div>
+                            <div class="box"><strong>Flask API Layer</strong><span>Auth, predictions, tasks, audit,
+                                    FHIR, metrics</span></div>
+                            <div class="box"><strong>Decision Intelligence</strong><span>XGBoost models + agentic review
+                                    + guardrails</span></div>
+                            <div class="box"><strong>Operational State</strong><span>Persistent JSON tasks, events,
+                                    audits, simulations</span></div>
+                            <div class="box"><strong>Deployment & Observability</strong><span>Docker, Railway, request
+                                    IDs, health, readiness</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="notice">
+                    <div class="notice-icon">!</div>
+                    <div>
+                        <h3>Responsible-use boundary</h3>
+                        <p>BedFlow AI is a portfolio decision-support prototype using synthetic/proxy discharge-flow
+                            data and a public readmission dataset. It does not independently discharge patients, replace
+                            clinical judgment, or represent a validated production hospital system.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="container">
+                <div class="cta">
+                    <div class="eyebrow">Explore the project</div>
+                    <h2>Healthcare operations intelligence, built beyond the model.</h2>
+                    <p>BedFlow AI demonstrates how predictive analytics can become an accountable operational
+                        workflow—not just another score on a dashboard.</p>
+                    <div class="actions"><a class="btn btn-primary" href="https://github.com/draculess99/BedFlow_AI"
+                            target="_blank" rel="noopener">Open Repository</a><a class="btn btn-secondary"
+                            href="https://draculess99.github.io/" target="_blank" rel="noopener">Portfolio
+                        </a></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer"><span>© 2026 BedFlow AI · Built by William Low</span>
+            <div class="footer-links"><a href="#features">Features</a><a href="#workflow">Workflow</a><a
+                    href="#architecture">Architecture</a><a href="https://github.com/draculess99/BedFlow_AI"
+                    target="_blank" rel="noopener">GitHub</a></div>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+*.pyc
+backend/__pycache__/
+
+# Runtime identity, event, and simulation stores
+database/demo_users.json
+database/access_log.json
+database/task_events.json
+
+database/simulation_runs.json
+
+# Stage 10A release output
+/dist/
+
+# Additional runtime-generated demo stores
+database/audit_log.json
+database/tasks.json
+database/simulation_runs.json
+database/bedflow_memory_history.json
+database/bedflow_memory_state.json
+
+# Optional mounted/local runtime directory
+/data/
+*.json.tmp
+
+# Internal development and stage documentation
+docs/STAGE_*.md
+docs/MODERNIZATION_*.md
+docs/PERSISTENT_*.md
+docs/BEDFLOW_*.md

@@ -1,0 +1,10 @@
+{
+    "rolling_inflow_avg": 3.12,
+    "last_prediction_delta": 8,
+    "trend_direction": "increasing",
+    "last_forecasted_volume": 0,
+    "last_actual_volume": 8,
+    "memory_update_interval_minutes": 10,
+    "last_updated": "2026-07-04T12:14:19.922076",
+    "memory_reasoning": "Memory state saved from schedule update workflow. Waiting for actuals."
+}

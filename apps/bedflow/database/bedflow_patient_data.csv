@@ -1,0 +1,501 @@
+patient_id,age,diagnosis_group,acuity_level,length_of_stay_days,prior_admissions_6mo,prior_ed_visits_6mo,prior_readmissions_12mo,medication_count,medication_complexity,mobility_status,home_support_level,lives_alone,discharge_destination,doctor_signoff_pending,pharmacy_med_rec_pending,transport_pending,insurance_authorization_pending,rehab_snf_placement_pending,home_care_setup_pending,social_work_pending,family_pickup_pending,lab_stability_flag,vital_sign_stability_flag,current_bed_occupancy_percent,ed_boarding_count,ed_wait_time_pressure,weekend_discharge_flag,after_hours_flag,case_manager_available,delayed_discharge,readmitted_30_days,expected_discharge_delay_hours,primary_discharge_bottleneck
+PT0000,69,Oncology,Low,8,4,4,2,19,Low,Bedbound,None,0,SNF,0,0,1,1,0,0,0,0,Stable,Stable,96,9,Critical,0,0,1,1,1,9.2,Insurance
+PT0001,72,General Medicine,Medium,3,4,2,2,9,Low,Independent,None,1,Rehab,0,0,0,0,1,0,1,0,Stable,Stable,75,21,Medium,0,0,1,1,1,14.7,Rehab/SNF
+PT0002,61,Neurology,Low,4,3,0,1,8,High,Independent,Fair,0,Rehab,0,0,0,0,0,1,1,0,Stable,Stable,86,7,High,1,0,1,1,1,11.8,Home Care
+PT0003,90,General Medicine,Low,16,4,2,3,8,Low,Bedbound,Good,0,Home,0,1,0,0,0,0,0,0,Stable,Stable,76,16,Critical,0,0,1,0,1,3.5,None
+PT0004,32,Orthopedics,Low,13,2,2,1,2,Medium,Assisted,Good,0,Rehab,1,0,1,0,1,0,0,0,Stable,Stable,78,2,High,0,0,1,1,1,14.3,Rehab/SNF
+PT0005,41,Orthopedics,Low,24,0,3,0,17,Low,Assisted,Poor,1,SNF,0,1,0,1,0,0,0,0,Stable,Stable,75,22,Critical,0,0,1,1,0,12.3,Insurance
+PT0006,55,Oncology,Medium,6,2,6,3,16,High,Bedbound,Fair,1,Home,0,0,0,0,0,0,0,0,Stable,Unstable,70,10,Critical,1,0,1,0,1,3.9,None
+PT0007,33,Neurology,High,20,3,0,1,1,Low,Independent,Good,1,SNF,0,0,1,1,1,0,0,0,Unstable,Stable,72,15,Medium,1,1,1,1,1,25.5,Rehab/SNF
+PT0008,83,Pulmonology,Low,29,0,3,0,4,Low,Independent,None,1,Home,0,1,0,0,0,0,0,0,Pending,Stable,77,26,High,1,0,1,0,0,4.7,None
+PT0009,78,Orthopedics,Medium,17,0,3,3,14,High,Bedbound,None,0,Hospice,0,0,0,1,0,0,0,0,Stable,Stable,79,21,Medium,1,0,1,0,1,7.4,None
+PT0010,64,Pulmonology,Low,27,1,1,1,17,High,Independent,Poor,1,Home,0,1,1,1,1,0,0,0,Stable,Stable,85,13,Critical,1,0,1,1,1,26.3,Rehab/SNF
+PT0011,68,Cardiology,Low,29,1,1,1,17,Low,Assisted,Poor,1,Home,0,1,0,1,0,1,0,0,Stable,Stable,85,12,Medium,0,0,1,1,1,15.1,Insurance
+PT0012,80,Orthopedics,Low,23,1,4,1,9,Medium,Independent,Fair,1,Home,0,0,1,0,0,1,0,0,Stable,Stable,81,25,Critical,0,0,1,1,0,10.4,Home Care
+PT0013,50,Pulmonology,Low,23,1,1,1,5,High,Bedbound,Fair,1,LTC,0,0,0,0,1,1,1,0,Unstable,Stable,72,27,Low,0,0,1,1,1,25.2,Rehab/SNF
+PT0014,84,Cardiology,High,10,2,3,0,13,Low,Assisted,Fair,0,Home,0,0,0,1,0,1,0,0,Stable,Stable,98,23,Critical,0,1,1,1,1,16.9,Insurance
+PT0015,66,Orthopedics,Low,18,0,6,3,5,Low,Bedbound,Good,0,Rehab,0,1,0,1,1,0,0,1,Stable,Stable,83,19,High,0,0,0,1,1,18.8,Rehab/SNF
+PT0016,29,Cardiology,Medium,21,3,4,2,16,Medium,Independent,Good,1,Hospice,1,0,1,0,0,1,0,1,Unstable,Stable,83,12,Critical,0,1,1,1,1,23.3,Home Care
+PT0017,88,Cardiology,Medium,4,3,6,2,12,Medium,Bedbound,Fair,1,Home,0,0,0,0,0,0,1,0,Stable,Stable,94,27,Low,0,0,1,0,1,3.5,None
+PT0018,75,General Medicine,High,13,4,6,0,16,Medium,Bedbound,None,0,Home,0,0,0,0,0,1,0,0,Stable,Unstable,79,15,Critical,0,0,1,1,1,12.9,Home Care
+PT0019,25,Neurology,Low,28,3,4,0,4,High,Assisted,Poor,0,Home,0,0,0,0,0,1,0,0,Pending,Stable,99,17,High,0,0,1,1,1,8.4,Home Care
+PT0020,82,Neurology,High,17,2,4,1,17,High,Assisted,Good,0,Home,0,0,0,0,0,1,0,0,Stable,Stable,90,13,Low,0,1,1,0,1,7.4,None
+PT0021,49,Neurology,Low,8,1,1,1,3,Medium,Independent,Fair,1,Home,1,0,0,0,0,0,0,0,Stable,Stable,75,17,Medium,0,0,0,0,0,2.3,None
+PT0022,69,Cardiology,Medium,24,3,5,2,10,High,Independent,Good,1,Home,1,1,0,0,0,0,0,0,Stable,Stable,92,22,Critical,0,0,1,0,1,6.5,None
+PT0023,84,Orthopedics,Medium,18,4,1,2,19,High,Assisted,None,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,84,23,Medium,0,0,0,0,1,0.0,None
+PT0024,53,Cardiology,Low,3,4,3,2,15,Low,Assisted,Fair,1,Rehab,0,1,0,0,1,1,0,0,Unstable,Stable,88,14,Critical,0,0,0,1,1,20.4,Rehab/SNF
+PT0025,61,Cardiology,High,20,0,3,1,3,Medium,Assisted,Poor,1,Home,0,1,0,0,0,0,0,0,Stable,Unstable,74,24,Low,0,0,1,1,1,7.7,Pharmacy
+PT0026,21,Pulmonology,Low,24,0,6,2,19,Low,Independent,None,1,Home,0,1,1,1,0,0,0,1,Stable,Stable,88,12,Critical,0,1,1,1,1,17.8,Insurance
+PT0027,29,Cardiology,Medium,6,4,5,2,4,Low,Bedbound,Good,1,Home,0,0,1,0,0,0,0,0,Stable,Stable,92,2,Medium,0,1,1,0,1,1.4,None
+PT0028,67,Pulmonology,High,11,0,1,3,3,Low,Assisted,None,1,Rehab,1,1,1,1,0,0,1,0,Stable,Stable,77,6,Critical,0,0,1,1,1,22.5,Insurance
+PT0029,42,Cardiology,High,23,1,5,0,8,Low,Bedbound,Poor,1,LTC,0,0,0,0,0,0,1,0,Stable,Stable,74,26,High,0,0,1,0,1,7.9,None
+PT0030,22,Orthopedics,Medium,22,4,6,2,4,Medium,Bedbound,Good,1,Home,0,1,1,0,0,0,0,0,Stable,Unstable,75,5,Critical,0,0,1,1,1,11.5,Pharmacy
+PT0031,77,Orthopedics,High,4,3,4,3,5,Medium,Assisted,Good,1,Home,0,0,0,1,1,0,0,0,Stable,Stable,70,21,High,0,0,1,1,1,15.6,Rehab/SNF
+PT0032,70,Cardiology,Low,25,4,1,0,3,Low,Independent,Fair,0,LTC,0,0,1,0,0,1,0,0,Stable,Stable,70,16,Low,0,0,0,1,1,7.0,Home Care
+PT0033,66,General Medicine,Low,28,4,7,0,7,Medium,Independent,Fair,0,Home,0,0,0,0,0,1,0,0,Stable,Stable,91,27,Low,0,0,1,0,1,7.0,None
+PT0034,18,Oncology,Low,3,1,1,2,14,Medium,Independent,Poor,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,70,27,High,1,1,1,0,1,0.0,None
+PT0035,33,General Medicine,High,22,4,5,2,16,Low,Assisted,Poor,0,Home,0,0,0,0,0,1,0,0,Stable,Stable,81,19,Low,0,0,1,0,1,6.8,None
+PT0036,70,General Medicine,Low,26,3,7,0,10,Medium,Bedbound,Fair,0,Rehab,0,0,0,0,0,0,1,1,Stable,Stable,92,4,High,1,0,1,0,1,6.0,None
+PT0037,54,Cardiology,Low,12,4,1,1,6,Medium,Assisted,None,0,SNF,0,1,0,0,0,0,0,0,Stable,Stable,90,10,Critical,0,1,1,0,1,3.0,None
+PT0038,71,Neurology,Low,24,4,7,0,4,Medium,Bedbound,Poor,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,76,2,High,0,0,1,0,1,0.0,None
+PT0039,66,Oncology,Medium,25,0,6,3,16,High,Bedbound,Good,0,SNF,0,1,0,0,1,1,0,0,Pending,Stable,90,21,Medium,0,0,1,1,1,21.3,Rehab/SNF
+PT0040,65,Neurology,Low,29,1,6,1,7,Medium,Bedbound,Fair,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,98,21,Low,1,0,1,0,0,0.0,None
+PT0041,59,Neurology,Low,23,4,4,1,3,Low,Assisted,None,0,Rehab,0,0,0,1,1,0,0,0,Stable,Stable,83,23,Medium,1,0,1,1,1,18.5,Rehab/SNF
+PT0042,65,Cardiology,High,15,0,6,0,4,Low,Assisted,Good,0,Home,0,1,1,0,1,1,0,0,Stable,Stable,91,20,High,0,0,1,1,0,19.8,Rehab/SNF
+PT0043,20,Pulmonology,High,22,0,0,2,17,Low,Assisted,Poor,1,Home,1,1,0,0,0,0,1,1,Stable,Stable,96,27,Low,1,1,1,1,1,13.9,Pharmacy
+PT0044,26,Cardiology,Medium,27,1,7,3,15,Low,Bedbound,Good,1,Home,0,0,0,0,0,0,0,0,Unstable,Stable,71,7,High,1,0,1,0,1,3.7,None
+PT0045,76,Orthopedics,Low,13,2,4,0,10,Low,Bedbound,Fair,1,Home,1,1,0,1,0,0,0,0,Unstable,Stable,98,11,High,0,0,1,1,0,20.6,Insurance
+PT0046,34,Neurology,Medium,24,4,2,3,6,Low,Bedbound,Fair,0,Hospice,0,0,1,0,1,0,0,0,Stable,Stable,79,21,Low,0,0,1,1,1,16.0,Rehab/SNF
+PT0047,69,Oncology,Low,29,2,0,1,15,Medium,Bedbound,Poor,1,Home,0,0,1,0,0,0,1,0,Unstable,Stable,89,21,High,0,1,1,1,1,10.5,Transport
+PT0048,38,Oncology,Medium,6,2,0,0,3,Low,Assisted,None,1,Home,0,0,0,0,0,0,1,0,Unstable,Stable,84,26,Medium,0,0,1,1,1,10.0,Clinical Stability
+PT0049,20,General Medicine,Medium,25,0,5,3,4,Medium,Independent,None,0,SNF,0,0,0,1,1,0,0,1,Stable,Stable,94,0,Critical,1,0,1,1,1,19.0,Rehab/SNF
+PT0050,58,Cardiology,Low,14,3,3,0,10,Medium,Assisted,None,0,Home,0,0,0,0,0,0,0,0,Unstable,Stable,92,11,Low,1,0,1,0,1,7.9,None
+PT0051,49,Cardiology,Medium,8,1,3,1,15,High,Bedbound,Poor,1,Home,0,1,0,0,0,0,0,0,Stable,Stable,88,25,High,1,0,1,0,1,5.8,None
+PT0052,70,Orthopedics,Low,6,1,2,1,5,High,Independent,Poor,0,Home,0,0,0,0,0,0,1,0,Unstable,Stable,97,11,Medium,1,0,1,1,1,5.9,Clinical Stability
+PT0053,83,Neurology,Medium,7,1,2,2,12,Low,Assisted,None,0,SNF,0,1,1,0,1,0,1,0,Stable,Stable,84,13,Critical,0,0,0,1,1,23.5,Rehab/SNF
+PT0054,34,Orthopedics,Low,28,1,2,0,5,Low,Independent,Poor,0,Home,1,0,0,0,0,0,0,0,Pending,Stable,91,19,Critical,0,0,1,1,0,11.4,Doctor
+PT0055,61,General Medicine,High,6,3,2,0,18,High,Independent,Poor,0,LTC,0,0,0,1,0,0,0,0,Pending,Unstable,80,29,Medium,0,1,1,1,1,17.8,Insurance
+PT0056,73,Orthopedics,Low,12,3,6,3,13,Low,Assisted,Fair,1,SNF,1,0,0,0,0,0,1,1,Stable,Stable,86,25,Critical,1,0,1,1,1,13.2,Doctor
+PT0057,31,Oncology,Medium,9,1,5,3,2,High,Assisted,Poor,0,Rehab,1,1,0,0,1,0,1,0,Pending,Stable,92,18,Low,1,0,1,1,1,25.8,Rehab/SNF
+PT0058,32,Cardiology,Low,7,4,2,3,1,Low,Independent,Poor,1,Home,0,0,0,0,0,0,1,1,Pending,Stable,94,11,Low,0,0,1,1,1,14.8,Clinical Stability
+PT0059,87,Pulmonology,Medium,27,2,4,0,11,Low,Bedbound,Good,1,Hospice,0,0,0,0,0,0,0,0,Stable,Unstable,97,2,Critical,0,0,1,0,0,7.1,None
+PT0060,66,Oncology,Low,25,2,6,2,12,Low,Independent,Poor,0,Home,0,0,1,0,0,1,0,0,Stable,Stable,91,21,Low,1,0,1,1,1,6.2,Home Care
+PT0061,59,Cardiology,Low,5,3,1,3,19,High,Bedbound,Fair,0,Home,0,0,0,0,0,1,0,0,Stable,Stable,97,6,Critical,0,0,1,0,1,9.5,None
+PT0062,74,Pulmonology,Low,3,4,1,2,10,Medium,Bedbound,Good,0,Home,0,1,0,0,1,0,0,0,Stable,Stable,70,26,Medium,0,0,1,1,1,12.5,Rehab/SNF
+PT0063,89,Neurology,Medium,12,4,1,2,6,Low,Assisted,Fair,0,Hospice,0,0,0,0,1,0,1,0,Stable,Stable,92,15,Critical,0,0,1,1,1,10.4,Rehab/SNF
+PT0064,33,Pulmonology,Low,28,2,7,1,5,Medium,Independent,Good,1,Home,0,0,1,0,0,0,0,0,Stable,Stable,71,8,Low,0,0,1,0,1,1.9,None
+PT0065,43,General Medicine,High,6,2,5,2,15,High,Independent,None,1,Home,0,0,0,0,0,0,0,0,Unstable,Stable,72,1,High,0,0,1,0,1,6.1,None
+PT0066,27,Cardiology,Medium,29,0,3,2,14,Low,Assisted,Fair,0,Home,1,1,0,0,0,0,0,0,Stable,Stable,97,12,High,0,0,1,0,1,5.1,None
+PT0067,19,General Medicine,Low,19,4,2,1,10,Low,Assisted,Poor,1,Home,0,1,0,0,0,0,0,0,Stable,Stable,76,7,Low,0,0,1,0,1,4.2,None
+PT0068,53,General Medicine,High,18,4,3,2,3,Low,Assisted,Fair,0,SNF,0,0,0,0,0,0,0,0,Stable,Stable,87,12,Low,0,0,0,0,1,0.0,None
+PT0069,28,Oncology,High,23,4,1,1,4,High,Assisted,None,0,Home,0,0,1,1,1,0,0,0,Stable,Stable,79,17,Medium,0,0,1,1,1,18.0,Rehab/SNF
+PT0070,51,Orthopedics,Low,17,0,3,2,13,Low,Independent,Poor,0,Home,0,1,0,1,0,0,0,0,Stable,Unstable,89,14,High,0,0,1,1,1,17.1,Insurance
+PT0071,25,Neurology,Low,16,3,0,2,8,Medium,Independent,Good,1,SNF,0,0,0,0,1,1,0,0,Stable,Stable,82,20,Critical,1,1,1,1,1,13.6,Rehab/SNF
+PT0072,28,Neurology,Low,8,1,6,0,8,Medium,Assisted,Good,1,LTC,0,0,0,1,0,0,1,1,Unstable,Unstable,87,20,Low,0,1,1,1,0,22.9,Insurance
+PT0073,92,Pulmonology,Medium,25,3,4,0,18,Low,Independent,Poor,1,Rehab,0,0,1,0,1,0,0,0,Stable,Stable,84,24,Critical,0,0,1,1,1,12.5,Rehab/SNF
+PT0074,89,Cardiology,Medium,3,0,3,3,3,Medium,Assisted,Fair,0,Home,0,1,0,0,0,0,0,1,Unstable,Stable,83,13,Low,1,0,1,1,1,9.6,Pharmacy
+PT0075,73,Orthopedics,High,4,4,3,3,10,High,Bedbound,Fair,0,SNF,0,0,0,0,0,0,1,0,Stable,Stable,95,22,Critical,0,0,1,0,1,2.9,None
+PT0076,36,General Medicine,High,17,2,5,3,13,Medium,Assisted,Fair,0,Rehab,0,0,0,0,0,0,0,0,Pending,Unstable,82,0,Low,0,0,1,1,1,12.2,Clinical Stability
+PT0077,33,Oncology,Low,29,1,1,2,13,Medium,Assisted,Fair,1,Home,0,0,1,0,0,1,1,0,Unstable,Stable,74,3,Medium,0,0,1,1,1,19.8,Home Care
+PT0078,52,Cardiology,Medium,4,0,5,1,12,Low,Bedbound,None,1,Home,0,0,0,0,0,0,1,1,Stable,Stable,94,12,Medium,0,0,0,0,0,7.7,None
+PT0079,50,Orthopedics,Low,15,1,7,3,11,High,Bedbound,None,0,Home,1,1,0,0,1,0,0,0,Stable,Stable,90,11,Low,0,0,1,1,1,14.2,Rehab/SNF
+PT0080,88,Pulmonology,Medium,17,4,4,1,11,Low,Assisted,Good,0,SNF,0,1,0,0,0,0,1,0,Stable,Stable,84,7,Medium,1,0,0,0,1,6.2,None
+PT0081,24,Oncology,Low,4,3,5,2,8,High,Assisted,None,1,Home,1,0,1,0,0,0,0,0,Stable,Stable,76,19,High,1,0,1,0,1,8.7,None
+PT0082,68,Orthopedics,Low,10,3,3,0,4,Low,Bedbound,Good,0,Home,1,0,0,0,0,0,0,1,Stable,Stable,97,0,High,0,1,1,0,1,7.1,None
+PT0083,87,Pulmonology,Low,9,3,2,1,16,High,Independent,Poor,0,SNF,0,0,1,0,0,0,0,0,Unstable,Stable,74,2,Low,0,0,1,0,1,5.2,None
+PT0084,23,Orthopedics,Medium,25,2,1,2,12,Medium,Independent,None,1,Rehab,1,0,0,0,1,0,1,0,Stable,Stable,92,15,Critical,0,1,1,1,1,18.1,Rehab/SNF
+PT0085,33,Neurology,Low,8,3,6,2,6,High,Independent,None,0,Home,0,0,0,0,0,0,0,0,Pending,Stable,76,8,High,0,1,1,0,1,4.8,None
+PT0086,23,Orthopedics,Low,27,2,1,3,14,Medium,Independent,None,1,Home,1,0,0,0,0,1,0,1,Stable,Unstable,79,18,Low,1,1,1,1,1,23.6,Home Care
+PT0087,36,General Medicine,Low,6,4,4,3,8,Low,Independent,None,0,Home,0,0,0,0,0,0,1,1,Stable,Stable,78,23,High,0,0,1,0,1,9.4,None
+PT0088,65,Pulmonology,Low,11,1,4,2,5,Low,Independent,Poor,1,Home,0,1,0,1,0,0,0,0,Stable,Stable,84,14,Low,0,0,1,1,1,10.3,Insurance
+PT0089,46,Orthopedics,Low,7,3,3,3,12,Medium,Assisted,None,1,Home,0,1,0,0,0,0,0,0,Pending,Stable,79,0,Low,0,0,1,0,1,8.8,None
+PT0090,52,Oncology,Low,17,4,4,1,17,Low,Assisted,None,0,Rehab,0,0,0,0,0,0,1,0,Unstable,Stable,96,6,High,1,0,1,1,1,7.6,Clinical Stability
+PT0091,36,General Medicine,High,29,4,4,3,16,Low,Assisted,Poor,1,Rehab,0,0,0,0,1,0,0,0,Stable,Stable,88,14,Critical,0,1,1,1,1,6.0,Rehab/SNF
+PT0092,32,Cardiology,High,29,0,1,1,19,Medium,Assisted,Fair,1,Home,0,0,0,0,0,0,1,1,Unstable,Stable,81,2,High,0,0,0,1,0,12.3,Clinical Stability
+PT0093,42,Cardiology,Low,21,2,1,3,3,Low,Independent,Good,1,Rehab,0,1,1,1,1,0,0,0,Stable,Stable,70,23,High,0,0,1,1,1,20.4,Rehab/SNF
+PT0094,54,Cardiology,Low,20,2,4,1,18,Medium,Bedbound,Poor,0,Rehab,0,0,1,0,1,0,0,0,Pending,Stable,93,26,High,1,0,0,1,1,16.3,Rehab/SNF
+PT0095,68,Neurology,Low,29,4,5,1,5,High,Independent,Fair,1,Home,1,0,1,1,0,1,0,0,Stable,Stable,74,8,Low,0,0,1,1,1,20.3,Insurance
+PT0096,68,Orthopedics,Low,13,2,1,0,14,Medium,Independent,None,0,Home,0,0,0,0,0,0,0,1,Unstable,Stable,94,23,Medium,0,0,1,0,0,8.4,None
+PT0097,36,Orthopedics,High,11,4,6,3,11,Medium,Independent,Good,1,Home,1,1,0,0,1,0,1,0,Stable,Stable,70,29,Critical,0,0,1,1,1,22.5,Rehab/SNF
+PT0098,68,Oncology,High,18,3,2,2,15,Medium,Independent,Poor,1,Hospice,0,0,0,0,0,0,0,0,Pending,Stable,92,15,Medium,0,0,1,0,1,3.0,None
+PT0099,38,General Medicine,High,24,2,7,1,15,High,Assisted,None,1,Rehab,0,0,1,1,0,0,1,0,Stable,Stable,71,7,High,0,0,1,1,1,15.8,Insurance
+PT0100,47,Pulmonology,Low,8,2,5,3,13,High,Assisted,Good,0,Home,1,0,0,1,0,0,0,0,Stable,Stable,71,6,High,1,1,1,1,1,11.4,Insurance
+PT0101,70,Cardiology,Medium,21,4,4,2,19,Medium,Assisted,Poor,0,SNF,1,0,1,0,1,0,0,0,Stable,Stable,73,12,High,1,0,1,1,1,17.8,Rehab/SNF
+PT0102,51,Neurology,High,11,0,3,0,15,Low,Independent,Fair,0,Home,0,1,0,1,0,0,0,0,Stable,Stable,88,8,High,1,0,1,1,0,10.3,Insurance
+PT0103,87,General Medicine,Medium,17,1,6,1,1,High,Independent,None,0,Home,0,1,0,1,0,1,0,0,Stable,Stable,81,4,Medium,0,0,1,1,1,17.8,Insurance
+PT0104,58,Orthopedics,Low,18,2,3,0,7,Medium,Assisted,Good,0,Home,0,0,1,0,0,0,1,0,Stable,Unstable,73,17,High,0,0,1,1,0,11.7,Transport
+PT0105,38,General Medicine,Low,13,0,0,1,10,Medium,Bedbound,Good,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,80,24,Critical,0,0,1,0,0,0.0,None
+PT0106,45,Cardiology,Medium,26,3,2,1,10,Medium,Assisted,Good,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,73,14,High,0,1,1,0,1,0.0,None
+PT0107,76,General Medicine,High,29,0,4,1,2,Medium,Bedbound,None,0,SNF,0,1,0,0,1,0,1,0,Stable,Stable,94,25,Low,1,0,1,1,1,19.5,Rehab/SNF
+PT0108,70,General Medicine,Low,28,2,2,0,17,High,Assisted,None,1,Home,1,1,0,0,0,0,0,0,Pending,Stable,84,28,Medium,0,0,1,1,1,11.6,Pharmacy
+PT0109,91,Pulmonology,Low,3,4,7,3,13,Low,Independent,Good,1,Hospice,0,0,0,0,0,0,0,1,Stable,Stable,74,24,Medium,0,0,1,0,1,5.7,None
+PT0110,43,Pulmonology,Low,19,4,2,0,2,Medium,Bedbound,Good,1,Hospice,0,0,0,0,0,0,0,0,Stable,Stable,91,11,Low,1,0,1,0,1,0.0,None
+PT0111,59,General Medicine,Low,23,2,5,0,3,High,Independent,Fair,1,Home,0,1,1,0,0,0,0,0,Pending,Unstable,96,25,Medium,0,1,1,1,0,17.0,Pharmacy
+PT0112,70,Orthopedics,Low,1,1,0,1,13,High,Bedbound,Fair,0,Home,0,0,0,1,0,1,0,0,Stable,Stable,95,18,High,0,0,1,1,1,12.9,Insurance
+PT0113,21,Neurology,High,18,3,4,0,8,Low,Bedbound,None,0,Home,0,0,0,1,0,0,1,0,Stable,Stable,93,9,Critical,0,1,1,1,1,14.2,Insurance
+PT0114,40,Oncology,Low,21,0,0,0,6,Low,Assisted,None,0,Home,0,0,1,0,0,0,0,0,Stable,Stable,95,17,Medium,0,0,1,0,0,2.1,None
+PT0115,64,Pulmonology,Low,16,4,5,0,8,Medium,Bedbound,Poor,0,Rehab,0,0,0,0,1,0,1,0,Stable,Stable,86,0,High,0,0,1,1,1,11.2,Rehab/SNF
+PT0116,83,Orthopedics,High,15,1,6,0,17,Low,Independent,Good,0,Home,0,1,1,0,0,0,1,0,Stable,Stable,73,17,Low,0,1,0,1,0,7.5,Pharmacy
+PT0117,76,Oncology,High,25,0,0,3,19,Medium,Independent,Poor,1,Rehab,0,1,0,0,1,0,0,0,Unstable,Stable,74,7,High,0,1,1,1,1,15.8,Rehab/SNF
+PT0118,68,Neurology,Low,8,3,0,0,12,Low,Bedbound,Good,0,Home,1,0,1,0,0,0,0,0,Stable,Stable,99,14,High,1,0,1,0,1,5.1,None
+PT0119,36,Pulmonology,Medium,20,4,7,1,10,High,Assisted,Fair,0,Hospice,0,0,1,0,0,0,0,0,Stable,Stable,71,24,High,0,0,1,0,1,4.0,None
+PT0120,39,Neurology,Medium,7,2,4,2,6,Low,Independent,Fair,1,Home,0,0,0,0,1,0,0,0,Stable,Stable,73,26,Critical,0,0,1,1,1,13.3,Rehab/SNF
+PT0121,76,Pulmonology,High,21,2,7,1,4,Medium,Independent,Good,1,SNF,0,1,0,1,1,0,0,0,Stable,Stable,96,21,Medium,0,0,1,1,1,17.5,Rehab/SNF
+PT0122,45,General Medicine,Low,9,2,1,2,17,Medium,Independent,Fair,1,SNF,0,0,1,0,0,0,0,0,Stable,Stable,72,29,Medium,0,0,1,0,1,4.5,None
+PT0123,36,General Medicine,High,13,2,1,1,1,Low,Bedbound,Fair,1,Home,0,1,0,0,0,0,1,0,Stable,Stable,98,25,High,0,1,1,0,1,6.8,None
+PT0124,54,General Medicine,Low,22,2,1,0,13,Low,Bedbound,Good,0,Home,1,0,1,0,0,0,0,0,Stable,Stable,90,17,High,1,1,1,0,0,7.3,None
+PT0125,40,Cardiology,Low,26,3,7,0,13,Low,Bedbound,None,0,Home,0,0,1,1,0,0,0,0,Stable,Stable,79,22,Low,0,0,1,1,1,12.1,Insurance
+PT0126,90,Oncology,Low,23,4,7,1,15,Medium,Independent,Good,0,Home,0,1,0,0,0,0,0,1,Stable,Stable,97,18,Critical,0,0,1,0,1,5.0,None
+PT0127,36,Pulmonology,Low,28,2,4,0,15,Medium,Independent,Poor,0,SNF,0,0,0,0,1,0,0,0,Stable,Stable,93,25,Low,0,0,1,1,0,7.7,Rehab/SNF
+PT0128,24,Neurology,Medium,21,0,0,1,17,High,Bedbound,Good,0,Home,0,0,0,0,0,0,1,1,Unstable,Stable,88,21,Low,0,0,1,1,0,11.2,Clinical Stability
+PT0129,28,Oncology,Low,25,1,2,3,16,Low,Assisted,Fair,1,Home,0,1,0,1,0,0,1,0,Pending,Stable,72,18,High,0,0,0,1,1,14.4,Insurance
+PT0130,79,General Medicine,Low,20,2,1,2,11,High,Assisted,Poor,1,SNF,0,0,1,0,0,0,0,0,Stable,Stable,95,19,Low,0,0,1,0,1,6.2,None
+PT0131,23,Oncology,Low,16,2,4,3,4,High,Independent,Fair,1,Home,0,1,0,0,0,0,0,0,Pending,Stable,84,15,Low,0,0,1,0,1,5.3,None
+PT0132,40,Neurology,High,17,0,6,2,6,Medium,Independent,Good,1,Home,0,0,0,0,0,0,1,0,Stable,Stable,89,25,Low,1,0,1,0,1,1.1,None
+PT0133,38,Orthopedics,High,28,1,7,1,14,High,Bedbound,Good,0,Hospice,1,1,0,0,0,0,1,0,Stable,Stable,79,2,Low,0,0,1,1,1,11.5,Pharmacy
+PT0134,30,Cardiology,High,11,2,4,2,11,Low,Independent,Poor,1,Home,0,0,1,0,0,0,0,0,Unstable,Stable,94,3,Low,0,0,1,0,1,8.0,None
+PT0135,65,Orthopedics,High,11,1,6,3,5,Medium,Independent,Poor,0,Hospice,0,1,1,0,0,0,0,0,Stable,Unstable,90,11,Low,0,0,1,1,1,9.9,Pharmacy
+PT0136,71,Neurology,Medium,1,3,0,2,8,Medium,Assisted,Fair,0,Home,1,0,0,0,0,0,0,0,Pending,Stable,95,29,Low,0,0,1,1,1,9.3,Doctor
+PT0137,89,General Medicine,Low,22,3,7,0,8,Low,Independent,None,1,Rehab,1,0,0,1,0,0,0,1,Pending,Stable,79,16,High,0,0,1,1,1,21.0,Insurance
+PT0138,37,General Medicine,Low,23,3,0,0,10,High,Bedbound,Fair,0,Rehab,0,0,0,0,0,0,0,1,Stable,Stable,81,23,High,1,0,1,0,1,2.0,None
+PT0139,56,General Medicine,Low,29,4,7,3,5,Low,Bedbound,Fair,1,Home,1,0,0,1,0,0,0,0,Stable,Stable,93,2,Critical,0,0,0,1,1,11.3,Insurance
+PT0140,74,Neurology,Low,2,0,5,0,16,Medium,Independent,Poor,1,Home,0,1,1,1,0,0,0,0,Stable,Stable,88,27,High,0,0,1,1,0,12.1,Insurance
+PT0141,79,Oncology,High,17,4,5,2,13,Medium,Assisted,Fair,0,Home,1,1,1,0,0,1,0,1,Stable,Stable,85,21,Critical,1,1,1,1,1,22.9,Home Care
+PT0142,74,Pulmonology,Low,3,1,2,3,12,Medium,Bedbound,Good,0,Home,1,0,0,0,0,0,1,0,Stable,Stable,89,12,Low,0,0,1,1,1,8.9,Doctor
+PT0143,40,Pulmonology,Medium,27,1,6,2,13,Medium,Independent,None,0,SNF,0,1,0,0,0,0,0,0,Stable,Stable,86,7,High,0,1,1,0,1,1.2,None
+PT0144,70,General Medicine,Low,25,3,0,1,15,Low,Bedbound,Poor,1,Home,0,0,1,1,0,1,0,0,Stable,Stable,76,10,High,1,0,1,1,1,18.0,Insurance
+PT0145,23,Pulmonology,Low,5,4,7,2,8,Medium,Bedbound,Poor,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,89,3,Medium,0,0,1,0,1,0.0,None
+PT0146,69,Neurology,Medium,9,3,6,3,14,Medium,Bedbound,Fair,1,Home,1,0,1,0,1,1,0,0,Stable,Stable,93,11,High,0,1,1,1,1,19.2,Rehab/SNF
+PT0147,90,Neurology,Medium,8,1,2,2,5,Low,Bedbound,None,0,Home,0,0,0,0,0,1,1,0,Stable,Stable,94,1,Medium,1,0,1,1,1,10.5,Home Care
+PT0148,79,Oncology,Medium,6,4,6,1,14,Medium,Assisted,Good,0,Home,0,0,0,0,0,0,0,1,Stable,Stable,77,17,Medium,0,0,1,0,1,2.8,None
+PT0149,70,Oncology,Low,13,4,4,0,16,Medium,Bedbound,Fair,0,Home,0,0,0,0,1,1,1,0,Pending,Stable,84,1,High,0,0,1,1,1,24.2,Rehab/SNF
+PT0150,39,Oncology,Medium,1,0,6,1,10,High,Independent,Fair,1,Rehab,0,0,0,0,1,0,1,0,Stable,Stable,84,21,Low,0,0,1,1,0,13.9,Rehab/SNF
+PT0151,51,Neurology,High,26,3,5,1,18,High,Independent,Good,1,Rehab,0,0,0,0,1,0,0,0,Pending,Stable,93,28,Low,0,0,1,1,1,14.4,Rehab/SNF
+PT0152,49,General Medicine,Low,26,4,7,2,15,Low,Bedbound,None,1,LTC,0,0,0,0,0,0,1,0,Stable,Stable,76,23,Critical,1,0,1,0,1,7.4,None
+PT0153,35,Neurology,Medium,29,3,1,2,13,Medium,Assisted,Fair,1,Rehab,0,0,1,0,1,0,0,0,Stable,Stable,72,9,High,1,0,1,1,1,10.9,Rehab/SNF
+PT0154,58,Orthopedics,Low,22,2,5,0,16,Medium,Independent,Poor,1,Home,0,0,0,0,1,0,0,0,Stable,Stable,99,24,Critical,0,0,1,1,0,10.3,Rehab/SNF
+PT0155,75,Pulmonology,Low,9,0,5,2,16,Low,Bedbound,Poor,0,Rehab,1,0,0,0,0,1,0,0,Stable,Stable,96,25,Critical,0,0,1,1,1,12.2,Home Care
+PT0156,65,Neurology,Medium,13,3,6,1,2,Low,Bedbound,Poor,0,Home,1,0,0,0,0,1,1,0,Stable,Stable,74,25,Critical,0,0,1,1,1,13.0,Home Care
+PT0157,31,Neurology,Medium,20,3,4,0,3,Medium,Bedbound,Fair,1,Home,0,1,1,0,0,0,0,0,Stable,Stable,73,29,Low,0,1,1,0,1,4.1,None
+PT0158,39,General Medicine,High,4,0,6,2,19,Medium,Bedbound,Poor,0,Home,0,0,0,0,0,0,0,1,Stable,Stable,76,3,High,0,0,1,0,1,7.5,None
+PT0159,70,Neurology,Low,10,1,1,3,17,Medium,Assisted,Poor,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,90,9,High,0,1,1,0,1,0.0,None
+PT0160,43,Orthopedics,High,11,2,4,2,12,Low,Bedbound,Good,1,SNF,0,0,0,0,0,0,0,0,Stable,Stable,74,21,Critical,0,0,1,0,1,0.0,None
+PT0161,29,Cardiology,Low,9,1,7,0,2,High,Bedbound,None,1,Home,0,0,0,0,1,0,1,0,Stable,Stable,79,13,Medium,1,0,1,1,1,11.0,Rehab/SNF
+PT0162,75,General Medicine,Low,6,3,4,3,14,Medium,Independent,None,1,Rehab,0,0,1,0,0,0,0,0,Stable,Stable,75,11,Critical,1,1,1,0,1,3.4,None
+PT0163,34,Cardiology,Low,12,1,4,0,8,Low,Assisted,Poor,0,Home,0,0,0,0,0,1,1,0,Stable,Stable,94,21,Medium,0,0,1,1,0,10.0,Home Care
+PT0164,18,General Medicine,Low,11,2,4,1,16,High,Assisted,Poor,0,Home,0,0,0,1,0,0,0,0,Stable,Stable,89,12,Critical,1,1,1,0,1,9.0,None
+PT0165,30,Oncology,Low,22,3,3,2,13,High,Bedbound,None,1,Home,0,0,0,0,0,0,1,1,Stable,Stable,80,25,Medium,1,0,1,0,1,10.4,None
+PT0166,81,Pulmonology,Low,6,0,1,3,1,High,Bedbound,None,1,Rehab,0,1,1,0,0,1,0,0,Pending,Unstable,98,21,Medium,0,0,1,1,1,21.9,Home Care
+PT0167,28,General Medicine,High,23,4,6,1,11,High,Assisted,Good,1,Home,0,0,0,0,0,0,1,1,Stable,Unstable,75,9,High,0,0,1,1,1,16.7,Clinical Stability
+PT0168,55,Cardiology,High,22,0,1,0,9,Low,Independent,Poor,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,78,28,High,0,0,1,0,0,0.0,None
+PT0169,49,Pulmonology,Low,28,3,4,3,3,Low,Bedbound,Poor,1,SNF,0,0,0,0,0,0,1,0,Stable,Stable,98,0,High,1,1,1,0,1,5.2,None
+PT0170,87,General Medicine,Low,22,2,4,1,5,Low,Assisted,Good,1,Rehab,1,0,1,0,0,0,0,0,Stable,Stable,72,6,High,0,0,1,0,1,6.6,None
+PT0171,28,General Medicine,Low,4,0,1,0,2,High,Assisted,Fair,0,Home,0,0,1,0,0,0,0,0,Unstable,Stable,74,9,Low,0,0,1,0,0,8.4,None
+PT0172,32,Oncology,Low,3,2,1,3,15,Medium,Bedbound,Fair,0,Hospice,1,0,0,0,0,0,0,0,Pending,Stable,83,12,Low,0,0,0,1,1,9.4,Doctor
+PT0173,61,Cardiology,Low,16,0,0,1,12,High,Assisted,Fair,1,SNF,0,0,0,0,1,0,0,0,Stable,Stable,93,26,Critical,0,0,0,1,0,6.3,Rehab/SNF
+PT0174,85,Pulmonology,High,16,2,1,3,6,Medium,Bedbound,Fair,0,Home,0,0,1,0,0,0,1,0,Stable,Stable,80,18,High,0,0,1,0,1,7.3,None
+PT0175,82,Orthopedics,Medium,22,2,1,3,1,High,Bedbound,None,0,Home,1,1,0,0,0,0,0,0,Stable,Stable,82,13,Critical,0,1,1,0,1,11.0,None
+PT0176,42,Cardiology,Low,23,2,7,2,11,Medium,Assisted,Good,0,Home,0,0,0,0,0,0,1,0,Stable,Stable,96,5,High,0,0,1,0,1,5.9,None
+PT0177,94,Cardiology,Low,5,4,3,0,9,Low,Assisted,Fair,0,Home,0,1,0,0,1,0,0,0,Stable,Stable,98,23,Low,0,0,1,1,1,14.9,Rehab/SNF
+PT0178,66,General Medicine,Low,2,0,7,1,19,High,Independent,None,1,LTC,0,0,0,0,0,0,0,0,Stable,Stable,85,10,High,1,0,1,0,1,0.0,None
+PT0179,90,General Medicine,Medium,9,4,0,1,4,Low,Bedbound,Poor,0,Rehab,0,0,0,0,1,0,0,1,Stable,Stable,78,29,Low,0,1,0,1,1,12.1,Rehab/SNF
+PT0180,53,Oncology,Medium,10,3,7,0,7,Low,Bedbound,Poor,1,Rehab,0,0,0,1,0,0,0,0,Pending,Stable,97,9,High,0,0,1,1,1,14.6,Insurance
+PT0181,76,General Medicine,Low,15,0,3,2,12,High,Bedbound,Fair,0,SNF,0,0,1,1,1,0,0,0,Stable,Unstable,76,26,Medium,1,0,1,1,1,27.0,Rehab/SNF
+PT0182,23,Oncology,Low,23,0,5,3,11,Medium,Bedbound,Fair,1,Home,0,0,0,0,0,0,1,1,Stable,Stable,76,8,Low,1,0,1,0,1,8.6,None
+PT0183,24,Orthopedics,High,16,3,6,0,11,Medium,Independent,Fair,0,SNF,0,0,0,1,1,0,1,0,Stable,Stable,86,27,Critical,0,0,1,1,1,20.3,Rehab/SNF
+PT0184,87,Orthopedics,Medium,4,2,5,2,13,Low,Independent,None,1,Home,0,1,0,0,0,0,0,1,Stable,Stable,75,13,Critical,0,0,1,0,1,6.2,None
+PT0185,78,Oncology,High,5,1,1,3,17,Low,Assisted,Poor,1,LTC,0,1,0,1,0,0,0,0,Stable,Stable,71,8,High,1,1,1,1,1,12.7,Insurance
+PT0186,72,Oncology,Low,14,0,1,2,1,Low,Independent,None,1,Home,0,0,0,0,0,0,1,0,Stable,Stable,93,16,Low,0,0,1,0,1,6.4,None
+PT0187,35,Pulmonology,Low,26,1,1,3,3,High,Assisted,Fair,0,Rehab,0,0,1,1,1,0,0,0,Stable,Stable,89,23,High,0,0,1,1,1,20.6,Rehab/SNF
+PT0188,41,Orthopedics,Low,25,3,2,1,11,High,Independent,Poor,0,Home,1,0,1,1,0,0,1,1,Stable,Stable,94,11,Medium,1,0,1,1,1,20.9,Insurance
+PT0189,68,Cardiology,Low,21,3,2,0,8,Low,Independent,None,1,Home,0,1,1,0,0,1,1,0,Stable,Stable,71,9,Medium,0,0,1,1,1,16.7,Home Care
+PT0190,49,Cardiology,Medium,22,4,1,1,19,Low,Independent,Good,0,Hospice,0,0,1,0,0,1,0,0,Stable,Stable,85,22,Medium,0,0,1,1,1,6.6,Home Care
+PT0191,51,Cardiology,High,23,2,1,3,18,High,Independent,Good,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,81,23,Critical,0,0,1,0,1,0.0,None
+PT0192,81,Pulmonology,Low,26,1,6,3,18,High,Bedbound,Good,0,Home,0,0,1,0,0,0,0,0,Stable,Stable,93,4,Low,0,0,1,0,1,3.9,None
+PT0193,67,Pulmonology,Low,11,4,4,1,10,Medium,Assisted,Fair,1,Home,0,0,1,0,0,0,0,0,Stable,Stable,96,14,Critical,0,0,1,0,1,2.6,None
+PT0194,43,Neurology,Low,17,1,7,0,3,Low,Assisted,Poor,0,Home,0,0,1,0,0,1,1,0,Stable,Stable,93,28,Medium,0,0,1,1,0,12.4,Home Care
+PT0195,46,General Medicine,Medium,20,0,5,2,14,Low,Assisted,Good,0,Home,0,0,0,0,0,0,1,0,Stable,Stable,81,25,Low,0,0,0,0,1,8.4,None
+PT0196,90,Oncology,Medium,16,3,1,3,14,Medium,Assisted,None,1,Home,0,1,0,0,0,0,1,0,Stable,Stable,85,18,Medium,0,1,0,0,1,10.2,None
+PT0197,32,Orthopedics,Low,23,4,4,0,15,Low,Assisted,Good,1,Home,0,0,1,0,0,1,0,1,Stable,Stable,78,9,Medium,0,0,1,1,1,9.8,Home Care
+PT0198,18,General Medicine,Low,10,4,1,1,4,Medium,Bedbound,Fair,1,Rehab,0,0,0,0,1,0,0,0,Stable,Stable,77,3,Low,0,0,1,1,1,10.5,Rehab/SNF
+PT0199,67,Pulmonology,High,24,0,0,1,6,High,Independent,None,1,Home,1,0,0,0,0,0,1,0,Stable,Stable,93,0,High,1,0,1,1,1,10.2,Doctor
+PT0200,93,Neurology,Low,14,0,3,1,10,Medium,Bedbound,Poor,1,Home,0,0,1,0,1,0,0,0,Stable,Stable,98,21,Medium,0,0,1,1,0,10.4,Rehab/SNF
+PT0201,69,Cardiology,High,26,1,3,0,15,Low,Independent,None,1,SNF,0,0,1,0,1,0,0,1,Stable,Stable,82,18,Low,0,0,1,1,0,14.5,Rehab/SNF
+PT0202,93,Neurology,Low,28,1,4,0,12,Low,Independent,Poor,1,Rehab,0,0,1,1,1,0,0,0,Stable,Stable,93,6,Critical,0,0,1,1,0,18.7,Rehab/SNF
+PT0203,21,Orthopedics,Medium,29,4,6,0,16,Low,Independent,Poor,0,Home,0,0,1,0,0,0,0,0,Unstable,Stable,97,8,Critical,0,0,1,0,1,5.4,None
+PT0204,86,Neurology,High,13,1,4,3,14,Low,Assisted,None,0,Home,0,1,1,0,0,0,0,0,Stable,Stable,73,17,Critical,1,1,1,0,1,5.4,None
+PT0205,78,Oncology,Low,3,0,6,1,9,Medium,Independent,Good,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,79,21,High,0,0,1,0,0,0.0,None
+PT0206,21,Cardiology,Low,4,1,0,3,8,Medium,Bedbound,Poor,0,Rehab,0,0,1,0,1,0,0,1,Stable,Stable,72,21,Low,0,1,1,1,1,15.2,Rehab/SNF
+PT0207,73,General Medicine,High,26,4,3,2,16,Medium,Bedbound,Good,1,Rehab,0,0,0,0,1,0,0,0,Stable,Stable,92,9,Critical,0,0,1,1,1,7.5,Rehab/SNF
+PT0208,27,Neurology,Medium,28,2,4,3,1,Medium,Bedbound,Fair,0,Rehab,0,0,0,0,1,0,0,0,Stable,Stable,99,28,High,0,0,1,1,1,11.2,Rehab/SNF
+PT0209,73,Pulmonology,Medium,20,0,3,0,18,Low,Independent,Good,0,Home,1,0,0,0,0,0,0,0,Stable,Stable,90,23,High,1,0,1,0,0,1.4,None
+PT0210,90,Cardiology,Medium,19,2,7,2,10,High,Independent,Good,0,Home,0,0,1,1,0,0,0,0,Stable,Unstable,74,29,Critical,1,0,1,1,1,15.9,Insurance
+PT0211,59,Cardiology,Medium,18,0,5,3,11,Low,Independent,Good,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,96,26,Critical,0,0,1,0,1,0.0,None
+PT0212,63,Orthopedics,Medium,27,0,4,1,12,Medium,Bedbound,Fair,1,Home,0,0,0,1,0,1,1,0,Stable,Stable,89,24,Critical,0,0,1,1,0,19.9,Insurance
+PT0213,55,General Medicine,High,25,0,6,0,12,High,Assisted,Fair,1,Rehab,0,1,0,0,1,0,1,0,Stable,Stable,87,5,Low,1,0,1,1,0,14.7,Rehab/SNF
+PT0214,87,Neurology,Low,3,2,5,1,10,Low,Independent,None,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,93,5,Critical,1,0,1,0,1,0.0,None
+PT0215,52,General Medicine,Low,13,3,5,1,13,Low,Independent,None,1,Home,0,1,1,0,0,1,0,0,Unstable,Stable,81,23,Low,0,1,1,1,1,14.5,Home Care
+PT0216,70,Oncology,Medium,24,1,0,0,8,Medium,Independent,Poor,0,Home,0,1,0,0,0,0,0,0,Stable,Unstable,89,24,Medium,0,0,1,1,0,7.8,Pharmacy
+PT0217,87,Pulmonology,High,22,3,0,2,17,High,Independent,Good,1,Home,1,0,1,0,0,0,0,0,Stable,Unstable,92,0,Critical,0,0,1,1,1,14.1,Transport
+PT0218,30,Cardiology,Low,5,3,4,2,13,Medium,Independent,Poor,1,Home,0,0,0,0,0,1,0,1,Stable,Stable,78,28,Medium,0,0,1,1,1,7.2,Home Care
+PT0219,28,Cardiology,High,11,2,0,0,7,High,Assisted,Fair,0,Home,0,1,0,0,0,0,1,0,Stable,Stable,99,11,Low,0,0,1,0,1,5.6,None
+PT0220,77,Pulmonology,High,10,1,3,3,17,Low,Independent,Poor,1,SNF,1,1,0,0,0,0,0,0,Stable,Stable,82,23,Critical,0,0,1,0,1,6.4,None
+PT0221,63,Cardiology,High,8,0,4,2,6,Low,Bedbound,Fair,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,82,21,Low,0,0,1,0,1,0.0,None
+PT0222,45,Pulmonology,Low,21,0,0,0,13,Low,Bedbound,Good,0,Rehab,0,0,1,0,1,0,1,0,Stable,Stable,94,21,Low,1,0,1,1,0,17.9,Rehab/SNF
+PT0223,19,General Medicine,Medium,20,3,0,0,17,Medium,Independent,None,0,Home,0,1,0,0,0,1,0,0,Stable,Stable,85,7,Critical,1,0,1,1,1,11.0,Home Care
+PT0224,32,Cardiology,Low,1,1,2,3,11,High,Independent,Fair,0,Home,0,0,0,0,1,0,1,0,Stable,Unstable,76,3,Critical,0,1,1,1,1,17.6,Rehab/SNF
+PT0225,47,Pulmonology,Low,23,0,7,1,19,Medium,Bedbound,Fair,1,SNF,0,0,0,1,0,0,0,0,Stable,Stable,76,28,Medium,0,0,1,0,0,6.3,None
+PT0226,90,Pulmonology,Low,2,3,7,1,14,High,Bedbound,Fair,0,Home,1,0,0,1,0,0,0,0,Stable,Stable,95,9,Critical,1,0,1,1,1,10.2,Insurance
+PT0227,35,Cardiology,Low,29,4,1,1,15,Low,Assisted,Good,0,Home,0,0,1,0,0,0,0,0,Stable,Unstable,89,25,Critical,1,0,1,1,1,10.7,Transport
+PT0228,69,Oncology,Low,2,3,4,1,5,High,Independent,Fair,1,SNF,0,0,1,0,0,0,0,0,Stable,Unstable,72,22,High,0,0,0,1,1,9.4,Transport
+PT0229,19,Neurology,Low,5,1,1,3,10,Medium,Bedbound,Poor,0,Rehab,0,0,0,0,1,1,0,0,Unstable,Stable,73,1,High,0,0,1,1,1,17.5,Rehab/SNF
+PT0230,69,Pulmonology,Medium,21,2,5,1,11,Medium,Assisted,None,1,Home,1,1,1,0,0,0,0,0,Stable,Stable,87,9,Low,0,0,1,1,1,8.7,Pharmacy
+PT0231,40,Neurology,Low,8,4,1,3,5,Medium,Independent,Fair,0,Rehab,0,0,0,0,0,1,0,0,Stable,Unstable,83,17,Medium,0,0,1,1,1,13.5,Home Care
+PT0232,91,Cardiology,Low,29,1,5,1,6,Medium,Bedbound,Fair,1,Rehab,0,0,1,0,0,0,0,1,Pending,Unstable,72,5,High,0,1,1,1,0,17.8,Transport
+PT0233,84,Neurology,High,20,3,4,2,11,Low,Independent,Good,0,Home,0,0,0,0,0,0,0,1,Unstable,Stable,85,21,High,0,0,0,0,1,4.2,None
+PT0234,91,Cardiology,High,19,1,7,2,2,Medium,Bedbound,None,1,Hospice,0,1,0,0,0,1,0,0,Stable,Stable,96,5,High,1,0,1,1,1,7.8,Home Care
+PT0235,47,Oncology,Low,11,4,2,2,17,Low,Bedbound,Good,0,SNF,0,1,0,0,1,1,0,1,Stable,Stable,98,19,High,1,0,1,1,1,22.2,Rehab/SNF
+PT0236,49,Neurology,Low,25,2,0,0,19,High,Bedbound,None,1,Home,1,0,0,0,0,1,1,1,Stable,Stable,91,0,Critical,0,0,1,1,1,16.2,Home Care
+PT0237,56,Cardiology,Low,24,3,0,3,18,Low,Assisted,Good,1,Home,0,0,0,0,0,1,0,1,Stable,Stable,85,2,Critical,0,0,1,1,1,6.9,Home Care
+PT0238,66,Cardiology,High,17,0,2,0,14,Medium,Assisted,Poor,0,Home,0,0,1,1,0,0,0,0,Stable,Stable,74,1,Critical,0,1,1,1,0,10.9,Insurance
+PT0239,78,Oncology,Low,17,2,1,3,8,Low,Bedbound,Good,0,Hospice,0,0,0,0,0,0,0,0,Stable,Stable,70,22,Low,1,1,1,0,1,0.0,None
+PT0240,43,Cardiology,Low,22,1,6,3,10,Low,Assisted,None,1,Home,0,1,1,0,1,0,0,0,Stable,Unstable,89,21,Medium,0,0,1,1,1,23.2,Rehab/SNF
+PT0241,66,General Medicine,Medium,19,3,6,2,11,Low,Bedbound,Good,1,Home,0,0,0,0,0,1,0,0,Pending,Stable,80,4,Medium,0,0,1,1,1,9.7,Home Care
+PT0242,26,Orthopedics,Low,12,3,2,0,7,Low,Bedbound,Poor,0,SNF,0,0,1,0,0,0,0,0,Stable,Unstable,74,20,Medium,0,0,1,1,1,6.9,Transport
+PT0243,23,Pulmonology,Low,12,3,3,0,2,Low,Bedbound,Good,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,77,14,High,0,0,1,0,1,0.0,None
+PT0244,61,General Medicine,Low,28,3,6,2,2,Medium,Assisted,Poor,1,LTC,0,0,0,0,0,0,0,0,Stable,Stable,99,7,High,0,0,1,0,1,0.0,None
+PT0245,56,Pulmonology,Low,14,4,1,1,4,Low,Independent,Poor,1,LTC,0,0,0,1,0,0,1,1,Pending,Stable,79,18,Medium,0,0,1,1,1,16.0,Insurance
+PT0246,62,Neurology,Low,14,3,0,2,7,Low,Bedbound,None,1,Home,0,0,0,1,0,0,1,0,Pending,Stable,71,11,Medium,1,0,1,1,1,16.8,Insurance
+PT0247,19,Oncology,Medium,2,3,6,3,5,Medium,Independent,Poor,1,Home,1,0,1,0,0,0,1,0,Pending,Stable,93,22,High,1,0,1,1,1,17.4,Transport
+PT0248,42,Orthopedics,Low,23,1,5,1,11,Medium,Bedbound,Poor,0,Rehab,0,0,0,0,1,0,0,0,Stable,Stable,97,16,Low,0,0,0,1,1,11.3,Rehab/SNF
+PT0249,30,Cardiology,Low,15,1,0,0,9,Medium,Assisted,Good,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,82,19,High,0,1,1,0,0,0.0,None
+PT0250,24,Pulmonology,Low,24,0,1,0,7,Medium,Bedbound,Poor,0,LTC,1,0,0,1,0,0,0,0,Stable,Stable,97,27,High,0,0,0,1,0,12.4,Insurance
+PT0251,40,Pulmonology,Low,13,4,4,2,5,High,Bedbound,Fair,0,Home,0,0,1,0,0,1,0,1,Stable,Stable,89,26,Low,0,1,1,1,1,13.5,Home Care
+PT0252,44,General Medicine,High,17,2,5,0,18,High,Independent,None,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,94,6,Medium,1,0,1,0,1,0.0,None
+PT0253,71,Cardiology,Low,18,0,7,1,11,Low,Independent,None,0,Rehab,0,0,0,0,0,0,0,0,Stable,Stable,80,21,Critical,0,0,1,0,0,0.0,None
+PT0254,88,Neurology,Low,23,0,4,2,6,Medium,Independent,None,1,SNF,1,0,1,0,0,1,1,0,Unstable,Stable,96,8,Medium,0,0,1,1,1,25.8,Home Care
+PT0255,57,Orthopedics,Medium,21,2,7,2,15,Low,Assisted,None,1,Rehab,0,0,0,0,0,0,1,0,Stable,Stable,98,29,High,0,0,0,0,1,5.0,None
+PT0256,29,Orthopedics,High,4,3,0,0,19,Medium,Bedbound,None,1,Rehab,0,0,1,0,0,0,0,0,Stable,Unstable,76,12,Low,1,0,1,1,1,11.1,Transport
+PT0257,83,Cardiology,High,24,4,1,2,7,High,Bedbound,Good,0,Home,0,0,1,1,0,0,0,0,Stable,Stable,97,10,Low,0,0,1,1,1,9.7,Insurance
+PT0258,84,Neurology,Low,27,0,6,1,4,High,Independent,Good,1,SNF,0,0,0,1,1,0,0,0,Stable,Stable,86,20,Medium,1,1,1,1,0,18.6,Rehab/SNF
+PT0259,36,Cardiology,High,22,3,1,1,14,Low,Independent,Good,0,Home,0,0,0,0,0,0,0,0,Stable,Unstable,86,7,Low,0,1,1,0,1,2.1,None
+PT0260,74,Cardiology,Low,10,2,3,1,4,High,Bedbound,Poor,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,75,21,High,0,1,1,0,1,0.0,None
+PT0261,59,Neurology,Medium,11,3,3,2,1,High,Independent,Fair,1,Home,1,0,0,0,0,0,0,1,Stable,Stable,89,27,Medium,0,1,1,0,1,9.4,None
+PT0262,32,Neurology,Low,9,1,7,3,2,Medium,Bedbound,Fair,1,Home,0,0,0,0,0,1,1,0,Stable,Stable,99,29,Low,0,1,0,1,1,11.0,Home Care
+PT0263,41,Oncology,Low,26,1,7,1,14,High,Bedbound,Poor,0,Home,0,0,0,0,0,0,1,0,Stable,Stable,79,25,High,0,0,1,0,1,6.9,None
+PT0264,47,General Medicine,Low,22,1,5,0,1,High,Independent,Poor,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,85,0,High,0,1,1,0,0,0.0,None
+PT0265,79,Oncology,Medium,2,3,3,1,11,High,Independent,None,0,LTC,0,0,1,0,0,0,1,0,Pending,Stable,97,14,High,1,0,1,1,1,12.4,Transport
+PT0266,81,Cardiology,Medium,24,3,0,2,9,Low,Assisted,Poor,0,Home,0,0,0,0,0,1,1,0,Unstable,Stable,85,20,Critical,1,0,1,1,1,14.1,Home Care
+PT0267,46,Neurology,Medium,7,1,0,2,1,Medium,Independent,None,1,Rehab,1,1,0,0,0,0,0,0,Stable,Unstable,82,10,Low,0,0,1,1,1,14.3,Pharmacy
+PT0268,59,Orthopedics,Medium,17,0,1,3,13,Low,Independent,Fair,1,Home,0,1,0,0,0,1,0,1,Unstable,Unstable,79,29,Medium,0,1,1,1,1,23.8,Home Care
+PT0269,89,Neurology,Low,21,3,7,1,14,Low,Bedbound,Poor,1,SNF,0,1,1,0,0,1,0,0,Stable,Stable,83,3,Medium,0,0,1,1,1,9.9,Home Care
+PT0270,68,Cardiology,Low,29,2,7,1,8,Medium,Bedbound,Fair,1,LTC,1,0,0,0,0,0,0,1,Stable,Stable,90,21,Medium,1,0,1,0,1,8.7,None
+PT0271,45,Oncology,Medium,9,1,6,3,3,High,Bedbound,Poor,1,Home,0,0,0,0,1,1,0,0,Unstable,Stable,79,25,Critical,0,0,1,1,1,18.2,Rehab/SNF
+PT0272,89,General Medicine,Medium,3,2,3,2,17,Low,Assisted,Poor,0,Home,0,1,0,0,0,0,0,1,Stable,Stable,81,15,Critical,0,1,1,0,1,10.0,None
+PT0273,21,General Medicine,Low,16,1,5,1,13,Medium,Assisted,Poor,1,LTC,0,0,1,0,0,1,1,0,Stable,Stable,86,23,Medium,0,0,1,1,1,14.8,Home Care
+PT0274,33,Neurology,Low,11,3,2,0,12,High,Assisted,None,0,SNF,0,1,0,0,1,0,0,1,Stable,Stable,76,14,Critical,0,0,1,1,1,14.1,Rehab/SNF
+PT0275,46,Pulmonology,High,22,0,2,1,1,High,Assisted,Good,1,Home,1,0,1,0,0,1,0,0,Stable,Stable,84,8,Medium,1,0,1,1,1,15.1,Home Care
+PT0276,74,Orthopedics,Low,5,2,0,3,15,Medium,Independent,Poor,1,SNF,0,0,0,0,0,0,1,0,Unstable,Stable,73,0,Medium,1,0,1,1,1,7.8,Clinical Stability
+PT0277,85,Cardiology,Low,19,0,1,3,9,Medium,Bedbound,None,1,Home,0,0,0,0,0,0,0,1,Stable,Stable,86,13,Low,0,0,1,0,1,3.0,None
+PT0278,36,Cardiology,Low,18,0,1,1,14,High,Assisted,Good,1,Home,0,0,0,0,0,0,0,1,Stable,Stable,92,3,Medium,0,0,1,0,0,6.8,None
+PT0279,81,General Medicine,Low,28,1,3,2,13,Medium,Bedbound,Fair,0,Home,1,0,1,0,0,0,0,1,Stable,Stable,75,7,Critical,0,1,1,1,1,12.5,Transport
+PT0280,37,Neurology,Medium,10,4,6,3,5,High,Assisted,Poor,0,Home,0,0,0,0,0,0,1,0,Stable,Stable,95,29,Low,0,0,1,0,1,4.3,None
+PT0281,89,Pulmonology,Medium,23,1,2,0,13,Medium,Bedbound,Good,0,Rehab,0,0,0,0,1,1,0,0,Stable,Stable,97,20,Medium,1,0,1,1,0,15.3,Rehab/SNF
+PT0282,32,Pulmonology,Low,5,3,1,1,18,Medium,Bedbound,Poor,0,SNF,0,0,1,0,1,0,1,0,Stable,Unstable,83,23,Medium,0,0,1,1,1,25.3,Rehab/SNF
+PT0283,85,Neurology,Low,3,1,0,0,17,Low,Bedbound,Poor,0,Rehab,0,1,1,0,1,0,0,0,Unstable,Stable,86,8,High,0,0,1,1,0,18.6,Rehab/SNF
+PT0284,48,General Medicine,Medium,24,1,0,2,16,Low,Assisted,Fair,0,SNF,0,1,1,1,0,0,0,1,Pending,Stable,73,16,Medium,0,0,0,1,1,19.4,Insurance
+PT0285,76,General Medicine,Low,3,1,0,2,2,High,Bedbound,None,1,SNF,1,0,0,0,0,0,1,1,Stable,Stable,86,3,Critical,0,0,1,1,1,13.9,Doctor
+PT0286,28,Orthopedics,Low,22,4,5,3,5,Low,Assisted,None,1,Home,1,0,0,0,0,0,0,0,Stable,Unstable,70,5,Low,0,0,1,1,1,10.5,Doctor
+PT0287,66,Cardiology,High,1,3,4,3,6,Low,Independent,Good,1,Home,1,0,0,1,0,0,0,0,Stable,Stable,87,2,High,0,0,0,1,1,9.1,Insurance
+PT0288,63,Neurology,Medium,16,2,6,3,6,Medium,Assisted,None,1,Home,0,1,0,0,0,0,1,0,Stable,Stable,81,13,High,0,1,1,0,1,3.1,None
+PT0289,91,General Medicine,Low,23,0,6,2,16,Medium,Assisted,Fair,0,Home,0,0,0,0,0,1,0,0,Stable,Stable,95,24,Critical,0,0,1,0,1,6.5,None
+PT0290,75,General Medicine,Low,4,2,4,1,17,Medium,Independent,Good,0,Home,0,1,0,0,0,0,0,0,Stable,Stable,88,6,Low,0,0,1,0,1,3.5,None
+PT0291,92,Cardiology,High,11,0,5,3,7,Medium,Independent,None,1,Home,0,1,1,0,0,0,0,0,Stable,Stable,99,4,High,0,0,1,0,1,8.3,None
+PT0292,72,Cardiology,Medium,26,3,6,0,12,Medium,Bedbound,Good,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,86,11,High,0,1,1,0,1,0.0,None
+PT0293,75,Orthopedics,Low,3,2,4,2,1,Low,Independent,Fair,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,72,5,Critical,0,0,1,0,1,0.0,None
+PT0294,84,Cardiology,High,22,2,5,0,14,Medium,Bedbound,Fair,1,Home,0,1,0,0,0,1,0,1,Stable,Stable,82,19,Medium,0,0,0,1,1,11.2,Home Care
+PT0295,30,Cardiology,High,24,4,7,2,7,Low,Assisted,Good,0,Home,0,0,0,0,0,1,0,0,Pending,Stable,75,1,Medium,1,0,1,1,1,10.9,Home Care
+PT0296,50,Cardiology,Low,16,4,4,2,18,High,Assisted,None,0,Rehab,0,0,0,0,0,0,0,0,Stable,Stable,90,18,Low,0,0,1,0,1,0.0,None
+PT0297,89,Neurology,High,25,0,0,1,19,Medium,Assisted,Good,1,Hospice,0,0,1,0,0,0,0,1,Stable,Stable,94,0,High,0,0,1,0,0,7.4,None
+PT0298,54,Cardiology,Low,29,3,2,3,8,Low,Assisted,None,1,Home,1,0,1,0,0,0,1,0,Stable,Stable,88,20,Medium,0,0,1,1,1,10.3,Transport
+PT0299,35,Oncology,Medium,1,3,5,0,5,Medium,Assisted,Good,1,Rehab,1,0,0,0,0,0,0,1,Unstable,Stable,85,14,Medium,1,0,1,1,1,15.5,Doctor
+PT0300,49,Pulmonology,Low,16,3,4,3,12,Medium,Bedbound,Good,0,Rehab,0,0,0,0,1,0,1,0,Stable,Stable,71,13,High,1,1,1,1,1,15.4,Rehab/SNF
+PT0301,94,Cardiology,Low,5,4,5,3,17,Medium,Independent,Good,1,Home,0,0,0,1,0,0,0,0,Stable,Stable,76,22,Critical,1,0,1,0,1,7.8,None
+PT0302,23,Cardiology,Low,21,1,1,3,5,Low,Independent,None,0,Home,1,1,0,1,0,0,0,1,Stable,Stable,84,7,High,0,0,1,1,1,15.7,Insurance
+PT0303,82,Oncology,Low,25,2,2,3,11,High,Independent,Poor,0,Rehab,1,0,1,0,1,0,1,0,Stable,Stable,78,20,Low,0,0,1,1,1,18.8,Rehab/SNF
+PT0304,54,Orthopedics,Medium,2,4,4,0,19,Medium,Bedbound,Good,1,Home,0,1,0,0,0,0,1,0,Pending,Stable,71,15,High,0,1,1,1,1,10.8,Pharmacy
+PT0305,61,Oncology,Low,24,2,7,1,9,Medium,Independent,Fair,1,SNF,0,0,0,0,1,0,1,1,Stable,Stable,77,12,High,1,1,1,1,1,17.0,Rehab/SNF
+PT0306,67,Pulmonology,Low,25,4,6,2,1,Low,Independent,Fair,0,Home,0,1,1,0,0,0,1,0,Pending,Stable,88,13,Medium,0,0,1,1,1,16.3,Pharmacy
+PT0307,45,Pulmonology,High,25,3,6,1,1,Low,Independent,Good,1,Home,0,0,1,1,0,0,0,0,Stable,Stable,93,4,High,0,1,1,1,1,10.8,Insurance
+PT0308,80,Neurology,Low,7,1,5,0,3,High,Bedbound,Poor,0,Home,0,0,0,1,0,0,0,0,Pending,Stable,99,13,Low,0,0,0,1,1,14.6,Insurance
+PT0309,68,Pulmonology,Low,7,4,3,0,10,Medium,Bedbound,None,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,97,11,Medium,0,1,1,0,1,0.0,None
+PT0310,25,Orthopedics,Medium,8,2,0,1,15,Medium,Assisted,None,1,Home,0,0,1,0,0,0,0,0,Stable,Unstable,74,15,Medium,0,0,1,1,1,8.1,Transport
+PT0311,45,Oncology,High,12,4,3,2,10,Low,Bedbound,Poor,0,Rehab,0,1,0,0,1,1,0,0,Stable,Stable,78,28,Medium,0,0,1,1,1,12.2,Rehab/SNF
+PT0312,88,General Medicine,High,22,3,6,2,17,Low,Independent,Fair,0,SNF,0,0,1,0,0,0,0,0,Pending,Stable,93,22,Critical,0,1,1,0,1,5.5,None
+PT0313,47,General Medicine,Medium,23,2,4,1,4,Low,Assisted,Poor,0,Home,1,0,0,1,0,0,1,0,Stable,Stable,98,11,Low,0,0,1,1,1,15.8,Insurance
+PT0314,43,Oncology,High,19,4,5,2,11,High,Independent,Good,0,Rehab,0,1,0,0,0,0,1,0,Stable,Stable,98,8,Medium,0,0,1,0,1,6.8,None
+PT0315,68,General Medicine,Low,18,3,0,1,18,Medium,Independent,Good,1,Home,0,0,1,0,0,0,0,1,Stable,Stable,92,7,Medium,1,0,1,0,1,4.8,None
+PT0316,91,Orthopedics,Low,10,4,0,3,19,Medium,Independent,None,0,Rehab,1,0,0,0,1,1,1,0,Unstable,Stable,76,16,Low,0,0,1,1,1,26.6,Rehab/SNF
+PT0317,64,Orthopedics,Low,12,2,5,0,19,Low,Bedbound,None,0,Rehab,0,0,0,0,1,0,1,0,Pending,Stable,96,6,Low,1,0,1,1,1,17.8,Rehab/SNF
+PT0318,92,Neurology,Medium,2,4,6,2,9,Low,Assisted,None,0,Home,1,1,0,0,0,1,0,0,Stable,Stable,85,3,Medium,1,0,1,1,1,13.6,Home Care
+PT0319,20,General Medicine,Low,28,0,3,2,12,Low,Bedbound,None,1,SNF,0,0,1,0,0,1,0,0,Stable,Stable,97,18,Critical,0,0,1,1,1,9.9,Home Care
+PT0320,28,Cardiology,Low,13,2,1,0,4,Low,Independent,None,1,Home,0,1,0,0,0,0,0,1,Stable,Stable,79,5,Medium,1,0,1,0,0,5.5,None
+PT0321,76,Orthopedics,Medium,4,2,7,3,19,Low,Assisted,Fair,1,Home,0,0,0,0,0,1,0,0,Unstable,Stable,98,26,Low,1,1,1,1,1,11.6,Home Care
+PT0322,72,General Medicine,High,1,0,2,2,15,Low,Independent,Poor,0,Home,0,1,0,0,0,0,0,0,Stable,Stable,95,16,Medium,0,0,1,0,1,1.6,None
+PT0323,23,Orthopedics,Low,18,4,4,1,5,Medium,Independent,None,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,81,20,Medium,1,1,1,0,1,0.0,None
+PT0324,52,Cardiology,Low,25,1,2,2,15,Medium,Assisted,None,0,Home,0,0,0,0,0,1,0,0,Stable,Stable,93,23,Medium,0,0,1,0,1,6.9,None
+PT0325,80,Orthopedics,Medium,28,3,3,1,18,Low,Independent,None,1,Home,0,0,0,0,0,0,1,0,Stable,Stable,81,19,Low,0,0,1,0,1,1.8,None
+PT0326,92,Oncology,Medium,9,3,7,1,19,Low,Independent,Good,0,Home,0,1,1,0,0,1,0,0,Stable,Stable,79,19,Medium,1,0,1,1,1,12.7,Home Care
+PT0327,57,Pulmonology,Low,9,4,6,1,9,Medium,Assisted,Poor,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,92,2,High,0,0,0,0,1,0.0,None
+PT0328,69,Cardiology,Medium,8,0,5,0,19,Medium,Independent,None,1,Home,0,0,1,0,0,0,1,0,Stable,Stable,80,15,Critical,0,0,0,0,0,8.7,None
+PT0329,51,General Medicine,Low,16,2,3,0,10,Medium,Assisted,Poor,0,Rehab,0,0,1,1,0,0,0,0,Pending,Stable,76,21,High,0,0,1,1,1,15.8,Insurance
+PT0330,47,Neurology,Low,27,2,6,3,19,Medium,Independent,None,0,Home,1,0,0,0,0,0,1,0,Pending,Stable,88,8,Critical,1,0,1,1,1,15.0,Doctor
+PT0331,62,Oncology,Medium,7,4,3,1,7,Medium,Assisted,Poor,1,Home,0,1,0,0,0,0,1,0,Stable,Stable,74,19,Medium,0,1,1,0,1,7.5,None
+PT0332,75,General Medicine,Low,27,4,4,3,16,Low,Bedbound,Fair,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,97,24,Medium,0,0,1,0,1,0.0,None
+PT0333,66,Orthopedics,Low,9,0,1,2,1,Low,Independent,Poor,0,LTC,0,1,1,0,0,0,0,0,Stable,Stable,81,19,Low,1,0,1,0,1,8.2,None
+PT0334,39,Cardiology,Medium,7,4,5,0,13,Low,Bedbound,None,0,Home,0,1,0,1,0,0,1,1,Unstable,Stable,71,3,Critical,0,0,1,1,1,19.0,Insurance
+PT0335,71,Neurology,Medium,27,2,5,0,17,Medium,Assisted,None,0,LTC,1,0,1,0,0,0,0,0,Stable,Stable,81,29,High,0,0,1,0,1,6.1,None
+PT0336,25,Cardiology,Medium,21,4,7,0,7,Low,Bedbound,Good,0,Rehab,0,0,0,1,1,0,0,1,Stable,Stable,75,15,Critical,1,1,1,1,1,18.4,Rehab/SNF
+PT0337,32,Pulmonology,High,16,1,6,3,9,Low,Bedbound,Good,0,SNF,0,0,0,0,0,1,0,0,Stable,Stable,87,20,Medium,0,0,1,0,1,5.6,None
+PT0338,45,Neurology,Low,3,0,3,3,17,High,Bedbound,Poor,1,Rehab,0,0,1,0,1,0,0,0,Stable,Stable,72,14,Medium,0,0,1,1,1,11.9,Rehab/SNF
+PT0339,39,Orthopedics,Low,25,1,3,0,15,Low,Independent,Good,1,Home,0,1,1,0,0,0,1,0,Stable,Stable,89,27,Medium,1,0,1,1,0,12.6,Pharmacy
+PT0340,89,Orthopedics,Low,10,4,0,1,13,Low,Bedbound,None,0,LTC,0,1,0,0,0,0,0,0,Stable,Unstable,70,27,Medium,0,0,1,1,1,9.9,Pharmacy
+PT0341,51,Cardiology,Low,20,1,7,1,13,Medium,Bedbound,Fair,0,Home,0,0,0,0,0,0,1,1,Stable,Stable,71,2,High,0,0,1,0,0,4.6,None
+PT0342,45,Orthopedics,Low,20,4,4,2,11,High,Independent,Fair,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,72,6,Critical,1,0,1,0,1,0.0,None
+PT0343,74,Cardiology,Low,5,4,2,3,15,Medium,Bedbound,None,0,Rehab,0,0,0,1,1,0,1,0,Stable,Stable,81,0,Medium,1,0,1,1,1,18.1,Rehab/SNF
+PT0344,41,Neurology,Low,13,2,7,1,8,Medium,Independent,Poor,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,72,4,High,1,0,1,0,1,0.0,None
+PT0345,45,Orthopedics,Low,3,3,5,3,16,Medium,Assisted,Good,1,Home,1,0,1,0,0,0,0,0,Stable,Stable,81,22,Medium,0,1,1,0,1,6.2,None
+PT0346,31,General Medicine,Low,20,3,1,0,13,Medium,Bedbound,None,0,Home,0,0,0,1,0,0,0,0,Stable,Stable,84,17,Low,0,0,1,0,1,5.7,None
+PT0347,89,General Medicine,Low,5,0,7,1,16,Low,Bedbound,Poor,1,Home,0,1,0,0,0,0,0,1,Stable,Stable,91,5,Medium,0,0,1,0,0,5.2,None
+PT0348,70,Orthopedics,Low,27,1,6,0,7,Low,Independent,Good,1,LTC,0,0,1,0,0,0,0,1,Stable,Stable,90,9,Low,0,0,1,0,0,5.8,None
+PT0349,25,Oncology,Low,28,0,5,2,8,Medium,Assisted,Poor,1,Rehab,0,0,0,0,0,0,1,0,Stable,Stable,84,12,Medium,0,0,0,0,1,6.1,None
+PT0350,79,General Medicine,Medium,6,3,0,2,4,Low,Assisted,Fair,0,Hospice,0,0,0,0,0,0,1,0,Pending,Stable,89,17,High,0,1,1,1,1,6.3,Clinical Stability
+PT0351,73,Pulmonology,High,8,0,0,0,12,Medium,Bedbound,None,1,Rehab,1,0,0,0,1,1,0,0,Stable,Stable,75,5,Critical,0,0,0,1,0,18.9,Rehab/SNF
+PT0352,25,Cardiology,Low,15,3,3,0,3,Low,Bedbound,None,0,Rehab,0,1,0,0,1,0,0,0,Stable,Stable,74,17,Medium,1,0,1,1,1,11.5,Rehab/SNF
+PT0353,42,Cardiology,Medium,21,0,6,3,6,Medium,Bedbound,Good,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,85,9,High,0,0,1,0,1,0.0,None
+PT0354,68,General Medicine,Medium,21,0,2,0,19,Medium,Bedbound,None,1,Home,1,1,0,0,0,0,0,0,Unstable,Stable,85,16,Low,0,0,1,1,0,10.2,Pharmacy
+PT0355,74,Orthopedics,Low,13,2,5,2,6,High,Assisted,Poor,0,SNF,0,0,0,0,1,1,0,0,Stable,Stable,95,21,High,1,0,1,1,1,12.2,Rehab/SNF
+PT0356,39,Oncology,Medium,1,4,5,1,2,Medium,Independent,Poor,1,Home,0,1,0,1,0,0,0,0,Pending,Stable,75,22,Medium,0,0,1,1,1,16.2,Insurance
+PT0357,33,Pulmonology,Low,13,3,6,2,9,High,Independent,Poor,0,Home,0,0,1,0,0,0,0,0,Stable,Stable,70,14,Medium,1,0,1,0,1,4.5,None
+PT0358,77,Orthopedics,Medium,28,1,4,1,10,Medium,Bedbound,Good,0,Home,1,1,0,0,0,0,0,0,Stable,Unstable,82,0,Medium,0,0,1,1,0,18.5,Pharmacy
+PT0359,84,Cardiology,Medium,24,3,2,2,8,Medium,Bedbound,Fair,0,Home,0,1,0,1,0,0,0,1,Stable,Stable,92,13,Critical,0,0,1,1,1,17.0,Insurance
+PT0360,72,Neurology,Medium,27,1,7,3,10,Low,Independent,Fair,1,Home,0,0,0,0,0,0,0,0,Unstable,Stable,81,10,Low,1,0,1,0,1,6.1,None
+PT0361,35,Pulmonology,Medium,8,0,3,2,10,High,Bedbound,None,0,Home,0,0,0,0,0,0,0,0,Pending,Stable,72,0,Low,0,0,1,0,1,4.1,None
+PT0362,51,Cardiology,Medium,19,4,4,0,13,High,Bedbound,None,1,Home,1,0,0,1,0,0,0,0,Unstable,Stable,93,15,Medium,1,0,1,1,1,18.5,Insurance
+PT0363,93,Pulmonology,High,9,0,4,3,3,Medium,Bedbound,None,1,Home,1,1,0,0,0,0,0,1,Pending,Stable,75,11,High,1,0,1,1,1,16.3,Pharmacy
+PT0364,45,Orthopedics,Medium,11,3,2,3,12,Low,Independent,Fair,0,Home,0,0,0,0,0,0,1,0,Stable,Stable,98,14,Medium,0,0,1,0,1,3.6,None
+PT0365,32,Orthopedics,Medium,15,0,7,2,11,Medium,Independent,None,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,98,3,Medium,1,1,1,0,1,0.0,None
+PT0366,53,Oncology,Medium,12,1,6,3,18,Medium,Assisted,Poor,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,93,4,Medium,0,0,1,0,1,0.0,None
+PT0367,54,Pulmonology,Medium,1,0,1,3,11,High,Independent,None,0,Home,0,0,0,1,0,0,1,1,Stable,Unstable,84,14,High,1,0,1,1,1,19.0,Insurance
+PT0368,74,Oncology,Low,28,4,5,1,6,Medium,Independent,Poor,0,Home,0,0,0,1,0,0,0,0,Stable,Stable,95,27,Low,1,1,1,0,1,8.4,None
+PT0369,44,Orthopedics,Medium,21,3,3,2,18,Medium,Assisted,Good,1,SNF,0,0,1,0,1,0,0,1,Stable,Stable,88,26,Low,0,0,1,1,1,16.7,Rehab/SNF
+PT0370,24,Orthopedics,Medium,18,4,4,1,5,Medium,Independent,Poor,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,91,29,Medium,0,0,1,0,1,0.0,None
+PT0371,37,Cardiology,Low,7,4,7,0,13,Medium,Assisted,Fair,1,Home,1,0,0,0,1,0,0,1,Stable,Stable,87,27,High,0,0,1,1,1,15.5,Rehab/SNF
+PT0372,62,Pulmonology,Medium,16,3,5,1,16,Medium,Assisted,Fair,0,Home,0,0,0,1,0,0,0,0,Stable,Stable,96,23,Critical,0,0,1,0,1,7.9,None
+PT0373,53,Cardiology,Low,26,3,0,0,19,Medium,Independent,Good,0,Home,0,0,1,0,1,1,1,1,Stable,Stable,84,2,Critical,0,0,1,1,0,24.3,Rehab/SNF
+PT0374,71,Cardiology,Low,20,4,7,3,15,Low,Assisted,None,0,Home,0,0,0,0,0,0,1,1,Stable,Unstable,84,6,Medium,0,0,1,1,1,17.0,Clinical Stability
+PT0375,78,Orthopedics,Low,29,1,0,1,10,Medium,Bedbound,Poor,1,SNF,0,0,1,0,1,0,1,0,Unstable,Stable,88,10,Low,0,0,0,1,1,25.8,Rehab/SNF
+PT0376,53,General Medicine,Low,18,3,6,0,10,High,Bedbound,Poor,0,LTC,0,0,0,1,0,0,0,0,Unstable,Stable,81,20,Medium,0,0,1,1,1,12.0,Insurance
+PT0377,76,Neurology,High,23,1,0,2,12,Low,Assisted,Fair,1,Home,0,0,1,0,0,0,0,0,Stable,Stable,73,21,Critical,1,0,1,0,1,5.0,None
+PT0378,35,Cardiology,Medium,23,1,4,1,10,Low,Independent,None,0,Home,0,0,0,0,0,0,0,0,Unstable,Stable,90,27,High,0,1,1,0,1,5.3,None
+PT0379,41,General Medicine,Low,15,2,7,0,13,Low,Bedbound,Poor,1,Home,0,1,1,1,0,0,1,0,Unstable,Unstable,79,18,Critical,0,0,1,1,1,28.8,Insurance
+PT0380,91,Neurology,Low,6,1,4,2,3,Medium,Bedbound,Good,0,Home,0,1,0,0,1,0,1,1,Pending,Stable,78,9,Critical,0,0,1,1,1,25.4,Rehab/SNF
+PT0381,87,Oncology,Medium,27,1,5,0,4,Medium,Bedbound,None,1,Home,0,0,1,0,1,0,1,0,Stable,Stable,70,25,Critical,1,0,1,1,0,14.6,Rehab/SNF
+PT0382,67,Pulmonology,Low,3,2,7,3,4,Low,Independent,None,0,Rehab,0,1,1,0,0,0,0,0,Stable,Stable,75,7,Medium,0,0,1,0,1,4.5,None
+PT0383,28,General Medicine,Medium,29,1,1,3,5,Low,Independent,Fair,1,Rehab,0,0,0,0,1,0,0,0,Stable,Stable,72,29,High,0,0,1,1,1,7.9,Rehab/SNF
+PT0384,80,Neurology,Low,14,4,0,2,12,Low,Assisted,Poor,1,Rehab,0,0,0,1,1,1,0,1,Pending,Stable,80,7,High,0,0,1,1,1,32.6,Rehab/SNF
+PT0385,51,Cardiology,Low,24,2,6,2,18,Medium,Bedbound,None,0,Home,0,1,0,0,0,0,0,0,Stable,Stable,94,8,Critical,0,0,1,0,1,2.8,None
+PT0386,47,General Medicine,Medium,1,3,0,0,3,High,Assisted,Good,1,Hospice,0,0,0,0,0,0,0,0,Stable,Stable,96,9,Low,0,0,1,0,1,0.0,None
+PT0387,91,Oncology,Medium,16,2,4,3,19,Medium,Independent,None,0,SNF,0,1,0,1,0,1,0,0,Unstable,Stable,95,13,Critical,1,0,1,1,1,18.4,Insurance
+PT0388,72,Orthopedics,Low,28,0,5,1,12,Medium,Bedbound,Poor,1,Rehab,0,0,0,0,1,0,1,0,Stable,Stable,76,12,Low,0,0,1,1,0,11.8,Rehab/SNF
+PT0389,83,General Medicine,Low,25,3,1,2,1,Medium,Assisted,Good,1,Home,0,1,0,0,0,1,0,0,Stable,Stable,87,26,Critical,1,0,1,1,1,7.6,Home Care
+PT0390,26,Neurology,High,13,4,3,0,15,Medium,Independent,Fair,0,Home,1,1,0,0,0,0,0,0,Stable,Stable,83,21,Critical,0,0,1,0,1,8.8,None
+PT0391,57,Cardiology,Medium,26,2,2,3,2,High,Independent,None,0,Home,0,1,1,1,0,0,0,0,Unstable,Stable,81,28,Critical,0,0,1,1,1,17.2,Insurance
+PT0392,73,Oncology,Low,2,3,1,1,15,High,Bedbound,Poor,1,Home,0,0,1,0,0,0,0,0,Stable,Stable,75,27,Critical,1,0,1,0,1,0.9,None
+PT0393,91,Orthopedics,High,15,0,4,2,2,Medium,Independent,Fair,0,SNF,0,0,0,0,1,0,0,0,Stable,Stable,72,29,Low,0,1,1,1,1,6.5,Rehab/SNF
+PT0394,31,Cardiology,High,5,4,7,2,4,Low,Assisted,Poor,0,LTC,0,1,0,0,0,0,0,0,Stable,Stable,93,21,Critical,0,0,1,0,1,1.6,None
+PT0395,30,General Medicine,Medium,22,0,4,0,2,High,Independent,Fair,1,Home,0,1,1,0,1,0,0,0,Stable,Stable,98,2,High,1,1,1,1,0,15.9,Rehab/SNF
+PT0396,68,Oncology,Low,20,3,1,1,13,Low,Assisted,Fair,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,88,12,Low,0,0,1,0,1,0.0,None
+PT0397,51,Orthopedics,Medium,15,0,1,1,16,Medium,Bedbound,None,0,Rehab,0,0,0,0,1,0,0,0,Pending,Unstable,79,16,Low,0,0,1,1,0,17.3,Rehab/SNF
+PT0398,89,Oncology,Low,22,3,5,2,9,Medium,Assisted,Good,1,Home,0,1,0,0,0,0,0,0,Stable,Stable,70,15,High,0,0,1,0,1,3.4,None
+PT0399,73,Pulmonology,Medium,7,1,7,3,9,Medium,Independent,None,1,Home,0,0,0,0,0,0,1,0,Stable,Stable,97,17,High,1,1,1,0,1,4.1,None
+PT0400,56,Oncology,Low,20,3,4,3,16,Medium,Independent,Good,0,Home,0,0,0,1,0,0,0,0,Stable,Stable,88,8,Low,0,0,1,0,1,11.3,None
+PT0401,92,Pulmonology,Medium,19,1,3,0,7,High,Bedbound,None,0,Rehab,1,0,0,0,0,1,0,1,Stable,Stable,88,22,High,1,0,1,1,1,14.3,Home Care
+PT0402,68,Neurology,Low,20,0,7,2,16,Low,Independent,Good,1,Hospice,0,0,0,1,0,0,0,0,Stable,Stable,72,4,Critical,1,1,1,0,0,11.6,None
+PT0403,67,Oncology,Low,20,3,4,0,8,High,Bedbound,Poor,1,Hospice,0,0,0,0,0,0,0,0,Stable,Stable,78,19,Medium,1,1,0,0,1,0.0,None
+PT0404,41,Oncology,Medium,2,3,0,1,14,High,Bedbound,Good,1,Home,0,1,1,0,1,1,0,0,Unstable,Stable,88,4,Medium,0,1,1,1,1,27.7,Rehab/SNF
+PT0405,18,Pulmonology,Low,26,1,6,2,17,Medium,Independent,Good,0,Home,0,0,0,0,0,0,0,0,Stable,Unstable,73,16,Critical,0,0,1,0,1,6.8,None
+PT0406,28,Orthopedics,Low,26,1,4,1,9,High,Bedbound,Poor,0,Home,1,0,1,0,0,0,0,0,Stable,Stable,91,20,Low,0,0,1,0,1,6.3,None
+PT0407,38,Neurology,Medium,26,4,7,1,2,Low,Bedbound,Good,1,Hospice,0,0,0,0,1,0,1,1,Unstable,Stable,77,13,High,0,0,1,1,1,22.8,Rehab/SNF
+PT0408,57,Cardiology,Low,3,4,5,1,8,Low,Bedbound,Fair,1,Rehab,1,1,0,0,0,0,0,0,Pending,Stable,84,11,High,0,0,0,1,1,13.5,Pharmacy
+PT0409,19,Cardiology,High,10,0,2,0,15,Low,Assisted,Good,0,Home,0,0,0,1,0,1,1,0,Stable,Stable,93,23,Low,1,0,1,1,0,16.7,Insurance
+PT0410,51,Orthopedics,Low,23,3,5,2,18,Low,Independent,Poor,0,Rehab,0,0,1,1,0,0,0,0,Stable,Stable,99,20,Low,0,0,1,1,1,9.8,Insurance
+PT0411,85,General Medicine,High,16,0,5,2,2,Medium,Bedbound,Poor,1,Home,0,0,1,1,1,0,0,0,Stable,Stable,94,21,Medium,0,0,1,1,1,21.6,Rehab/SNF
+PT0412,27,Pulmonology,Low,14,4,5,0,6,Low,Independent,Poor,0,Home,0,0,0,0,1,0,0,0,Stable,Stable,83,23,Low,0,0,1,1,1,8.6,Rehab/SNF
+PT0413,44,General Medicine,Medium,1,2,6,0,11,Low,Independent,Poor,1,Home,1,0,0,0,0,0,0,0,Stable,Stable,82,21,Critical,0,0,1,0,0,4.3,None
+PT0414,71,Cardiology,Medium,15,3,0,3,9,High,Independent,None,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,77,14,Medium,1,0,1,0,1,0.0,None
+PT0415,79,General Medicine,Medium,21,4,3,1,8,High,Independent,None,1,Home,0,0,0,0,0,0,0,0,Pending,Stable,90,22,Low,0,0,1,0,1,4.9,None
+PT0416,36,Pulmonology,Low,27,3,3,2,14,High,Bedbound,None,1,Home,1,0,0,0,0,1,0,1,Stable,Stable,83,26,Medium,0,0,1,1,1,17.5,Home Care
+PT0417,65,Pulmonology,High,1,3,6,3,9,Low,Independent,Good,1,Home,0,0,1,0,0,0,0,0,Stable,Stable,99,19,Critical,0,0,1,0,1,1.7,None
+PT0418,26,Pulmonology,Low,18,1,2,0,14,Low,Assisted,None,0,Home,0,0,0,0,0,1,1,0,Stable,Stable,76,25,Critical,0,0,1,1,0,12.7,Home Care
+PT0419,81,General Medicine,Medium,14,4,7,0,2,Low,Independent,Good,1,Rehab,0,0,0,1,1,0,0,1,Unstable,Unstable,74,26,Medium,0,0,1,1,1,28.0,Rehab/SNF
+PT0420,69,General Medicine,Low,10,1,4,1,14,Medium,Assisted,Good,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,76,10,Critical,1,1,1,0,0,0.0,None
+PT0421,42,Cardiology,High,7,0,0,3,2,Medium,Independent,Good,1,Home,1,0,0,0,0,1,0,0,Stable,Stable,73,25,Critical,0,0,1,1,1,8.8,Home Care
+PT0422,65,Pulmonology,Medium,7,1,2,0,16,Low,Bedbound,Poor,0,SNF,0,1,0,0,1,0,1,0,Stable,Unstable,79,26,Critical,0,0,1,1,0,23.4,Rehab/SNF
+PT0423,26,Oncology,Medium,23,2,1,0,19,Medium,Bedbound,None,0,Home,0,0,0,0,0,0,0,1,Stable,Stable,91,9,Critical,0,0,1,0,1,0.8,None
+PT0424,34,Pulmonology,Low,29,2,4,0,17,Low,Independent,Good,0,SNF,0,1,0,0,1,0,0,0,Stable,Stable,99,15,Medium,0,1,1,1,0,11.4,Rehab/SNF
+PT0425,51,Oncology,High,11,2,0,1,10,Medium,Independent,None,0,SNF,0,1,0,1,0,0,0,0,Stable,Stable,95,20,Medium,0,1,1,1,1,4.7,Insurance
+PT0426,48,General Medicine,Low,16,2,1,3,5,Low,Independent,Poor,0,Rehab,0,0,1,0,1,0,0,1,Stable,Stable,75,24,Critical,0,0,1,1,1,17.8,Rehab/SNF
+PT0427,26,Pulmonology,Low,15,3,7,1,8,Medium,Assisted,Good,0,Home,0,0,0,0,1,0,0,1,Stable,Stable,98,10,Low,1,0,1,1,1,12.5,Rehab/SNF
+PT0428,81,Pulmonology,High,17,3,0,3,17,Medium,Bedbound,Good,1,Home,0,0,0,0,0,0,0,1,Stable,Stable,81,2,Medium,1,0,1,0,1,0.0,None
+PT0429,37,Orthopedics,Medium,19,3,0,1,13,Low,Independent,Good,1,SNF,1,0,0,0,0,1,1,0,Stable,Stable,73,5,Critical,0,0,1,1,1,17.5,Home Care
+PT0430,78,Orthopedics,Low,13,3,7,0,18,Medium,Assisted,Fair,0,Home,0,0,1,0,0,0,0,0,Pending,Stable,72,18,Critical,1,0,1,0,1,6.8,None
+PT0431,24,Neurology,High,28,1,3,3,13,Medium,Assisted,Good,0,Hospice,1,1,1,0,1,1,0,0,Stable,Stable,94,10,High,1,0,1,1,1,28.4,Rehab/SNF
+PT0432,51,General Medicine,Medium,13,2,4,3,2,Low,Assisted,Fair,1,Home,1,0,1,0,0,0,0,1,Stable,Stable,96,19,Critical,0,0,1,1,1,12.4,Transport
+PT0433,78,Neurology,Low,8,3,6,2,5,High,Bedbound,Poor,1,Rehab,0,1,0,1,0,0,0,0,Stable,Stable,80,14,Medium,0,1,1,1,1,11.0,Insurance
+PT0434,42,Orthopedics,Medium,29,1,0,2,7,High,Bedbound,Fair,1,Home,1,0,1,0,0,0,0,0,Unstable,Stable,70,5,High,0,0,0,1,1,15.2,Transport
+PT0435,39,Oncology,High,22,3,3,3,6,Medium,Bedbound,Good,1,LTC,0,0,0,0,0,0,0,0,Unstable,Stable,95,9,Medium,0,1,1,0,1,3.3,None
+PT0436,41,Cardiology,Medium,17,3,5,0,15,Low,Assisted,Fair,0,Home,0,0,0,0,1,1,0,0,Stable,Stable,76,29,Low,1,1,1,1,1,18.0,Rehab/SNF
+PT0437,53,Oncology,High,2,2,3,2,8,Medium,Bedbound,Good,1,Home,0,0,0,0,0,0,1,0,Unstable,Stable,94,5,High,0,0,1,1,1,6.0,Clinical Stability
+PT0438,91,Neurology,Medium,16,2,1,0,4,High,Independent,None,0,Rehab,0,1,1,0,0,0,0,1,Stable,Stable,81,25,Medium,1,0,1,1,1,11.4,Pharmacy
+PT0439,23,General Medicine,Low,26,1,7,3,10,Medium,Assisted,Poor,1,Home,0,0,0,0,0,1,1,0,Stable,Stable,87,18,Critical,0,0,1,1,1,8.2,Home Care
+PT0440,62,General Medicine,Medium,16,3,2,3,10,Low,Assisted,Fair,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,85,28,Low,0,0,1,0,1,0.0,None
+PT0441,25,Orthopedics,Low,26,0,1,1,12,Low,Independent,None,0,Home,0,1,1,0,0,0,1,0,Pending,Stable,75,26,Critical,0,0,1,1,0,17.7,Pharmacy
+PT0442,70,General Medicine,Medium,2,4,7,2,13,Low,Independent,None,0,Home,1,0,0,0,0,0,0,0,Unstable,Stable,92,14,Critical,1,0,1,1,1,6.7,Doctor
+PT0443,28,Pulmonology,Low,3,2,5,0,9,Low,Bedbound,None,0,Home,0,1,0,0,0,1,1,0,Stable,Unstable,90,0,Low,0,1,1,1,1,20.4,Home Care
+PT0444,25,Cardiology,Medium,27,3,6,3,13,Low,Assisted,None,1,Home,0,1,0,0,0,0,0,0,Stable,Stable,87,18,Medium,1,0,1,0,1,1.5,None
+PT0445,39,Oncology,Low,8,4,2,1,13,Low,Independent,Good,0,Home,0,0,0,0,0,0,0,0,Pending,Unstable,83,20,High,0,0,1,1,1,6.6,Clinical Stability
+PT0446,44,Cardiology,Medium,17,3,6,2,17,Medium,Independent,Fair,0,Home,0,1,0,0,0,1,0,1,Stable,Stable,98,0,Low,0,0,1,1,1,15.0,Home Care
+PT0447,33,Neurology,High,12,3,2,3,19,High,Bedbound,None,1,Rehab,0,1,0,1,1,0,0,0,Pending,Stable,95,22,Medium,0,0,1,1,1,25.1,Rehab/SNF
+PT0448,64,Pulmonology,Low,16,0,4,0,8,High,Assisted,Fair,1,Home,0,0,0,1,0,1,0,0,Stable,Stable,95,20,Low,0,0,1,1,0,13.5,Insurance
+PT0449,36,Oncology,Low,13,4,5,1,15,Medium,Bedbound,None,0,Home,0,0,1,0,0,0,0,0,Stable,Stable,99,25,Critical,0,1,1,0,1,3.2,None
+PT0450,41,Orthopedics,High,11,2,1,3,3,Medium,Assisted,Good,1,Home,0,0,0,0,0,0,0,0,Unstable,Stable,86,24,Low,0,0,1,0,1,4.9,None
+PT0451,22,Neurology,High,17,2,4,2,3,Low,Assisted,Good,1,SNF,0,0,1,0,0,1,1,0,Stable,Stable,78,27,Medium,1,0,1,1,1,14.1,Home Care
+PT0452,27,Pulmonology,High,26,3,2,3,9,Medium,Independent,Fair,1,Home,1,1,0,0,0,0,0,0,Unstable,Stable,96,9,Medium,1,0,1,1,1,10.6,Pharmacy
+PT0453,60,Neurology,Low,29,2,0,1,14,Medium,Independent,Good,0,Rehab,0,0,0,1,0,0,0,0,Stable,Stable,88,28,Critical,0,0,1,0,1,4.2,None
+PT0454,46,Oncology,High,4,4,7,3,2,Medium,Assisted,Fair,1,Home,1,0,0,1,0,1,0,0,Unstable,Unstable,87,6,Critical,1,0,1,1,1,24.8,Insurance
+PT0455,42,Oncology,High,6,1,0,2,7,High,Assisted,None,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,79,2,Low,0,0,1,0,1,0.0,None
+PT0456,75,Cardiology,Low,7,3,2,1,3,Low,Independent,Fair,1,SNF,1,0,0,1,1,0,0,0,Stable,Stable,98,20,Low,0,0,1,1,1,19.4,Rehab/SNF
+PT0457,59,Cardiology,Medium,6,4,7,2,8,Low,Bedbound,Fair,0,Home,0,0,0,0,0,1,0,0,Pending,Stable,93,6,Critical,0,0,1,1,1,12.3,Home Care
+PT0458,57,Cardiology,Low,4,1,6,1,13,Medium,Assisted,None,0,Home,0,1,1,0,0,0,0,0,Stable,Stable,86,0,Critical,1,0,1,0,1,7.1,None
+PT0459,74,Neurology,Low,13,1,4,3,18,Low,Independent,Fair,0,Home,0,1,1,0,0,0,0,0,Unstable,Stable,98,13,Low,1,0,1,1,1,5.8,Pharmacy
+PT0460,67,Neurology,Low,23,2,0,2,2,Low,Independent,Fair,1,Home,0,0,1,0,0,0,0,0,Stable,Stable,81,23,Medium,1,0,1,0,1,2.9,None
+PT0461,44,Pulmonology,Medium,3,0,6,1,10,Low,Bedbound,Fair,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,71,1,Low,0,0,1,0,0,0.0,None
+PT0462,78,General Medicine,Low,10,3,1,0,10,Low,Bedbound,Fair,0,Home,0,0,0,0,0,0,0,0,Stable,Stable,70,5,High,1,0,1,0,1,0.0,None
+PT0463,62,General Medicine,Medium,1,0,0,3,18,Low,Bedbound,Fair,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,74,15,High,1,0,0,0,1,0.0,None
+PT0464,27,Pulmonology,Low,16,4,1,1,12,Low,Independent,Good,0,SNF,0,0,1,1,1,0,1,0,Pending,Stable,72,0,Critical,1,0,1,1,1,26.5,Rehab/SNF
+PT0465,63,Oncology,High,29,2,2,0,4,Medium,Assisted,Poor,0,LTC,0,0,0,0,0,0,1,0,Pending,Stable,73,15,High,0,1,1,1,1,7.1,Clinical Stability
+PT0466,88,Pulmonology,Low,7,1,5,1,10,High,Assisted,Poor,1,Home,0,1,0,0,0,0,1,0,Pending,Stable,89,14,High,1,1,1,1,1,13.0,Pharmacy
+PT0467,62,Neurology,High,18,4,7,3,14,Low,Assisted,Fair,1,SNF,1,1,0,0,1,0,0,0,Stable,Stable,86,4,Medium,0,1,1,1,1,12.1,Rehab/SNF
+PT0468,18,Cardiology,Low,17,1,0,3,9,Low,Independent,None,0,Home,1,1,1,0,0,0,0,0,Stable,Stable,90,27,Low,0,1,1,1,1,13.9,Pharmacy
+PT0469,68,Orthopedics,Medium,22,4,7,1,14,High,Independent,Poor,1,Rehab,0,0,0,0,0,0,0,0,Stable,Stable,82,9,High,0,0,1,0,1,0.0,None
+PT0470,35,Orthopedics,Medium,24,4,5,2,16,Medium,Assisted,Fair,0,Home,0,0,0,0,0,1,1,0,Stable,Stable,90,21,Medium,0,0,1,1,1,11.0,Home Care
+PT0471,22,Neurology,High,2,3,2,0,5,Low,Independent,None,0,Home,0,1,0,0,0,0,0,0,Stable,Stable,81,1,Medium,0,0,1,0,1,3.5,None
+PT0472,89,General Medicine,Medium,22,4,4,3,6,Medium,Independent,Poor,1,LTC,0,0,1,0,1,0,1,0,Pending,Stable,91,19,High,0,0,0,1,1,21.1,Rehab/SNF
+PT0473,94,Orthopedics,High,15,1,1,3,9,Low,Independent,None,0,Rehab,0,0,0,0,1,0,0,0,Stable,Stable,72,17,High,1,0,1,1,1,10.8,Rehab/SNF
+PT0474,54,Orthopedics,Low,27,3,3,2,2,Low,Independent,Poor,1,Rehab,0,0,1,1,0,0,0,0,Unstable,Stable,83,22,Medium,1,0,1,1,1,16.2,Insurance
+PT0475,86,Orthopedics,Medium,9,2,2,0,18,Medium,Bedbound,Fair,1,Rehab,0,0,0,0,1,1,0,0,Stable,Stable,79,16,High,0,0,1,1,0,15.2,Rehab/SNF
+PT0476,50,Oncology,Low,21,4,0,1,6,Medium,Assisted,Poor,0,SNF,0,0,1,0,1,0,1,0,Stable,Stable,73,29,Low,0,1,1,1,1,17.7,Rehab/SNF
+PT0477,67,Oncology,Low,8,2,1,1,14,Medium,Assisted,Poor,1,Rehab,0,0,0,0,1,0,1,0,Stable,Stable,70,26,Medium,0,0,1,1,1,14.1,Rehab/SNF
+PT0478,82,Neurology,High,5,1,1,3,18,Medium,Independent,Good,0,SNF,0,0,0,0,1,0,0,0,Stable,Stable,76,14,Medium,1,0,1,1,1,9.9,Rehab/SNF
+PT0479,33,Pulmonology,Medium,25,1,5,2,16,High,Bedbound,Good,1,Home,0,0,0,0,0,0,0,0,Stable,Stable,70,22,Critical,0,1,1,0,1,0.0,None
+PT0480,23,Cardiology,Low,13,3,3,1,8,High,Bedbound,Good,1,LTC,1,0,0,0,1,1,1,1,Unstable,Stable,86,6,Medium,0,0,1,1,1,29.3,Rehab/SNF
+PT0481,64,Neurology,Low,25,0,5,1,1,Medium,Bedbound,Good,0,Home,0,0,1,0,0,0,0,0,Stable,Stable,83,5,Low,0,1,1,0,0,3.0,None
+PT0482,33,Pulmonology,Medium,9,3,4,2,6,Low,Bedbound,Good,0,Hospice,0,1,1,0,0,0,0,0,Stable,Stable,81,16,Low,0,0,1,0,1,4.5,None
+PT0483,27,Neurology,Medium,17,1,1,0,11,Low,Assisted,Good,0,SNF,0,0,0,1,1,0,1,0,Stable,Stable,72,16,High,0,0,1,1,0,20.8,Rehab/SNF
+PT0484,84,Neurology,Medium,27,1,2,2,12,Low,Bedbound,None,1,Home,0,1,0,0,1,0,0,0,Stable,Stable,99,29,Low,0,0,1,1,1,13.8,Rehab/SNF
+PT0485,42,Oncology,Low,8,3,7,1,19,Low,Assisted,Fair,0,Home,0,0,0,0,0,1,0,0,Stable,Unstable,93,4,High,0,0,1,1,1,11.8,Home Care
+PT0486,50,Orthopedics,Medium,9,3,0,1,11,High,Assisted,Good,1,Hospice,0,0,0,0,0,0,0,0,Stable,Stable,97,14,Medium,1,0,1,0,1,0.0,None
+PT0487,65,Cardiology,Medium,20,2,5,0,16,Low,Assisted,Fair,0,Home,0,0,0,0,0,1,0,0,Pending,Stable,81,8,High,0,0,1,1,0,7.9,Home Care
+PT0488,86,Pulmonology,Low,29,0,2,2,1,Low,Assisted,None,0,Home,0,0,1,1,0,1,0,1,Stable,Stable,80,1,Critical,1,0,1,1,1,20.2,Insurance
+PT0489,41,Oncology,Low,6,0,1,0,1,Medium,Assisted,Poor,1,Hospice,0,1,0,0,1,0,0,0,Stable,Stable,95,3,High,0,0,1,1,0,12.3,Rehab/SNF
+PT0490,18,General Medicine,Low,24,1,3,1,4,Medium,Assisted,None,0,Rehab,0,0,0,0,1,1,1,0,Stable,Stable,95,21,Low,0,0,1,1,1,21.5,Rehab/SNF
+PT0491,46,Neurology,Medium,22,3,0,0,15,Low,Bedbound,Poor,1,Home,0,0,0,0,0,0,1,0,Stable,Stable,99,1,Medium,0,0,1,0,1,6.8,None
+PT0492,42,Oncology,High,15,3,2,2,7,Low,Independent,Poor,1,Home,1,0,1,0,0,0,1,0,Stable,Stable,83,22,Low,0,1,1,1,1,11.4,Transport
+PT0493,22,General Medicine,Low,18,3,6,2,15,Low,Independent,None,0,SNF,0,0,0,0,1,0,0,0,Stable,Unstable,75,29,Medium,0,0,1,1,1,16.5,Rehab/SNF
+PT0494,37,General Medicine,Low,19,4,3,2,10,Medium,Independent,Good,0,Home,0,0,0,0,0,0,1,0,Pending,Stable,83,24,High,1,0,1,1,1,5.6,Clinical Stability
+PT0495,62,Oncology,Medium,19,1,4,2,5,Low,Bedbound,None,1,Rehab,0,0,0,0,1,1,0,0,Stable,Stable,94,6,Critical,0,0,1,1,1,17.1,Rehab/SNF
+PT0496,50,Orthopedics,Low,6,3,3,3,10,Low,Bedbound,Good,0,Rehab,1,1,0,0,0,1,0,0,Stable,Stable,78,27,Critical,0,0,1,1,1,11.8,Home Care
+PT0497,90,Pulmonology,High,9,4,5,2,8,Low,Independent,None,1,Home,0,0,1,0,0,0,1,0,Stable,Stable,82,20,Critical,0,0,1,0,1,7.2,None
+PT0498,43,General Medicine,Low,24,4,0,3,18,Low,Bedbound,Good,0,Home,0,0,1,1,0,0,1,0,Unstable,Stable,93,16,High,0,0,1,1,1,19.2,Insurance
+PT0499,29,Orthopedics,Low,14,4,4,1,14,Medium,Bedbound,Poor,0,Home,0,1,0,0,0,0,0,0,Stable,Stable,71,3,Low,0,0,1,0,1,2.2,None

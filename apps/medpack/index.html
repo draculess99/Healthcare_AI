@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MedPack AI | Hospital Supply Shortage Control Tower</title>
+  <meta name="description" content="MedPack AI predicts hospital supply shortages, checks usable inventory, ranks packing priorities, and produces an agentic command-center action plan." />
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-2: #0f172a;
+      --panel: rgba(15, 23, 42, 0.88);
+      --panel-2: rgba(30, 41, 59, 0.74);
+      --line: rgba(148, 163, 184, 0.22);
+      --text: #e5edf6;
+      --muted: #a7b6c9;
+      --cyan: #38bdf8;
+      --blue: #60a5fa;
+      --green: #34d399;
+      --amber: #fbbf24;
+      --red: #fb7185;
+      --white: #ffffff;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.36);
+      --radius: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 15% 5%, rgba(56, 189, 248, 0.18), transparent 28%),
+        radial-gradient(circle at 88% 12%, rgba(52, 211, 153, 0.13), transparent 30%),
+        linear-gradient(135deg, #07111f 0%, #0f172a 45%, #111827 100%);
+      color: var(--text);
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(7, 17, 31, 0.78);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-inner {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.95), rgba(52, 211, 153, 0.9));
+      color: #06101d;
+      font-weight: 900;
+      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.24);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px solid rgba(56, 189, 248, 0.38);
+      border-radius: 999px;
+      padding: 12px 18px;
+      color: #e6f7ff;
+      background: rgba(56, 189, 248, 0.1);
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.24);
+      font-weight: 700;
+      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(56, 189, 248, 0.8);
+      background: rgba(56, 189, 248, 0.17);
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #38bdf8, #34d399);
+      color: #06101d;
+      border: none;
+    }
+
+    .hero {
+      padding: 78px 0 54px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: #b9f3ff;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 0 7px rgba(52, 211, 153, 0.12);
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 5.1rem);
+      line-height: 0.98;
+      letter-spacing: -0.07em;
+      margin: 22px 0 20px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #f8fbff 15%, #38bdf8 48%, #34d399 88%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.16rem;
+      margin: 0 0 26px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 26px 0 20px;
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 28px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.62);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--white);
+      font-size: 1.2rem;
+      line-height: 1.2;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .hero-card {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.86), rgba(15, 23, 42, 0.52));
+      border-radius: 28px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -70px -80px auto auto;
+      width: 210px;
+      height: 210px;
+      background: rgba(56, 189, 248, 0.14);
+      border-radius: 999px;
+      filter: blur(2px);
+    }
+
+    .screen {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      background: #0b1220;
+    }
+
+    .screen img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .screen-caption {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      padding: 14px 16px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .risk-pill {
+      color: #fecdd3;
+      background: rgba(251, 113, 133, 0.14);
+      border: 1px solid rgba(251, 113, 133, 0.28);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    section {
+      padding: 58px 0;
+    }
+
+    .section-title {
+      max-width: 800px;
+      margin-bottom: 26px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      margin: 0 0 14px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      margin: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      padding: 22px;
+      min-height: 196px;
+      box-shadow: 0 18px 48px rgba(0, 0, 0, 0.18);
+    }
+
+    .card h3 {
+      margin: 12px 0 8px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 0.96rem;
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      color: var(--cyan);
+    }
+
+    .architecture-panel {
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: clamp(16px, 3vw, 30px);
+      background:
+        linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.72)),
+        radial-gradient(circle at 70% 15%, rgba(56, 189, 248, 0.1), transparent 34%);
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+
+    .diagram-svg {
+      width: 100%;
+      min-width: 900px;
+      height: auto;
+      display: block;
+    }
+
+    .diagram-svg .box {
+      fill: #0f1b2d;
+      stroke: rgba(148, 163, 184, 0.55);
+      stroke-width: 1.4;
+      filter: drop-shadow(0px 12px 22px rgba(0,0,0,0.24));
+    }
+
+    .diagram-svg .box-blue {
+      fill: rgba(14, 116, 144, 0.26);
+      stroke: rgba(56, 189, 248, 0.68);
+    }
+
+    .diagram-svg .box-green {
+      fill: rgba(6, 95, 70, 0.24);
+      stroke: rgba(52, 211, 153, 0.68);
+    }
+
+    .diagram-svg .box-amber {
+      fill: rgba(146, 64, 14, 0.2);
+      stroke: rgba(251, 191, 36, 0.64);
+    }
+
+    .diagram-svg .box-red {
+      fill: rgba(159, 18, 57, 0.18);
+      stroke: rgba(251, 113, 133, 0.64);
+    }
+
+    .diagram-svg text {
+      fill: #e5edf6;
+      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+      font-weight: 800;
+    }
+
+    .diagram-svg .sub {
+      fill: #a7b6c9;
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    .diagram-svg .arrow {
+      stroke: rgba(125, 211, 252, 0.82);
+      stroke-width: 2.6;
+      fill: none;
+      marker-end: url(#arrowhead);
+    }
+
+    .diagram-svg .arrow-muted {
+      stroke: rgba(148, 163, 184, 0.45);
+      stroke-width: 2.2;
+      fill: none;
+      marker-end: url(#arrowheadMuted);
+    }
+
+    .flow-caption {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .flow-step {
+      background: rgba(15, 23, 42, 0.66);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .flow-step strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .flow-step span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .pipeline {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .pipe-item {
+      position: relative;
+      border: 1px solid var(--line);
+      background: var(--panel-2);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .pipe-item strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .pipe-item span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .gallery-card {
+      overflow: hidden;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.74);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.22);
+    }
+
+    .gallery-card img {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+
+    .gallery-card div {
+      padding: 16px 18px;
+    }
+
+    .gallery-card strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .gallery-card span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      border: 1px solid rgba(148, 163, 184, 0.24);
+      background: rgba(15, 23, 42, 0.7);
+      color: #d6e8ff;
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .footer {
+      border-top: 1px solid var(--line);
+      padding: 34px 0;
+      color: var(--muted);
+      background: rgba(7, 17, 31, 0.66);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .cards,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .pipeline,
+      .flow-caption,
+      .mini-stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .pipeline,
+      .flow-caption,
+      .mini-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 46px;
+      }
+
+      .brand span {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="#top" aria-label="MedPack AI home">
+        <span class="brand-mark">MP</span>
+        <span>MedPack AI</span>
+      </a>
+      <div class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#screens">Screens</a>
+        <a class="btn" href="https://medpackai-production.up.railway.app/" target="_blank" rel="noopener">Live Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow"><span class="pulse"></span> Agentic hospital supply control tower</span>
+          <h1><span class="gradient-text">Predict shortages before they hit the bedside.</span></h1>
+          <p>
+            MedPack AI forecasts next-24-hour hospital supply demand, checks whether inventory is truly usable,
+            ranks warehouse packing priorities, and generates a command-center action plan with escalation guidance.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="https://medpackai-production.up.railway.app/" target="_blank" rel="noopener">Open Railway App</a>
+            <a class="btn" href="#architecture">View Data Flow</a>
+            <a class="btn" href="https://github.com/draculess99/MEDPACK_AI">GitHub Repository</a>
+          </div>
+
+          <div class="mini-stats" aria-label="Project highlights">
+            <div class="stat">
+              <strong>24h</strong>
+              <span>demand forecast horizon</span>
+            </div>
+            <div class="stat">
+              <strong>Zero PHI</strong>
+              <span>operational data only</span>
+            </div>
+            <div class="stat">
+              <strong>Local agents</strong>
+              <span>zero-token decision committee</span>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card">
+          <div class="screen">
+            <img src="docs/dashboard_overview.png" alt="MedPack AI dashboard overview" />
+            <div class="screen-caption">
+              <span>Supply risk dashboard and command center</span>
+              <span class="risk-pill">Critical-ready</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="problem">
+      <div class="container">
+        <div class="section-title">
+          <h2>The problem: hospital stock is not always usable stock.</h2>
+          <p>
+            A hospital may appear to have enough inventory, but supplies can be expired, recalled, reserved,
+            delayed, misplaced, or clinically unsuitable. MedPack AI turns prediction into operational action.
+          </p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon">1</div>
+            <h3>Forecast demand</h3>
+            <p>Predicts next-day usage from patient volume, acuity, department, procedure counts, and recent consumption patterns.</p>
+          </article>
+          <article class="card">
+            <div class="icon">2</div>
+            <h3>Validate usable stock</h3>
+            <p>Filters out inventory that exists on paper but should not be approved because of expiry, recall, reservation, or safety rules.</p>
+          </article>
+          <article class="card">
+            <div class="icon">3</div>
+            <h3>Escalate safely</h3>
+            <p>Creates an action plan with owner, priority code, transfer options, substitute choices, and escalation window.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="container">
+        <div class="section-title">
+          <h2>Data flow architecture</h2>
+          <p>
+            This diagram is embedded as pure SVG, not Mermaid, so it renders reliably on GitHub Pages and static portfolio sites.
+          </p>
+        </div>
+
+        <div class="architecture-panel" role="img" aria-label="MedPack AI data flow architecture diagram">
+          <svg class="diagram-svg" viewBox="0 0 1180 690" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <marker id="arrowhead" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+                <polygon points="0 0, 11 4, 0 8" fill="rgba(125, 211, 252, 0.9)" />
+              </marker>
+              <marker id="arrowheadMuted" markerWidth="11" markerHeight="8" refX="10" refY="4" orient="auto">
+                <polygon points="0 0, 11 4, 0 8" fill="rgba(148, 163, 184, 0.55)" />
+              </marker>
+              <linearGradient id="headerGrad" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#34d399" stop-opacity="0.88"/>
+              </linearGradient>
+            </defs>
+
+            <rect x="10" y="10" width="1160" height="670" rx="28" fill="rgba(7,17,31,0.34)" stroke="rgba(148,163,184,0.16)" />
+            <text x="48" y="58" font-size="25">MedPack AI operational decision loop</text>
+            <text x="48" y="84" class="sub">From hospital signals to forecast, shortage risk, packing action, escalation, and audit memory</text>
+
+            <!-- Left inputs -->
+            <rect class="box box-blue" x="48" y="135" width="185" height="86" rx="18" />
+            <text x="74" y="169" font-size="17">Hospital Signals</text>
+            <text x="74" y="194" class="sub">Dept, acuity, volume</text>
+
+            <rect class="box box-blue" x="48" y="255" width="185" height="86" rx="18" />
+            <text x="74" y="289" font-size="17">Supply Inputs</text>
+            <text x="74" y="314" class="sub">Item, stock, usage</text>
+
+            <rect class="box box-blue" x="48" y="375" width="185" height="86" rx="18" />
+            <text x="74" y="409" font-size="17">Vendor Signals</text>
+            <text x="74" y="434" class="sub">Delay, SLA, substitute</text>
+
+            <!-- UI/API -->
+            <rect class="box" x="300" y="195" width="190" height="92" rx="20" />
+            <text x="335" y="232" font-size="18">Streamlit UI</text>
+            <text x="335" y="258" class="sub">User enters scenario</text>
+
+            <rect class="box" x="300" y="334" width="190" height="92" rx="20" />
+            <text x="344" y="371" font-size="18">Flask API</text>
+            <text x="330" y="397" class="sub">Orchestrates engines</text>
+
+            <!-- Core engines -->
+            <rect class="box box-green" x="560" y="110" width="205" height="86" rx="18" />
+            <text x="590" y="144" font-size="17">Forecast Model</text>
+            <text x="590" y="169" class="sub">Next 24h demand</text>
+
+            <rect class="box box-green" x="560" y="225" width="205" height="86" rx="18" />
+            <text x="592" y="259" font-size="17">Usable Stock</text>
+            <text x="592" y="284" class="sub">Expiry, recall, reserve</text>
+
+            <rect class="box box-amber" x="560" y="340" width="205" height="86" rx="18" />
+            <text x="590" y="374" font-size="17">Risk Engine</text>
+            <text x="590" y="399" class="sub">Gap and severity</text>
+
+            <rect class="box box-amber" x="560" y="455" width="205" height="86" rx="18" />
+            <text x="585" y="489" font-size="17">Packing Queue</text>
+            <text x="585" y="514" class="sub">Top-priority actions</text>
+
+            <!-- Intelligence -->
+            <rect class="box" x="835" y="153" width="215" height="86" rx="18" />
+            <text x="883" y="187" font-size="17">RAG / SOP</text>
+            <text x="865" y="212" class="sub">Policy and escalation docs</text>
+
+            <rect class="box" x="835" y="286" width="215" height="86" rx="18" />
+            <text x="860" y="320" font-size="17">Agent Committee</text>
+            <text x="860" y="345" class="sub">Demand, inventory, safety</text>
+
+            <rect class="box box-red" x="835" y="420" width="215" height="92" rx="18" />
+            <text x="860" y="456" font-size="17">Command Center</text>
+            <text x="860" y="481" class="sub">Owner, action, escalation</text>
+
+            <rect class="box" x="835" y="555" width="215" height="72" rx="18" />
+            <text x="870" y="586" font-size="17">Audit Memory</text>
+            <text x="870" y="610" class="sub">JSON decision log</text>
+
+            <!-- Arrows inputs -->
+            <path class="arrow-muted" d="M233 178 C260 180 273 204 300 225" />
+            <path class="arrow-muted" d="M233 298 C260 300 273 266 300 252" />
+            <path class="arrow-muted" d="M233 418 C260 420 275 394 300 384" />
+
+            <!-- UI to API -->
+            <path class="arrow" d="M395 287 L395 334" />
+
+            <!-- API to engines -->
+            <path class="arrow" d="M490 365 C520 310 520 160 560 153" />
+            <path class="arrow" d="M490 374 C520 350 520 272 560 268" />
+            <path class="arrow" d="M490 383 L560 383" />
+            <path class="arrow" d="M490 394 C520 430 520 498 560 498" />
+
+            <!-- engine links -->
+            <path class="arrow-muted" d="M662 196 L662 225" />
+            <path class="arrow-muted" d="M662 311 L662 340" />
+            <path class="arrow" d="M662 426 L662 455" />
+
+            <!-- to intelligence -->
+            <path class="arrow-muted" d="M765 153 C800 158 805 185 835 195" />
+            <path class="arrow" d="M765 383 C800 378 805 342 835 329" />
+            <path class="arrow" d="M765 498 C800 500 805 468 835 466" />
+            <path class="arrow-muted" d="M942 239 L942 286" />
+            <path class="arrow" d="M942 372 L942 420" />
+            <path class="arrow" d="M942 512 L942 555" />
+
+            <!-- feedback loop -->
+            <path class="arrow-muted" d="M835 591 C690 660 418 652 375 426" />
+
+            <!-- Footer label -->
+            <rect x="48" y="582" width="520" height="52" rx="16" fill="rgba(56,189,248,0.08)" stroke="rgba(56,189,248,0.20)" />
+            <text x="70" y="614" font-size="15">Result: pack, transfer, substitute, reorder, monitor, or escalate before bedside impact.</text>
+          </svg>
+        </div>
+
+        <div class="flow-caption">
+          <div class="flow-step">
+            <strong>1. Capture</strong>
+            <span>Collect operational hospital and supply-chain signals.</span>
+          </div>
+          <div class="flow-step">
+            <strong>2. Predict</strong>
+            <span>Estimate 24-hour usage and coverage gap.</span>
+          </div>
+          <div class="flow-step">
+            <strong>3. Decide</strong>
+            <span>Rank risk, packing priority, substitutes, and escalation.</span>
+          </div>
+          <div class="flow-step">
+            <strong>4. Remember</strong>
+            <span>Write the action and decision event to audit memory.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pipeline">
+      <div class="container">
+        <div class="section-title">
+          <h2>Application pipeline</h2>
+          <p>MedPack AI is built as a practical operations loop, not just a prediction screen.</p>
+        </div>
+
+        <div class="pipeline">
+          <div class="pipe-item">
+            <strong>Input packet</strong>
+            <span>Department, item, stock, patient load, acuity, usage, supplier delay.</span>
+          </div>
+          <div class="pipe-item">
+            <strong>ML forecast</strong>
+            <span>XGBoost/fallback logic predicts next-24-hour demand.</span>
+          </div>
+          <div class="pipe-item">
+            <strong>Risk controls</strong>
+            <span>Usable-stock rules filter expiry, recall, reserve, and unsafe inventory.</span>
+          </div>
+          <div class="pipe-item">
+            <strong>Agent review</strong>
+            <span>Local agent committee explains demand, inventory, packing, and safety.</span>
+          </div>
+          <div class="pipe-item">
+            <strong>Action card</strong>
+            <span>Command center outputs owner, priority, escalation window, and audit trail.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="screens">
+      <div class="container">
+        <div class="section-title">
+          <h2>Dashboard evidence</h2>
+          <p>These screenshots are pulled from the repository docs folder and will render on GitHub Pages.</p>
+        </div>
+
+        <div class="gallery">
+          <article class="gallery-card">
+            <img src="docs/command_center.png" alt="Command center output screenshot" />
+            <div>
+              <strong>Command Center</strong>
+              <span>Priority code, escalation window, action card, and operational decision.</span>
+            </div>
+          </article>
+          <article class="gallery-card">
+            <img src="docs/whatif_simulator.png" alt="What-if simulator screenshot" />
+            <div>
+              <strong>What-If Simulator</strong>
+              <span>Stress-tests ED surge, ICU spike, supplier delay, flu season, and disruption scenarios.</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="section-title">
+          <h2>Technology stack</h2>
+          <p>Designed to be portfolio-ready, explainable, and deployable.</p>
+        </div>
+
+        <div class="tech" aria-label="Technology stack">
+          <span class="tag">Python</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">Flask API</span>
+          <span class="tag">XGBoost / ML fallback</span>
+          <span class="tag">RAG / FAISS</span>
+          <span class="tag">Sentence Transformers</span>
+          <span class="tag">JSON Memory</span>
+          <span class="tag">Railway Deployment</span>
+          <span class="tag">No PHI</span>
+          <span class="tag">Local Agent Committee</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span>MedPack AI — Hospital Supply Shortage Prediction & Packing Priority Control Tower</span>
+      <span>Built for operational healthcare AI portfolio demonstration.</span>
+    </div>
+  </footer>
+</body>
+</html>

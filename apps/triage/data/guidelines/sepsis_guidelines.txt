@@ -1,0 +1,22 @@
+**EMERGENCY DEPARTMENT SEPSIS GUIDELINES**
+
+**1. Sepsis Identification (SIRS Criteria)**
+Sepsis should be suspected in any patient with a suspected infection and two or more Systemic Inflammatory Response Syndrome (SIRS) criteria:
+- Temperature > 38°C (100.4°F) or < 36°C (96.8°F)
+- Heart rate > 90 beats per minute
+- Respiratory rate > 20 breaths per minute
+- White blood cell count > 12,000 or < 4,000.
+Patients meeting these criteria should be triaged as ESI-2.
+
+**2. Severe Sepsis and Septic Shock**
+If a patient has suspected sepsis and shows signs of organ dysfunction (e.g., altered mental status, decreased urine output) or hypotension (systolic BP < 90 mmHg, or MAP < 65 mmHg) that does not respond to initial fluid resuscitation, they are in septic shock (ESI-1 or ESI-2).
+
+**3. The 1-Hour Sepsis Bundle**
+For patients with suspected sepsis, the following must be initiated within 1 hour of recognition:
+1. Measure lactate level (remeasure if initial lactate > 2 mmol/L).
+2. Obtain blood cultures prior to administration of antibiotics.
+3. Administer broad-spectrum antibiotics.
+4. Begin rapid administration of 30 mL/kg crystalloid for hypotension or lactate ≥ 4 mmol/L.
+
+**4. Source Control**
+In addition to the bundle, rapid identification and intervention for the source of infection (e.g., abscess drainage, removal of infected catheters) is critical for survival.

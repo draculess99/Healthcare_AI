@@ -1,0 +1,59 @@
+{
+  "note": "These are estimated configurable costs. Actual hospital finance data is required for production.",
+  "interventions": {
+    "add_er_certified_nurse": {
+      "name": "Add 1 ER-certified nurse",
+      "type": "hourly",
+      "hourly_rate": 55.0,
+      "default_hours": 12.0,
+      "cost_assumption_source": "Hospital Labor Costing Model - ER Specialty Rate",
+      "cost_note": "Assumes standard emergency nurse base rate of $55/hr over a 12-hour shift."
+    },
+    "activate_float_pool": {
+      "name": "Activate float pool",
+      "type": "fixed",
+      "fixed_cost": 800.0,
+      "cost_assumption_source": "Hospital Roster Float Pool Policy",
+      "cost_note": "Assumes a flat float pool shift activation incentive premium."
+    },
+    "add_triage_support": {
+      "name": "Arrival surge / triage support",
+      "type": "hourly",
+      "hourly_rate": 50.0,
+      "default_hours": 12.0,
+      "cost_assumption_source": "Nurse Staffing Guide",
+      "cost_note": "Assumes triage support nurse rate of $50/hr for 12 hours."
+    },
+    "waiting_room_monitoring": {
+      "name": "Waiting room monitoring",
+      "type": "hourly",
+      "hourly_rate": 35.0,
+      "default_hours": 12.0,
+      "cost_assumption_source": "Advisory Board Patient Flow Guide",
+      "cost_note": "Assumes a junior nurse or patient advocate at $35/hr for 12 hours."
+    },
+    "open_fast_track_lane": {
+      "name": "Open fast-track lane",
+      "type": "fixed",
+      "fixed_cost": 500.0,
+      "cost_assumption_source": "Clinical Flow Optimization Guidelines",
+      "cost_note": "Assumes standard mid-level provider staffing flat cost per shift."
+    },
+    "bed_flow_escalation": {
+      "name": "Escalate inpatient bed management",
+      "type": "fixed",
+      "fixed_cost": 0.0,
+      "cost_assumption_source": "Internal Hospital Discharge Coordination Policy",
+      "cost_note": "Utilizes existing shift coordinators and inpatient beds, hence zero direct added cost."
+    },
+    "fatigue_safe_replacement": {
+      "name": "Fatigue-safe replacement",
+      "type": "fixed_plus_hourly",
+      "fixed_cost": 100.0,
+      "hourly_rate": 60.0,
+      "default_hours": 12.0,
+      "cost_assumption_source": "Staffing Safety & Overtime Prevention Agreement",
+      "cost_note": "Includes a $100 coordinator callback fee plus premium safety rate of $60/hr."
+    }
+  }
+}

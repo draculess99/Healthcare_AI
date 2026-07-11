@@ -1,0 +1,63 @@
+{
+  "stage": "Stage 3 - Supplier Intelligence Seed Data",
+  "description": "Demo vendor intelligence used by MedPack AI to compare primary, backup, emergency and internal-transfer options.",
+  "default_sla_hours": {
+    "internal_transfer": 45,
+    "backup_supplier": 24,
+    "emergency_supplier": 8
+  },
+  "vendors": [
+    {
+      "vendor_id": "V001",
+      "vendor_name": "NorthStar Medical Supply",
+      "role": "primary",
+      "category_focus": ["IV Supplies", "Respiratory", "Monitoring"],
+      "normal_lead_time_days": 2.0,
+      "current_delay_days": 4.5,
+      "reliability_score": 0.82,
+      "backorder_probability": 0.28,
+      "unit_cost_multiplier": 1.00,
+      "emergency_order_available": false,
+      "notes": "Strong catalog coverage, but currently delayed."
+    },
+    {
+      "vendor_id": "V002",
+      "vendor_name": "Beacon Hospital Logistics",
+      "role": "backup",
+      "category_focus": ["PPE", "IV Supplies", "Wound Care", "Lab Supplies"],
+      "normal_lead_time_days": 1.0,
+      "current_delay_days": 1.5,
+      "reliability_score": 0.91,
+      "backorder_probability": 0.12,
+      "unit_cost_multiplier": 1.08,
+      "emergency_order_available": true,
+      "notes": "Best general backup option for short-window shortages."
+    },
+    {
+      "vendor_id": "V003",
+      "vendor_name": "Atlas Clinical Distribution",
+      "role": "primary",
+      "category_focus": ["Surgical Supplies", "Catheterization", "Respiratory"],
+      "normal_lead_time_days": 2.5,
+      "current_delay_days": 2.0,
+      "reliability_score": 0.88,
+      "backorder_probability": 0.18,
+      "unit_cost_multiplier": 0.96,
+      "emergency_order_available": false,
+      "notes": "Good planned replenishment option."
+    },
+    {
+      "vendor_id": "V004",
+      "vendor_name": "BlueLine MedSource",
+      "role": "emergency",
+      "category_focus": ["PPE", "Respiratory", "IV Supplies", "Wound Care", "Surgical Supplies", "Monitoring", "Lab Supplies", "Catheterization"],
+      "normal_lead_time_days": 0.5,
+      "current_delay_days": 0.75,
+      "reliability_score": 0.78,
+      "backorder_probability": 0.20,
+      "unit_cost_multiplier": 1.22,
+      "emergency_order_available": true,
+      "notes": "Fast but expensive emergency source."
+    }
+  ]
+}

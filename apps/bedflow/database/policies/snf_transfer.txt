@@ -1,0 +1,5 @@
+HOSPITAL POLICY: SNF and Rehab Transfers
+
+All patients requiring discharge to a Skilled Nursing Facility (SNF) or Inpatient Rehab must have their physical therapy (PT) and occupational therapy (OT) evaluations completed prior to case management finalizing the transfer packet. 
+If the patient's acuity level is High or Critical, they must hold discharge until the receiving facility explicitly confirms they have the staffing ratios to support the patient's specific diagnosis.
+For patients with a "High" readmission risk, the transferring physician must conduct a warm handoff call with the accepting physician at the SNF.

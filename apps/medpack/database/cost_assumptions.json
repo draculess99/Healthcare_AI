@@ -1,0 +1,35 @@
+{
+  "stage": "Stage 4 - Cost, Waste & ROI Assumptions",
+  "description": "Demo financial assumptions for MedPack AI executive dashboard. These are portfolio-demo estimates, not audited hospital finance numbers.",
+  "labor": {
+    "supply_tech_hourly_cost": 28.0,
+    "nurse_hourly_cost": 62.0,
+    "default_transfer_minutes": 24.0,
+    "nurse_search_minutes_saved_per_shortage_unit": 1.8,
+    "packing_minutes_saved_per_prepacked_unit": 0.8
+  },
+  "risk": {
+    "stockout_impact_multiplier": {
+      "Low": 1.5,
+      "Medium": 3.0,
+      "High": 6.0,
+      "Critical": 10.0
+    },
+    "emergency_order_fixed_fee": 180.0,
+    "expiring_soon_window_days": 30,
+    "overstock_carrying_cost_monthly_pct": 0.035,
+    "rush_order_admin_minutes": 18.0,
+    "escalation_admin_minutes": 25.0
+  },
+  "category_unit_cost_defaults": {
+    "IV Supplies": 8.5,
+    "PPE": 2.25,
+    "Respiratory": 18.0,
+    "Wound Care": 7.5,
+    "Catheterization": 22.0,
+    "Lab Supplies": 6.5,
+    "Surgical Supplies": 95.0,
+    "Monitoring": 28.0,
+    "General": 10.0
+  }
+}

@@ -1,0 +1,24 @@
+--- REASSESSMENT CALLED ---
+patient_id: P-007
+new_vitals: {"thalach": 80, "trestbps": 120, "oxygen_saturation": 98, "respiratory_rate": 16, "temperature_f": 98.6, "pain_score": 0, "mental_status": "Alert", "active_chest_pain": false}
+old pain_score: 8
+updated pain_score: 0
+after deepcopy, queue[0] pain: 0
+--- REASSESSMENT CALLED ---
+patient_id: P-007
+new_vitals: {"active_chest_pain": false, "age": 50, "anticoagulants": false, "arrival_mode": "Walk-in", "can_walk": true, "cardiac_ml_chest_pain_feature": "No active chest pain / not applicable", "chief_complaint": "Minor injury / laceration", "chol": 200, "cp": 4, "expected_resources": [], "fbs": 0, "immunocompromised": false, "mental_status": "Alert", "oxygen_saturation": 98, "pain_score": 0, "pregnant": false, "respiratory_rate": 16, "sex": 1, "suicidal_homicidal": false, "temperature_f": 98.6, "thalach": 80, "trestbps": 120}
+old pain_score: 0
+updated pain_score: 0
+after deepcopy, queue[0] pain: 0
+--- REASSESSMENT CALLED ---
+patient_id: P-009
+new_vitals: {"thalach": 80, "trestbps": 129, "oxygen_saturation": 96, "respiratory_rate": 16, "temperature_f": 90.0, "pain_score": 0, "mental_status": "Alert", "active_chest_pain": false}
+old pain_score: 10
+updated pain_score: 0
+after deepcopy, queue[0] pain: 0
+--- REASSESSMENT CALLED ---
+patient_id: P-010
+new_vitals: {"thalach": 80, "trestbps": 120, "oxygen_saturation": 98, "respiratory_rate": 16, "temperature_f": 98.6, "pain_score": 0, "mental_status": "Alert", "active_chest_pain": false}
+old pain_score: 9
+updated pain_score: 0
+after deepcopy, queue[0] pain: 0

@@ -1,0 +1,141 @@
+Features to add
+
+1. Add a real ESI-style acuity engine
+
+This is the most important upgrade.
+
+Instead of only showing:
+
+Disease Probability: 78%
+Priority Score: 7.8/10
+
+Show:
+
+Recommended Acuity: ESI-2 — High Risk
+Reason: chest pain + abnormal vitals + likely multiple resources
+Safety flag: needs urgent clinician review
+Confidence: medium
+Nurse override: allowed
+
+That instantly makes it look more like a hospital triage tool. ESI is a five-level ED triage framework based on stability, high-risk presentation, vital signs, and expected resources.
+
+2. Add an ED waiting-room command board
+
+This would make the app look 10x more commercial.
+
+Add a table like:
+
+Wait	Patient	Complaint	ESI	Risk	Status	Next Action
+03 min	P001	Chest pain	2	High	Needs bed	ECG + provider now
+18 min	P002	Ankle injury	4	Low	Waiting	Fast track
+42 min	P003	Fever/SOB	2	High	Deteriorating	Sepsis screen
+
+Commercial ED systems heavily rely on track boards/status boards to manage patients across the department.
+
+3. Add red-flag protocol detection
+
+This would make the app feel clinically serious.
+
+Add automatic banners:
+
+Possible Stroke: face droop, arm weakness, speech issue, onset time
+Possible Sepsis: fever/hypothermia, HR, RR, BP, altered mental status
+Possible MI: chest pain, age, diaphoresis, shortness of breath
+Possible Respiratory Failure: low SpO₂, high RR, distress
+Possible Trauma Activation: mechanism + hypotension + anticoagulant use
+
+This should be deterministic, not LLM-only.
+
+4. Add resource prediction
+
+Hospitals care about resources. Add predictions like:
+
+Likely resources: ECG, troponin, CBC, CMP, chest X-ray
+Likely disposition: observation/admission risk 62%
+Fast-track eligible: no
+Bed need: monitored bed
+
+AHRQ’s ED triage AI work specifically targets critical illness, hospital admission, and fast-track eligibility rather than just one diagnosis.
+
+5. Add FHIR / EHR-ready demo mode
+
+Even if you do not connect to a real hospital EHR, you can make a fake FHIR integration.
+
+Add a tab called:
+
+EHR Integration Simulator
+
+It can import/export fake FHIR-style JSON for:
+
+Patient
+Encounter
+Observation
+Condition
+MedicationStatement
+AllergyIntolerance
+
+Then output a CDS Hooks-style recommendation card:
+
+“High-risk triage recommendation: assign ESI-2, place in monitored bed, obtain ECG.”
+
+That would look very professional because CDS Hooks is an actual HL7 pattern for launching clinical decision support inside clinician workflow.
+
+6. Add human-in-the-loop override
+
+This is a killer feature.
+
+After the model recommends ESI-2, show:
+
+Nurse decision: Accept / Override
+Override reason: “Patient looks stable” / “Concern for deterioration” / free text
+Save to audit log
+
+Then build a dashboard:
+
+Model agreed with nurse: 72%
+Nurse upgraded acuity: 18%
+Nurse downgraded acuity: 10%
+Most common override reason: abnormal appearance / clinical concern
+
+This turns your app from “AI gives answer” into “AI supports clinical workflow,” which is much more credible.
+
+7. Add model safety and fairness dashboard
+
+Hospitals will ask: “Does this under-triage elderly patients, women, non-English speakers, low-income patients, or pediatric patients?”
+
+Add:
+
+Under-triage rate
+Over-triage rate
+Sensitivity for ESI-1 / ESI-2
+Calibration chart
+Confusion matrix
+Bias/fairness breakdown on synthetic groups
+
+AHRQ specifically highlights equity and bias measurement as part of ED triage AI development.
+
+8. Add per-patient explanation, not just global feature importance
+
+Your XAI tab is good, but commercial-grade explainability needs patient-specific reasons.
+
+Example:
+
+Why ESI-2?
+
+Chest pain with high-risk features
+Systolic BP 185
+Age 72
+Likely requires multiple ED resources
+Not safe for fast track
+
+That is much stronger than a generic feature importance chart.
+
+9. Add deterioration monitoring
+
+Make the app re-check the waiting room every simulated 5 minutes.
+
+Example:
+
+Patient P004 has waited 38 minutes. HR increased from 112 to 128. SpO₂ dropped from 95% to 91%. Recommend re-triage and escalation.
+
+That would look extremely badass because it moves from static triage to real-time ED surveillance.

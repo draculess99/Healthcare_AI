@@ -1,0 +1,20 @@
+{
+    "XGBoost": {
+        "Accuracy": 0.7064,
+        "Precision": 0.691397445529677,
+        "Recall": 0.7400482509047045,
+        "F1 Score": 0.7148960963293843
+    },
+    "Random Forest": {
+        "Accuracy": 0.6964,
+        "Precision": 0.6874274661508704,
+        "Recall": 0.7145154804985927,
+        "F1 Score": 0.7007097791798107
+    },
+    "Logistic Regression": {
+        "Accuracy": 0.7191,
+        "Precision": 0.6999815259560318,
+        "Recall": 0.761761158021713,
+        "F1 Score": 0.7295658034081063
+    }
+}

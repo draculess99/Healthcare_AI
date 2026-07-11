@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SafeStaff AI | William Low</title>
+  <style>
+    :root {
+      --bg: #020617;
+      --bg-soft: #0f172a;
+      --card: rgba(15, 23, 42, 0.86);
+      --card-strong: rgba(30, 41, 59, 0.92);
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --blue: #38bdf8;
+      --blue-strong: #2563eb;
+      --green: #34d399;
+      --purple: #a78bfa;
+      --amber: #fbbf24;
+      --border: rgba(148, 163, 184, 0.22);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 34rem),
+        radial-gradient(circle at top right, rgba(167, 139, 250, 0.16), transparent 32rem),
+        linear-gradient(180deg, #020617 0%, #0f172a 55%, #020617 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(92%, 1160px);
+      margin: auto;
+      padding: 32px 0 56px;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 0 28px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: #f8fafc;
+    }
+
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--blue), var(--blue-strong));
+      box-shadow: 0 0 28px rgba(56, 189, 248, 0.4);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 0.95rem;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 66px 34px 46px;
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.94), rgba(30, 41, 59, 0.82)),
+        radial-gradient(circle at 20% 20%, rgba(56, 189, 248, 0.2), transparent 24rem);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(148, 163, 184, 0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: linear-gradient(to bottom, black, transparent 85%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 999px;
+      color: #bae6fd;
+      background: rgba(14, 165, 233, 0.12);
+      font-size: 0.88rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.6rem, 7vw, 5.2rem);
+      line-height: 1;
+      margin: 22px 0 18px;
+      color: #f8fafc;
+      letter-spacing: -0.06em;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+      text-shadow: 0 0 26px rgba(56, 189, 248, 0.35);
+    }
+
+    .hero p {
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      color: #cbd5e1;
+      max-width: 820px;
+      margin: 12px auto;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 145px;
+      padding: 13px 18px;
+      border-radius: 12px;
+      font-weight: 800;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      text-decoration: none;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      text-decoration: none;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--blue-strong), #3b82f6);
+      color: white;
+      box-shadow: 0 14px 34px rgba(37, 99, 235, 0.34);
+    }
+
+    .button.secondary {
+      background: rgba(15, 23, 42, 0.74);
+      color: #e0f2fe;
+      border: 1px solid rgba(56, 189, 248, 0.38);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px auto 0;
+      max-width: 840px;
+    }
+
+    .stat {
+      background: rgba(2, 6, 23, 0.45);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+    }
+
+    .stat strong {
+      display: block;
+      color: #f8fafc;
+      font-size: 1.4rem;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+      margin-top: 24px;
+    }
+
+    .card {
+      grid-column: span 12;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      box-shadow: 0 12px 42px rgba(0, 0, 0, 0.22);
+    }
+
+    .card.half {
+      grid-column: span 6;
+    }
+
+    .card.third {
+      grid-column: span 4;
+    }
+
+    h2 {
+      color: #bfdbfe;
+      margin: 0 0 12px;
+      font-size: 1.55rem;
+      letter-spacing: -0.02em;
+    }
+
+    h3 {
+      margin-top: 0;
+      color: #e0f2fe;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    ul {
+      padding-left: 20px;
+      margin-bottom: 0;
+    }
+
+    li + li {
+      margin-top: 7px;
+    }
+
+    .profile-box {
+      background: rgba(2, 6, 23, 0.48);
+      border-left: 5px solid var(--blue);
+      padding: 18px;
+      border-radius: 14px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .feature {
+      background: rgba(2, 6, 23, 0.38);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      border-radius: 16px;
+      padding: 17px;
+    }
+
+    .feature .icon {
+      font-size: 1.35rem;
+      margin-bottom: 8px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .flow-step {
+      position: relative;
+      background: rgba(2, 6, 23, 0.52);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 18px;
+      padding: 18px;
+      min-height: 138px;
+    }
+
+    .flow-step:not(:last-child)::after {
+      content: "→";
+      position: absolute;
+      right: -15px;
+      top: 45%;
+      color: var(--blue);
+      font-size: 1.6rem;
+      z-index: 2;
+    }
+
+    .number {
+      display: inline-grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background: rgba(37, 99, 235, 0.24);
+      color: #bfdbfe;
+      font-weight: 900;
+      margin-bottom: 12px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: rgba(14, 165, 233, 0.08);
+      color: #bae6fd;
+      padding: 7px 10px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    .notice {
+      border: 1px solid rgba(251, 191, 36, 0.35);
+      background: rgba(251, 191, 36, 0.08);
+      color: #fde68a;
+      border-radius: 16px;
+      padding: 16px;
+      margin-top: 18px;
+    }
+
+
+
+    .architecture-card {
+      overflow: hidden;
+    }
+
+    .architecture-media {
+      margin-top: 22px;
+      padding: 14px;
+      border-radius: 24px;
+      border: 1px solid rgba(56, 189, 248, 0.24);
+      background: rgba(2, 6, 23, 0.42);
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.28);
+    }
+
+    .architecture-media img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+    }
+
+    .architecture-caption {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+      text-align: center;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 34px 20px 6px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .card.half,
+      .card.third {
+        grid-column: span 12;
+      }
+
+      .stats,
+      .feature-grid,
+      .flow {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step:not(:last-child)::after {
+        content: "↓";
+        right: 50%;
+        top: auto;
+        bottom: -24px;
+        transform: translateX(50%);
+      }
+
+      .hero {
+        padding: 48px 20px 34px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <nav class="nav" aria-label="Page navigation">
+      <div class="brand">
+        <div class="brand-mark">🏥</div>
+        <span>SafeStaff AI</span>
+      </div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#stack">Tech Stack</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Agentic AI Healthcare Operations Capstone</div>
+        <h1>SafeStaff <span>AI</span></h1>
+        <p>
+          An emergency-department control tower that connects wait-time forecasting,
+          operational pressure signals, nurse-staffing recommendations, human approval,
+          and audit logging.
+        </p>
+        <p>
+          Created by <strong>Wil Low / Draculess99 </strong> as a final capstone project for the
+          Google/Kaggle Agentic AI course.
+        </p>
+
+        <div class="buttons">
+          <a class="button primary" href="https://safestaff-liinkedin-demo-production.up.railway.app/" target="_blank" rel="noopener">🚀 Live Demo</a>
+          <a class="button secondary" href="https://github.com/draculess99/SafeStaff-LIinkedIn-DEMO" target="_blank" rel="noopener">GitHub Repo</a>
+        </div>
+
+        <div class="stats" aria-label="Project highlights">
+          <div class="stat">
+            <strong>XGBoost</strong>
+            <span>ER wait-time risk forecasting</span>
+          </div>
+          <div class="stat">
+            <strong>Agentic AI</strong>
+            <span>Multi-agent staffing workflow</span>
+          </div>
+          <div class="stat">
+            <strong>Human Approval</strong>
+            <span>Governance and audit trail</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="grid">
+
+
+      <div class="card whole">
+        <h2>What SafeStaff AI Solves</h2>
+        <p>
+          Emergency departments face connected patient-flow failures: longer waits, rising
+          operational pressure, nurse fatigue, boarding delays, and staffing gaps.
+        </p>
+        <p>
+          SafeStaff AI treats wait-time forecasting and nurse staffing as one connected workflow,
+          helping decision-makers see when additional coverage may be needed.
+        </p>
+      </div>
+    </section>
+
+    <section id="architecture" class="card architecture-card">
+      <h2>Architecture &amp; Data Flow</h2>
+      <p>
+        SafeStaff AI connects operational ER inputs, nurse registry data, shift schedules,
+        policy/SOP grounding, wait-time forecasting, multi-agent review, human approval,
+        roster action, and audit logging into one decision-support control tower.
+      </p>
+      <div class="architecture-media">
+        <img
+          src="assets/ai_driven_staffing_decision_diagram.png"
+          alt="SafeStaff AI architecture and data flow diagram showing inputs, Streamlit frontend, Flask backend decision engine, XGBoost forecast, RAG retrieval, multi-agent committee, human approval, roster update, audit log, and feedback loop"
+          loading="lazy"
+        />
+      </div>
+      <p class="architecture-caption">
+        Architecture view: ER scenario inputs flow through the Streamlit control tower,
+        backend forecast and agentic decision engine, then into human-governed staffing actions
+        with audit-log feedback.
+      </p>
+    </section>
+
+
+    <section id="features" class="card">
+      <h2>Key Features</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="icon">📈</div>
+          <h3>Wait-Time Forecasting</h3>
+          <p class="muted">Uses XGBoost to estimate ER wait-time risk from operational features.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">⚕️</div>
+          <h3>Staffing Support</h3>
+          <p class="muted">Translates wait-time risk and pressure signals into nurse recommendations.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🧠</div>
+          <h3>Agentic Workflow</h3>
+          <p class="muted">Runs planner, compliance, safety, finance, and final arbiter reasoning.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">✅</div>
+          <h3>Human Approval</h3>
+          <p class="muted">Keeps supervisors in control before roster changes are accepted.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🧾</div>
+          <h3>Audit Logging</h3>
+          <p class="muted">Records recommendations, approvals, rejections, overrides, and token mode.</p>
+        </div>
+        <div class="feature">
+          <div class="icon">🔒</div>
+          <h3>Prototype Guardrails</h3>
+          <p class="muted">Supports local deterministic mode and Live Gemini mode with fallback behavior.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="card">
+      <h2>How SafeStaff AI Works</h2>
+      <p>
+        The app takes emergency-department scenario inputs, forecasts wait-time risk,
+        applies operational pressure signals, and routes staffing recommendations through
+        a human approval workflow.
+      </p>
+
+      <div class="flow">
+        <div class="flow-step">
+          <span class="number">1</span>
+          <h3>Scenario Inputs</h3>
+          <p class="muted">Arrival surge, boarding, acuity, call-outs, fatigue, and shift context.</p>
+        </div>
+        <div class="flow-step">
+          <span class="number">2</span>
+          <h3>ML Forecast</h3>
+          <p class="muted">XGBoost predicts ER wait-time risk.</p>
+        </div>
+        <div class="flow-step">
+          <span class="number">3</span>
+          <h3>Pressure Engine</h3>
+          <p class="muted">Operational modules adjust the staffing recommendation.</p>
+        </div>
+        <div class="flow-step">
+          <span class="number">4</span>
+          <h3>AI Committee</h3>
+          <p class="muted">Agents review staffing, safety, compliance, cost, and final decision.</p>
+        </div>
+        <div class="flow-step">
+          <span class="number">5</span>
+          <h3>Approval & Audit</h3>
+          <p class="muted">Human approves, rejects, or overrides; the decision is logged.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="stack" class="grid">
+      <div class="card half">
+        <h2>Technology Stack</h2>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">Streamlit</span>
+          <span class="tag">Flask</span>
+          <span class="tag">XGBoost</span>
+          <span class="tag">Gemini API</span>
+          <span class="tag">Railway</span>
+          <span class="tag">Agentic AI</span>
+          <span class="tag">Audit Logging</span>
+        </div>
+      </div>
+
+      <div class="card half">
+        <h2>Why It Matters</h2>
+        <p>
+          SafeStaff AI demonstrates how machine learning and agentic AI can support healthcare
+          operations by connecting wait-time risk, real-world ER pressure, and staffing decisions.
+        </p>
+        <div class="notice">
+          <strong>Prototype notice:</strong> This is a decision-support demo, not a clinically
+          validated staffing system. Real deployment would require hospital governance,
+          security review, validation, and human supervision.
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>© 2026 >Wil Low / Draculess99 | SafeStaff AI</p>
+    </footer>
+  </main>
+</body>
+</html>

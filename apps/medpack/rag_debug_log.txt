@@ -1,0 +1,21 @@
+[RAG Document 1 — escalation_policies.md]: ## Department-Specific Escalation Rules
+
+### Emergency Department
+
+- Any Critical or High-risk shortage in the ED triggers an automatic notification to the ED Medical Director in addition to the Supply Chain Director.
+- ED shortages are prioritized above all other departments for internal transfers.
+
+### ICU / NICU
+
+- ICU and NICU shortages for ventilator circuits, IV kits, or monitoring leads trigger immediate Tier 4 escalation regardless of coverage ratio.
+- Pediatric/neonatal supply shortages
+[RAG Document 2 — standard_operating_procedures.md]: ## SOP-101: IV Kit Shortage — Emergency Department
+
+**Trigger:** IV Kit stock in the Emergency Department falls below 20% of the 24-hour forecasted demand.
+
+**Actions:**
+
+1. Check the FAISS-indexed inventory for usable IV Kits across all departments.
+2. If usable stock exists in another department (e.g., Med-Surg), initiate an internal transfer via the Transfer Optimizer.
+3. Substitute with Pediatric IV Kits for patients under 40 kg if standard IV Kits are unavailable.
+4. For critical patients,

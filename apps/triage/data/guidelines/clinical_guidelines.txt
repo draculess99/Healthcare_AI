@@ -1,0 +1,25 @@
+**EMERGENCY DEPARTMENT CLINICAL GUIDELINES**
+
+**1. Chest Pain and Cardiac Risk Protocols**
+All patients presenting with active chest pain or anginal equivalents (shortness of breath, diaphoresis, radiating jaw/arm pain) must have an ECG performed and interpreted within 10 minutes of arrival. If the patient has a high probability of cardiac disease or a positive cardiac history, they are considered high risk and should be categorized as at least ESI-2. Immediate rooming and physician evaluation are required. Do not place in the waiting room if active symptoms are present.
+
+**2. Tachycardia and Heart Rate Abnormalities**
+A resting heart rate (thalach) above 130 bpm is a sign of severe physiological stress. If the patient has a sustained heart rate over 130 bpm, consider possible sepsis, pulmonary embolism, severe dehydration, or cardiac arrhythmias. This patient must not be triaged lower than ESI-2 and requires urgent evaluation.
+
+**3. Hypertension Emergency Protocols**
+A resting systolic blood pressure (trestbps) greater than or equal to 180 mm Hg, or a diastolic blood pressure greater than 110 mm Hg, requires prompt assessment for end-organ damage (e.g., neurological deficit, chest pain, shortness of breath, or renal failure). If asymptomatic, patients may wait in a monitored setting but should generally be triaged as ESI-3. If symptomatic with chest pain or neurological symptoms, triage as ESI-2.
+
+**4. Shortness of Breath (Dyspnea)**
+Patients with severe shortness of breath, use of accessory muscles, or oxygen saturation below 90% on room air are considered critically ill (ESI-1 or ESI-2). Immediate airway intervention or supplemental oxygen is required. Mild shortness of breath with normal oxygen saturation can be ESI-3 if the patient requires multiple resources (labs, chest X-ray, respiratory therapy).
+
+**5. Trauma and Hemorrhage**
+Patients presenting with uncontrolled bleeding, high-mechanism trauma, or altered mental status following a head injury require immediate trauma team activation (ESI-1 or ESI-2). Patients on anticoagulants (blood thinners) who experience a fall or head strike are at high risk for intracranial hemorrhage and must be evaluated emergently with a head CT.
+
+**6. Pain Management**
+Severe pain (8-10/10) should be addressed promptly. While pain alone does not automatically necessitate an ESI-2 rating unless associated with a high-risk symptom (e.g., chest pain, flank pain suggestive of kidney stone, or severe abdominal pain suggestive of surgical abdomen), nursing staff should initiate standing orders for analgesia when appropriate.
+
+**7. Immunocompromised Patients**
+Patients who are immunocompromised (e.g., active chemotherapy, transplant recipients, advanced HIV) presenting with a fever (Temperature > 100.4°F) are considered a medical emergency. They must be isolated, triaged as ESI-2, and receive blood cultures and broad-spectrum antibiotics within 1 hour of arrival.
+
+**8. Psychiatric and Behavioral Health**
+Patients expressing active suicidal or homicidal ideation must be placed in a secure room with a 1:1 sitter and triaged as ESI-2 for their safety. Medical clearance must be obtained before psychiatric evaluation.

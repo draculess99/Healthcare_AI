@@ -1,0 +1,5 @@
+HOSPITAL POLICY: Pharmacy MedRec and Discharge
+
+Pharmacy Medication Reconciliation (MedRec) is a mandatory step before any patient can physically leave the hospital. 
+For patients with a "Critical" readmission risk or those being discharged to a home setting, the pharmacist must prioritize their MedRec over routine floor duties to prevent medication errors that drive readmissions.
+If MedRec is the primary bottleneck and pharmacy is understaffed, the attending physician can perform a temporary MedRec override for Low/Moderate acuity patients, but not for High/Critical acuity patients.

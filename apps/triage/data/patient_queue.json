@@ -1,0 +1,1016 @@
+[
+  {
+    "age": 50,
+    "agent_outputs": {
+      "documentation": {
+        "audit_summary": "Chest pain / cardiac symptoms \u2192 ESI-2; escalation=yes; reassess=Immediate.",
+        "handoff_note": "ESI-2 generated for chief complaint: Chest pain / cardiac symptoms. Escalation required: yes. Fast-track eligible: no. Reassessment target: Immediate. Likely resources: ECG, Troponin / cardiac labs, Chest X-ray, Serial monitoring.",
+        "icon": "\ud83d\udcdd",
+        "name": "Documentation Agent",
+        "sbar": {
+          "Assessment": "Active chest-pain/cardiac complaint with elevated age or ML cardiac risk; Severe pain score: 9/10",
+          "Background": "XGBoost cardiac-risk probability: 97.5%. Arrival mode: Walk-in. Mental status: Alert.",
+          "Recommendation": "Room patient urgently / notify clinician; Apply focused protocol based on complaint; Begin monitoring and reassess if condition changes; +1 more",
+          "Situation": "Patient presents with Chest pain / cardiac symptoms. Deterministic acuity recommendation is ESI-2."
+        },
+        "severity": "info",
+        "status": "SBAR ready",
+        "summary": "Generated an SBAR-style handoff and audit-friendly triage note."
+      },
+      "safety_sentinel": {
+        "findings": [
+          "ESI-2 requires urgent review/rooming.",
+          "Active chest-pain/cardiac complaint with elevated age or ML cardiac risk",
+          "Severe pain score: 9/10",
+          "Severe pain documented: 9/10."
+        ],
+        "guardrail": "The deterministic ESI engine remains the safety source of truth; this agent explains and flags risk only.",
+        "icon": "\ud83d\udee1\ufe0f",
+        "name": "Safety Sentinel Agent",
+        "recommendation": "Keep nurse/clinician confirmation required; do not downgrade without a documented clinical reason.",
+        "severity": "high",
+        "status": "Escalation watch",
+        "summary": "Safety review complete: active queue recommendation is ESI-2."
+      }
+    },
+    "ai_esi_label": "ESI-2 \u2014 Emergent / High Risk",
+    "ai_esi_level": 2,
+    "ai_priority_score": 9.7,
+    "arrival_time": "2026-07-10T10:35:20",
+    "chief_complaint": "Chest pain / cardiac symptoms",
+    "disease_probability": 0.9745415449142456,
+    "esi_label": "ESI-2 \u2014 Emergent / High Risk",
+    "esi_level": 2,
+    "esi_result": {
+      "data_quality_warnings": [],
+      "escalation_required": true,
+      "esi_label": "ESI-2 \u2014 Emergent / High Risk",
+      "esi_level": 2,
+      "fast_track_eligible": false,
+      "human_override_required": true,
+      "likely_resources": [
+        "ECG",
+        "Troponin / cardiac labs",
+        "Chest X-ray",
+        "Serial monitoring"
+      ],
+      "priority_score": 9.7,
+      "rationale": [
+        "High-risk presentation requires immediate rooming/clinician review."
+      ],
+      "recommended_next_actions": [
+        "Room patient urgently / notify clinician",
+        "Apply focused protocol based on complaint",
+        "Begin monitoring and reassess if condition changes",
+        "Chest-pain pathway: ECG/troponin consideration per local protocol"
+      ],
+      "red_flags": [
+        "Active chest-pain/cardiac complaint with elevated age or ML cardiac risk",
+        "Severe pain score: 9/10"
+      ],
+      "resource_count": 4,
+      "review_interval_minutes": 0,
+      "source": "Deterministic ESI-style acuity engine + cardiac ML overlay only when active cardiac context is confirmed",
+      "urgency": "Immediate rooming and urgent clinician review"
+    },
+    "fast_track_eligible": false,
+    "final_nurse_esi": "-",
+    "final_nurse_esi_level": null,
+    "next_action": "Room patient urgently / notify clinician",
+    "notes": "",
+    "nurse_decision": null,
+    "nurse_override_reason": "",
+    "override": null,
+    "patient_id": "P-001",
+    "priority_score": 9.7,
+    "reassessment_interval": 0,
+    "recommended_resources": [
+      "ECG",
+      "Troponin / cardiac labs",
+      "Chest X-ray",
+      "Serial monitoring"
+    ],
+    "red_flag_count": 2,
+    "red_flags": [
+      "Active chest-pain/cardiac complaint with elevated age or ML cardiac risk",
+      "Severe pain score: 9/10"
+    ],
+    "report": "**Multi-Agent Committee Assessment (Groq - llama-3.3-70b-versatile):**\n\n- Disease Probability (XGBoost): 97.5%\n- ESI-Style Priority Score: 9.7/10\n- Recommended Acuity: **ESI-2 \u2014 Emergent / High Risk**\n\n## \ud83d\udea6 ESI-Style Acuity / Priority Engine\n- **Recommended Acuity:** **ESI-2 \u2014 Emergent / High Risk**\n- **Clinical Priority Score:** **9.7/10**\n- **Urgency:** Immediate rooming and urgent clinician review\n- **Escalation Required:** **YES \u2014 escalate now**\n- **Fast Track Eligible:** **NO**\n- **Recommended Reassessment:** Immediate\n\n**Red Flags / Upgrade Triggers:**\n- Active chest-pain/cardiac complaint with elevated age or ML cardiac risk\n- Severe pain score: 9/10\n\n**Likely ED Resources:**\n- ECG\n- Troponin / cardiac labs\n- Chest X-ray\n- Serial monitoring\n\n**Why this acuity was selected:**\n- High-risk presentation requires immediate rooming/clinician review.\n\n**Recommended Next Actions:**\n- Room patient urgently / notify clinician\n- Apply focused protocol based on complaint\n- Begin monitoring and reassess if condition changes\n- Chest-pain pathway: ECG/troponin consideration per local protocol\n\n*Safety note: This is a demo decision-support layer. A licensed clinician must confirm or override the recommendation.*\n\n---\n\n**ESI Acuity:** **ESI-2 \u2014 Emergent / High Risk**\n**Escalation Required:** **YES \u2014 escalate now**\n\n**SOAP Note:**\n\n**Subjective:**\nThe patient presents with a chief complaint of a minor injury/laceration, accompanied by a severe pain score of **10/10**. The patient's history and complaint suggest a high-risk presentation that necessitates immediate attention and evaluation. The patient is alert and able to communicate, but the severity of the pain is a significant concern.\n\n**Objective:**\nThe patient's vital signs and relevant data include:\n- Age: 50\n- Sex: Male\n- Systolic Blood Pressure: 120 mmHg\n- Oxygen Saturation (SpO\u2082): 98%\n- Respiratory Rate: 16/min\n- Temperature: 98.6\u00b0F\n- Pain Score: 10/10\n- Mental Status: Alert\n- XGBoost Model Prediction: **97.5% probability of heart disease**\n- Legacy Cardiac ML Chest-Pain Feature: Suggests '1: Typical Angina', but the chief complaint and clinical notes do not confirm active chest pain.\n\n**Assessment:**\nBased on the patient's presentation and the deterministic ESI-style engine output, the patient is classified as **ESI-2 \u2014 Emergent / High Risk**, with a **Clinical Priority Score** of **9.7/10**. The patient's **Risk Level** is deemed **High Risk**, primarily due to the severe pain score (**10/10**) and the potential cardiac symptoms suggested by the legacy cardiac ML chest-pain feature. The presence of a severe pain score is a significant red flag that necessitates prompt evaluation and management.\n\n**Plan:**\n1. **Urgent Rooming and Clinician Notification:** The patient should be roomed urgently to facilitate immediate assessment and care. The clinician should be notified promptly to ensure timely review and decision-making, as per the **Chest Pain and Cardiac Risk Protocols** guideline [1].\n2. **Apply Focused Protocol:** A focused protocol should be applied based on the patient's chief complaint, including consideration of ECG and troponin labs as part of the chest-pain pathway, per local protocol.\n3. **Monitoring and Reassessment:** The patient's condition should be monitored closely, and reassessment should be performed if there are any changes in the patient's condition. This will ensure that any potential deterioration is identified and addressed promptly.\n4. **Continuous Evaluation:** The patient's condition should be continuously evaluated, and any changes in the clinical presentation that may necessitate further escalation of care should be promptly addressed.\n\n**Safety Note:**\nA licensed clinician must review, confirm, or override these recommendations to ensure appropriate patient care. The final decision for patient care rests with the attending clinician, who must consider all available information, including but not limited to the recommendations provided by this system.\n\n## \ud83d\udea6 ESI-Style Acuity / Priority Engine\n- **Recommended Acuity:** **ESI-2 \u2014 Emergent / High Risk**\n- **Clinical Priority Score:** **9.7/10**\n- **Urgency:** Immediate rooming and urgent clinician review\n- **Escalation Required:** **YES \u2014 escalate now**\n- **Fast Track Eligible:** **NO**\n- **Recommended Reassessment:** Immediate\n\n**Red Flags / Upgrade Triggers:**\n- Severe pain score: 10/10\n\n**Likely ED Resources:**\n- ECG\n- Troponin / cardiac labs\n- Chest X-ray\n- Serial monitoring\n\n**Why this acuity was selected:**\n- High-risk presentation requires immediate rooming/clinician review.\n\n**Recommended Next Actions:**\n- Room patient urgently / notify clinician\n- Apply focused protocol based on complaint\n- Begin monitoring and reassess if condition changes\n- Chest-pain pathway: ECG/troponin consideration per local protocol\n\n*Safety note: This is a demo decision-support layer. A licensed clinician must confirm or override the recommendation.*",
+    "sex": "Male",
+    "status": "Waiting \u2014 Escalate",
+    "vitals": {
+      "active_chest_pain": true,
+      "age": 50,
+      "anticoagulants": false,
+      "arrival_mode": "Walk-in",
+      "can_walk": true,
+      "cardiac_ml_chest_pain_feature": "No active chest pain / not applicable",
+      "chief_complaint": "Chest pain / cardiac symptoms",
+      "chol": 200,
+      "cp": 4,
+      "expected_resources": [],
+      "fbs": 0,
+      "immunocompromised": false,
+      "mental_status": "Alert",
+      "oxygen_saturation": 98,
+      "pain_score": 9,
+      "pregnant": false,
+      "respiratory_rate": 16,
+      "sex": 1,
+      "suicidal_homicidal": false,
+      "temperature_f": 98.6,
+      "thalach": 80,
+      "trestbps": 120
+    }
+  },
+  {
+    "age": 43,
+    "agent_outputs": {
+      "documentation": {
+        "audit_summary": "Abdominal pain \u2192 ESI-3; escalation=no; reassess=Within 30 minutes.",
+        "handoff_note": "ESI-3 generated for chief complaint: Abdominal pain. Escalation required: no. Fast-track eligible: no. Reassessment target: Within 30 minutes. Likely resources: Labs, Imaging, IV fluids/meds.",
+        "icon": "\ud83d\udcdd",
+        "name": "Documentation Agent",
+        "sbar": {
+          "Assessment": "No high-risk red-flag trigger documented by the ESI engine.",
+          "Background": "XGBoost cardiac-risk probability: 97.1%. Arrival mode: Walk-in. Mental status: Alert.",
+          "Recommendation": "Place in urgent queue and monitor while waiting; Prepare likely diagnostic resources; Reassess vital signs within 30 minutes or sooner if symptoms worsen",
+          "Situation": "Patient presents with Abdominal pain. Deterministic acuity recommendation is ESI-3."
+        },
+        "severity": "info",
+        "status": "SBAR ready",
+        "summary": "Generated an SBAR-style handoff and audit-friendly triage note."
+      },
+      "safety_sentinel": {
+        "findings": [
+          "No ESI-1/ESI-2 red-flag trigger detected by the deterministic engine."
+        ],
+        "guardrail": "The deterministic ESI engine remains the safety source of truth; this agent explains and flags risk only.",
+        "icon": "\ud83d\udee1\ufe0f",
+        "name": "Safety Sentinel Agent",
+        "recommendation": "Keep in urgent queue and reassess within target window.",
+        "severity": "medium",
+        "status": "Monitor",
+        "summary": "Safety review complete: active queue recommendation is ESI-3."
+      }
+    },
+    "ai_esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+    "ai_esi_level": 3,
+    "ai_priority_score": 6.0,
+    "arrival_time": "2026-07-10T10:57:28",
+    "chief_complaint": "Abdominal pain",
+    "disease_probability": 0.9714458584785461,
+    "esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+    "esi_level": 3,
+    "esi_result": {
+      "data_quality_warnings": [],
+      "escalation_required": false,
+      "esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+      "esi_level": 3,
+      "fast_track_eligible": false,
+      "human_override_required": true,
+      "likely_resources": [
+        "Labs",
+        "Imaging",
+        "IV fluids/meds"
+      ],
+      "priority_score": 6.0,
+      "rationale": [
+        "Stable but likely needs two or more ED resources, or confirmed cardiac-context ML risk is moderate/high."
+      ],
+      "recommended_next_actions": [
+        "Place in urgent queue and monitor while waiting",
+        "Prepare likely diagnostic resources",
+        "Reassess vital signs within 30 minutes or sooner if symptoms worsen"
+      ],
+      "red_flags": [],
+      "resource_count": 3,
+      "review_interval_minutes": 30,
+      "source": "Deterministic ESI-style acuity engine + cardiac ML overlay only when active cardiac context is confirmed",
+      "urgency": "Urgent ED evaluation; monitor while waiting"
+    },
+    "fast_track_eligible": false,
+    "final_nurse_esi": "-",
+    "final_nurse_esi_level": null,
+    "next_action": "Place in urgent queue and monitor while waiting",
+    "notes": "",
+    "nurse_decision": null,
+    "nurse_override_reason": "",
+    "override": null,
+    "patient_id": "P-002",
+    "priority_score": 6.0,
+    "reassessment_interval": 30,
+    "recommended_resources": [
+      "Labs",
+      "Imaging",
+      "IV fluids/meds"
+    ],
+    "red_flag_count": 0,
+    "red_flags": [],
+    "report": "**Expert System Clinical Assessment:**\n\n- Disease Probability (XGBoost): 97.1%\n- ESI-Style Priority Score: 6.0/10\n- Risk Level: **Urgent**\n\n## \ud83d\udea6 ESI-Style Acuity / Priority Engine\n- **Recommended Acuity:** **ESI-3 \u2014 Urgent / Multiple Resources**\n- **Clinical Priority Score:** **6.0/10**\n- **Urgency:** Urgent ED evaluation; monitor while waiting\n- **Escalation Required:** **No immediate escalation trigger**\n- **Fast Track Eligible:** **NO**\n- **Recommended Reassessment:** Within 30 minutes\n\n**Likely ED Resources:**\n- Labs\n- Imaging\n- IV fluids/meds\n\n**Why this acuity was selected:**\n- Stable but likely needs two or more ED resources, or confirmed cardiac-context ML risk is moderate/high.\n\n**Recommended Next Actions:**\n- Place in urgent queue and monitor while waiting\n- Prepare likely diagnostic resources\n- Reassess vital signs within 30 minutes or sooner if symptoms worsen\n\n*Safety note: This is a demo decision-support layer. A licensed clinician must confirm or override the recommendation.*\n\n*Note: This decision was made using deterministic ESI-style triage rules plus the XGBoost probability, without LLM synthesis.*",
+    "sex": "Male",
+    "status": "Waiting",
+    "vitals": {
+      "active_chest_pain": false,
+      "age": 43,
+      "anticoagulants": false,
+      "arrival_mode": "Walk-in",
+      "can_walk": true,
+      "cardiac_ml_chest_pain_feature": "No active chest pain / not applicable",
+      "chief_complaint": "Abdominal pain",
+      "chol": 200,
+      "cp": 4,
+      "expected_resources": [],
+      "fbs": 0,
+      "immunocompromised": false,
+      "mental_status": "Alert",
+      "oxygen_saturation": 98,
+      "pain_score": 4,
+      "pregnant": false,
+      "respiratory_rate": 16,
+      "sex": 1,
+      "suicidal_homicidal": false,
+      "temperature_f": 98.6,
+      "thalach": 45,
+      "trestbps": 120
+    }
+  },
+  {
+    "age": 43,
+    "agent_outputs": {
+      "documentation": {
+        "audit_summary": "Trauma / fall / injury \u2192 ESI-2; escalation=yes; reassess=Immediate.",
+        "handoff_note": "ESI-2 generated for chief complaint: Trauma / fall / injury. Escalation required: yes. Fast-track eligible: no. Reassessment target: Immediate. Likely resources: Imaging, Wound/procedure care, Pain control.",
+        "icon": "\ud83d\udcdd",
+        "name": "Documentation Agent",
+        "sbar": {
+          "Assessment": "Severe pain score: 8/10",
+          "Background": "XGBoost cardiac-risk probability: 97.1%. Arrival mode: EMS. Mental status: Alert.",
+          "Recommendation": "Room patient urgently / notify clinician; Apply focused protocol based on complaint; Begin monitoring and reassess if condition changes",
+          "Situation": "Patient presents with Trauma / fall / injury. Deterministic acuity recommendation is ESI-2."
+        },
+        "severity": "info",
+        "status": "SBAR ready",
+        "summary": "Generated an SBAR-style handoff and audit-friendly triage note."
+      },
+      "safety_sentinel": {
+        "findings": [
+          "ESI-2 requires urgent review/rooming.",
+          "Severe pain score: 8/10",
+          "Severe pain documented: 8/10."
+        ],
+        "guardrail": "The deterministic ESI engine remains the safety source of truth; this agent explains and flags risk only.",
+        "icon": "\ud83d\udee1\ufe0f",
+        "name": "Safety Sentinel Agent",
+        "recommendation": "Keep nurse/clinician confirmation required; do not downgrade without a documented clinical reason.",
+        "severity": "high",
+        "status": "Escalation watch",
+        "summary": "Safety review complete: active queue recommendation is ESI-2."
+      }
+    },
+    "ai_esi_label": "ESI-2 \u2014 Emergent / High Risk",
+    "ai_esi_level": 2,
+    "ai_priority_score": 8.5,
+    "arrival_time": "2026-07-10T10:58:39",
+    "chief_complaint": "Trauma / fall / injury",
+    "disease_probability": 0.9714458584785461,
+    "esi_label": "ESI-2 \u2014 Emergent / High Risk",
+    "esi_level": 2,
+    "esi_result": {
+      "data_quality_warnings": [],
+      "escalation_required": true,
+      "esi_label": "ESI-2 \u2014 Emergent / High Risk",
+      "esi_level": 2,
+      "fast_track_eligible": false,
+      "human_override_required": true,
+      "likely_resources": [
+        "Imaging",
+        "Wound/procedure care",
+        "Pain control"
+      ],
+      "priority_score": 8.5,
+      "rationale": [
+        "High-risk presentation requires immediate rooming/clinician review."
+      ],
+      "recommended_next_actions": [
+        "Room patient urgently / notify clinician",
+        "Apply focused protocol based on complaint",
+        "Begin monitoring and reassess if condition changes"
+      ],
+      "red_flags": [
+        "Severe pain score: 8/10"
+      ],
+      "resource_count": 3,
+      "review_interval_minutes": 0,
+      "source": "Deterministic ESI-style acuity engine + cardiac ML overlay only when active cardiac context is confirmed",
+      "urgency": "Immediate rooming and urgent clinician review"
+    },
+    "fast_track_eligible": false,
+    "final_nurse_esi": "-",
+    "final_nurse_esi_level": null,
+    "next_action": "Room patient urgently / notify clinician",
+    "notes": "",
+    "nurse_decision": null,
+    "nurse_override_reason": "",
+    "override": null,
+    "patient_id": "P-003",
+    "priority_score": 8.5,
+    "reassessment_interval": 0,
+    "recommended_resources": [
+      "Imaging",
+      "Wound/procedure care",
+      "Pain control"
+    ],
+    "red_flag_count": 1,
+    "red_flags": [
+      "Severe pain score: 8/10"
+    ],
+    "report": "**Expert System Clinical Assessment:**\n\n- Disease Probability (XGBoost): 97.1%\n- ESI-Style Priority Score: 8.5/10\n- Risk Level: **Critical / High Risk**\n\n## \ud83d\udea6 ESI-Style Acuity / Priority Engine\n- **Recommended Acuity:** **ESI-2 \u2014 Emergent / High Risk**\n- **Clinical Priority Score:** **8.5/10**\n- **Urgency:** Immediate rooming and urgent clinician review\n- **Escalation Required:** **YES \u2014 escalate now**\n- **Fast Track Eligible:** **NO**\n- **Recommended Reassessment:** Immediate\n\n**Red Flags / Upgrade Triggers:**\n- Severe pain score: 8/10\n\n**Likely ED Resources:**\n- Imaging\n- Wound/procedure care\n- Pain control\n\n**Why this acuity was selected:**\n- High-risk presentation requires immediate rooming/clinician review.\n\n**Recommended Next Actions:**\n- Room patient urgently / notify clinician\n- Apply focused protocol based on complaint\n- Begin monitoring and reassess if condition changes\n\n*Safety note: This is a demo decision-support layer. A licensed clinician must confirm or override the recommendation.*\n\n*Note: This decision was made using deterministic ESI-style triage rules plus the XGBoost probability, without LLM synthesis.*",
+    "sex": "Male",
+    "status": "Waiting \u2014 Escalate",
+    "vitals": {
+      "active_chest_pain": false,
+      "age": 43,
+      "anticoagulants": false,
+      "arrival_mode": "EMS",
+      "can_walk": true,
+      "cardiac_ml_chest_pain_feature": "No active chest pain / not applicable",
+      "chief_complaint": "Trauma / fall / injury",
+      "chol": 200,
+      "cp": 4,
+      "expected_resources": [],
+      "fbs": 0,
+      "immunocompromised": false,
+      "mental_status": "Alert",
+      "oxygen_saturation": 98,
+      "pain_score": 8,
+      "pregnant": false,
+      "respiratory_rate": 16,
+      "sex": 1,
+      "suicidal_homicidal": false,
+      "temperature_f": 98.6,
+      "thalach": 45,
+      "trestbps": 120
+    }
+  },
+  {
+    "age": 43,
+    "agent_outputs": {
+      "documentation": {
+        "audit_summary": "Allergic reaction \u2192 ESI-3; escalation=no; reassess=Within 30 minutes.",
+        "handoff_note": "ESI-3 generated for chief complaint: Allergic reaction. Escalation required: no. Fast-track eligible: no. Reassessment target: Within 30 minutes. Likely resources: Airway assessment, Medication treatment, Observation.",
+        "icon": "\ud83d\udcdd",
+        "name": "Documentation Agent",
+        "sbar": {
+          "Assessment": "No high-risk red-flag trigger documented by the ESI engine.",
+          "Background": "XGBoost cardiac-risk probability: 97.1%. Arrival mode: Walk-in. Mental status: Alert.",
+          "Recommendation": "Place in urgent queue and monitor while waiting; Prepare likely diagnostic resources; Reassess vital signs within 30 minutes or sooner if symptoms worsen",
+          "Situation": "Patient presents with Allergic reaction. Deterministic acuity recommendation is ESI-3."
+        },
+        "severity": "info",
+        "status": "SBAR ready",
+        "summary": "Generated an SBAR-style handoff and audit-friendly triage note."
+      },
+      "safety_sentinel": {
+        "findings": [
+          "No ESI-1/ESI-2 red-flag trigger detected by the deterministic engine."
+        ],
+        "guardrail": "The deterministic ESI engine remains the safety source of truth; this agent explains and flags risk only.",
+        "icon": "\ud83d\udee1\ufe0f",
+        "name": "Safety Sentinel Agent",
+        "recommendation": "Keep in urgent queue and reassess within target window.",
+        "severity": "medium",
+        "status": "Monitor",
+        "summary": "Safety review complete: active queue recommendation is ESI-3."
+      }
+    },
+    "ai_esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+    "ai_esi_level": 3,
+    "ai_priority_score": 6.0,
+    "arrival_time": "2026-07-10T10:59:58",
+    "chief_complaint": "Allergic reaction",
+    "disease_probability": 0.9714458584785461,
+    "esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+    "esi_level": 3,
+    "esi_result": {
+      "data_quality_warnings": [],
+      "escalation_required": false,
+      "esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+      "esi_level": 3,
+      "fast_track_eligible": false,
+      "human_override_required": true,
+      "likely_resources": [
+        "Airway assessment",
+        "Medication treatment",
+        "Observation"
+      ],
+      "priority_score": 6.0,
+      "rationale": [
+        "Stable but likely needs two or more ED resources, or confirmed cardiac-context ML risk is moderate/high."
+      ],
+      "recommended_next_actions": [
+        "Place in urgent queue and monitor while waiting",
+        "Prepare likely diagnostic resources",
+        "Reassess vital signs within 30 minutes or sooner if symptoms worsen"
+      ],
+      "red_flags": [],
+      "resource_count": 3,
+      "review_interval_minutes": 30,
+      "source": "Deterministic ESI-style acuity engine + cardiac ML overlay only when active cardiac context is confirmed",
+      "urgency": "Urgent ED evaluation; monitor while waiting"
+    },
+    "fast_track_eligible": false,
+    "final_nurse_esi": "-",
+    "final_nurse_esi_level": null,
+    "next_action": "Place in urgent queue and monitor while waiting",
+    "notes": "",
+    "nurse_decision": null,
+    "nurse_override_reason": "",
+    "override": null,
+    "patient_id": "P-004",
+    "priority_score": 6.0,
+    "reassessment_interval": 30,
+    "recommended_resources": [
+      "Airway assessment",
+      "Medication treatment",
+      "Observation"
+    ],
+    "red_flag_count": 0,
+    "red_flags": [],
+    "report": "**Expert System Clinical Assessment:**\n\n- Disease Probability (XGBoost): 97.1%\n- ESI-Style Priority Score: 6.0/10\n- Risk Level: **Urgent**\n\n## \ud83d\udea6 ESI-Style Acuity / Priority Engine\n- **Recommended Acuity:** **ESI-3 \u2014 Urgent / Multiple Resources**\n- **Clinical Priority Score:** **6.0/10**\n- **Urgency:** Urgent ED evaluation; monitor while waiting\n- **Escalation Required:** **No immediate escalation trigger**\n- **Fast Track Eligible:** **NO**\n- **Recommended Reassessment:** Within 30 minutes\n\n**Likely ED Resources:**\n- Airway assessment\n- Medication treatment\n- Observation\n\n**Why this acuity was selected:**\n- Stable but likely needs two or more ED resources, or confirmed cardiac-context ML risk is moderate/high.\n\n**Recommended Next Actions:**\n- Place in urgent queue and monitor while waiting\n- Prepare likely diagnostic resources\n- Reassess vital signs within 30 minutes or sooner if symptoms worsen\n\n*Safety note: This is a demo decision-support layer. A licensed clinician must confirm or override the recommendation.*\n\n*Note: This decision was made using deterministic ESI-style triage rules plus the XGBoost probability, without LLM synthesis.*",
+    "sex": "Male",
+    "status": "Waiting",
+    "vitals": {
+      "active_chest_pain": false,
+      "age": 43,
+      "anticoagulants": false,
+      "arrival_mode": "Walk-in",
+      "can_walk": true,
+      "cardiac_ml_chest_pain_feature": "No active chest pain / not applicable",
+      "chief_complaint": "Allergic reaction",
+      "chol": 200,
+      "cp": 4,
+      "expected_resources": [],
+      "fbs": 0,
+      "immunocompromised": false,
+      "mental_status": "Alert",
+      "oxygen_saturation": 98,
+      "pain_score": 4,
+      "pregnant": false,
+      "respiratory_rate": 16,
+      "sex": 1,
+      "suicidal_homicidal": false,
+      "temperature_f": 98.6,
+      "thalach": 80,
+      "trestbps": 120
+    }
+  },
+  {
+    "age": 43,
+    "agent_outputs": {
+      "documentation": {
+        "audit_summary": "Allergic reaction \u2192 ESI-3; escalation=no; reassess=Within 30 minutes.",
+        "handoff_note": "ESI-3 generated for chief complaint: Allergic reaction. Escalation required: no. Fast-track eligible: no. Reassessment target: Within 30 minutes. Likely resources: Airway assessment, Medication treatment, Observation.",
+        "icon": "\ud83d\udcdd",
+        "name": "Documentation Agent",
+        "sbar": {
+          "Assessment": "No high-risk red-flag trigger documented by the ESI engine.",
+          "Background": "XGBoost cardiac-risk probability: 97.1%. Arrival mode: Walk-in. Mental status: Alert.",
+          "Recommendation": "Place in urgent queue and monitor while waiting; Prepare likely diagnostic resources; Reassess vital signs within 30 minutes or sooner if symptoms worsen",
+          "Situation": "Patient presents with Allergic reaction. Deterministic acuity recommendation is ESI-3."
+        },
+        "severity": "info",
+        "status": "SBAR ready",
+        "summary": "Generated an SBAR-style handoff and audit-friendly triage note."
+      },
+      "safety_sentinel": {
+        "findings": [
+          "No ESI-1/ESI-2 red-flag trigger detected by the deterministic engine."
+        ],
+        "guardrail": "The deterministic ESI engine remains the safety source of truth; this agent explains and flags risk only.",
+        "icon": "\ud83d\udee1\ufe0f",
+        "name": "Safety Sentinel Agent",
+        "recommendation": "Keep in urgent queue and reassess within target window.",
+        "severity": "medium",
+        "status": "Monitor",
+        "summary": "Safety review complete: active queue recommendation is ESI-3."
+      }
+    },
+    "ai_esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+    "ai_esi_level": 3,
+    "ai_priority_score": 6.0,
+    "arrival_time": "2026-07-10T11:01:08",
+    "chief_complaint": "Allergic reaction",
+    "disease_probability": 0.9714458584785461,
+    "esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+    "esi_level": 3,
+    "esi_result": {
+      "data_quality_warnings": [],
+      "escalation_required": false,
+      "esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+      "esi_level": 3,
+      "fast_track_eligible": false,
+      "human_override_required": true,
+      "likely_resources": [
+        "Airway assessment",
+        "Medication treatment",
+        "Observation"
+      ],
+      "priority_score": 6.0,
+      "rationale": [
+        "Stable but likely needs two or more ED resources, or confirmed cardiac-context ML risk is moderate/high."
+      ],
+      "recommended_next_actions": [
+        "Place in urgent queue and monitor while waiting",
+        "Prepare likely diagnostic resources",
+        "Reassess vital signs within 30 minutes or sooner if symptoms worsen"
+      ],
+      "red_flags": [],
+      "resource_count": 3,
+      "review_interval_minutes": 30,
+      "source": "Deterministic ESI-style acuity engine + cardiac ML overlay only when active cardiac context is confirmed",
+      "urgency": "Urgent ED evaluation; monitor while waiting"
+    },
+    "fast_track_eligible": false,
+    "final_nurse_esi": "-",
+    "final_nurse_esi_level": null,
+    "next_action": "Place in urgent queue and monitor while waiting",
+    "notes": "",
+    "nurse_decision": null,
+    "nurse_override_reason": "",
+    "override": null,
+    "patient_id": "P-005",
+    "priority_score": 6.0,
+    "reassessment_interval": 30,
+    "recommended_resources": [
+      "Airway assessment",
+      "Medication treatment",
+      "Observation"
+    ],
+    "red_flag_count": 0,
+    "red_flags": [],
+    "report": "**Expert System Clinical Assessment:**\n\n- Disease Probability (XGBoost): 97.1%\n- ESI-Style Priority Score: 6.0/10\n- Risk Level: **Urgent**\n\n## \ud83d\udea6 ESI-Style Acuity / Priority Engine\n- **Recommended Acuity:** **ESI-3 \u2014 Urgent / Multiple Resources**\n- **Clinical Priority Score:** **6.0/10**\n- **Urgency:** Urgent ED evaluation; monitor while waiting\n- **Escalation Required:** **No immediate escalation trigger**\n- **Fast Track Eligible:** **NO**\n- **Recommended Reassessment:** Within 30 minutes\n\n**Likely ED Resources:**\n- Airway assessment\n- Medication treatment\n- Observation\n\n**Why this acuity was selected:**\n- Stable but likely needs two or more ED resources, or confirmed cardiac-context ML risk is moderate/high.\n\n**Recommended Next Actions:**\n- Place in urgent queue and monitor while waiting\n- Prepare likely diagnostic resources\n- Reassess vital signs within 30 minutes or sooner if symptoms worsen\n\n*Safety note: This is a demo decision-support layer. A licensed clinician must confirm or override the recommendation.*\n\n*Note: This decision was made using deterministic ESI-style triage rules plus the XGBoost probability, without LLM synthesis.*",
+    "sex": "Male",
+    "status": "Waiting",
+    "vitals": {
+      "active_chest_pain": false,
+      "age": 43,
+      "anticoagulants": false,
+      "arrival_mode": "Walk-in",
+      "can_walk": true,
+      "cardiac_ml_chest_pain_feature": "No active chest pain / not applicable",
+      "chief_complaint": "Allergic reaction",
+      "chol": 200,
+      "cp": 4,
+      "expected_resources": [],
+      "fbs": 0,
+      "immunocompromised": false,
+      "mental_status": "Alert",
+      "oxygen_saturation": 98,
+      "pain_score": 4,
+      "pregnant": false,
+      "respiratory_rate": 16,
+      "sex": 1,
+      "suicidal_homicidal": false,
+      "temperature_f": 98.6,
+      "thalach": 80,
+      "trestbps": 120
+    }
+  },
+  {
+    "age": 50,
+    "agent_outputs": {
+      "documentation": {
+        "audit_summary": "Other \u2192 ESI-5; escalation=no; reassess=Within 120 minutes.",
+        "handoff_note": "ESI-5 generated for chief complaint: Other. Escalation required: no. Fast-track eligible: yes. Reassessment target: Within 120 minutes.",
+        "icon": "\ud83d\udcdd",
+        "name": "Documentation Agent",
+        "sbar": {
+          "Assessment": "No high-risk red-flag trigger documented by the ESI engine.",
+          "Background": "XGBoost cardiac-risk probability: 97.5%. Arrival mode: Walk-in. Mental status: Alert.",
+          "Recommendation": "Low-acuity fast-track if appropriate; Provide discharge/self-care guidance only after clinician review",
+          "Situation": "Patient presents with Other. Deterministic acuity recommendation is ESI-5."
+        },
+        "severity": "info",
+        "status": "SBAR ready",
+        "summary": "Generated an SBAR-style handoff and audit-friendly triage note."
+      },
+      "safety_sentinel": {
+        "findings": [
+          "No ESI-1/ESI-2 red-flag trigger detected by the deterministic engine."
+        ],
+        "guardrail": "The deterministic ESI engine remains the safety source of truth; this agent explains and flags risk only.",
+        "icon": "\ud83d\udee1\ufe0f",
+        "name": "Safety Sentinel Agent",
+        "recommendation": "Fast-track is reasonable if nurse agrees and no new red flags appear.",
+        "severity": "low",
+        "status": "Stable / fast-track check",
+        "summary": "Safety review complete: active queue recommendation is ESI-5."
+      }
+    },
+    "ai_esi_label": "ESI-5 \u2014 Non-Urgent / No Resources",
+    "ai_esi_level": 5,
+    "ai_priority_score": 1.5,
+    "arrival_time": "2026-07-10T11:12:16",
+    "chief_complaint": "Other",
+    "disease_probability": 0.9745415449142456,
+    "esi_label": "ESI-5 \u2014 Non-Urgent / No Resources",
+    "esi_level": 5,
+    "esi_result": {
+      "data_quality_warnings": [],
+      "escalation_required": false,
+      "esi_label": "ESI-5 \u2014 Non-Urgent / No Resources",
+      "esi_level": 5,
+      "fast_track_eligible": true,
+      "human_override_required": true,
+      "likely_resources": [],
+      "priority_score": 1.5,
+      "rationale": [
+        "Stable presentation with no obvious ED resource requirement."
+      ],
+      "recommended_next_actions": [
+        "Low-acuity fast-track if appropriate",
+        "Provide discharge/self-care guidance only after clinician review"
+      ],
+      "red_flags": [],
+      "resource_count": 0,
+      "review_interval_minutes": 120,
+      "source": "Deterministic ESI-style acuity engine + cardiac ML overlay only when active cardiac context is confirmed",
+      "urgency": "Low-acuity fast-track / self-care education candidate"
+    },
+    "fast_track_eligible": true,
+    "final_nurse_esi": "-",
+    "final_nurse_esi_level": null,
+    "next_action": "Low-acuity fast-track if appropriate",
+    "notes": "",
+    "nurse_decision": null,
+    "nurse_override_reason": "",
+    "override": null,
+    "patient_id": "P-006",
+    "priority_score": 1.5,
+    "reassessment_interval": 120,
+    "recommended_resources": [],
+    "red_flag_count": 0,
+    "red_flags": [],
+    "report": "**Expert System Clinical Assessment:**\n\n- Disease Probability (XGBoost): 97.5%\n- ESI-Style Priority Score: 1.5/10\n- Risk Level: **Non-Urgent**\n\n## \ud83d\udea6 ESI-Style Acuity / Priority Engine\n- **Recommended Acuity:** **ESI-5 \u2014 Non-Urgent / No Resources**\n- **Clinical Priority Score:** **1.5/10**\n- **Urgency:** Low-acuity fast-track / self-care education candidate\n- **Escalation Required:** **No immediate escalation trigger**\n- **Fast Track Eligible:** **YES**\n- **Recommended Reassessment:** Within 120 minutes\n\n**Why this acuity was selected:**\n- Stable presentation with no obvious ED resource requirement.\n\n**Recommended Next Actions:**\n- Low-acuity fast-track if appropriate\n- Provide discharge/self-care guidance only after clinician review\n\n*Safety note: This is a demo decision-support layer. A licensed clinician must confirm or override the recommendation.*\n\n*Note: This decision was made using deterministic ESI-style triage rules plus the XGBoost probability, without LLM synthesis.*",
+    "sex": "Male",
+    "status": "Waiting \u2014 Fast Track",
+    "vitals": {
+      "active_chest_pain": false,
+      "age": 50,
+      "anticoagulants": false,
+      "arrival_mode": "Walk-in",
+      "can_walk": true,
+      "cardiac_ml_chest_pain_feature": "No active chest pain / not applicable",
+      "chief_complaint": "Other",
+      "chol": 200,
+      "cp": 4,
+      "expected_resources": [],
+      "fbs": 0,
+      "immunocompromised": false,
+      "mental_status": "Alert",
+      "oxygen_saturation": 98,
+      "pain_score": 0,
+      "pregnant": false,
+      "respiratory_rate": 16,
+      "sex": 1,
+      "suicidal_homicidal": false,
+      "temperature_f": 98.6,
+      "thalach": 80,
+      "trestbps": 120
+    }
+  },
+  {
+    "age": 50,
+    "agent_outputs": {
+      "documentation": {
+        "audit_summary": "Other \u2192 ESI-5; escalation=no; reassess=Within 120 minutes.",
+        "handoff_note": "ESI-5 generated for chief complaint: Other. Escalation required: no. Fast-track eligible: yes. Reassessment target: Within 120 minutes.",
+        "icon": "\ud83d\udcdd",
+        "name": "Documentation Agent",
+        "sbar": {
+          "Assessment": "No high-risk red-flag trigger documented by the ESI engine.",
+          "Background": "XGBoost cardiac-risk probability: 97.5%. Arrival mode: Walk-in. Mental status: Alert.",
+          "Recommendation": "Low-acuity fast-track if appropriate; Provide discharge/self-care guidance only after clinician review",
+          "Situation": "Patient presents with Other. Deterministic acuity recommendation is ESI-5."
+        },
+        "severity": "info",
+        "status": "SBAR ready",
+        "summary": "Generated an SBAR-style handoff and audit-friendly triage note."
+      },
+      "safety_sentinel": {
+        "findings": [
+          "No ESI-1/ESI-2 red-flag trigger detected by the deterministic engine."
+        ],
+        "guardrail": "The deterministic ESI engine remains the safety source of truth; this agent explains and flags risk only.",
+        "icon": "\ud83d\udee1\ufe0f",
+        "name": "Safety Sentinel Agent",
+        "recommendation": "Fast-track is reasonable if nurse agrees and no new red flags appear.",
+        "severity": "low",
+        "status": "Stable / fast-track check",
+        "summary": "Safety review complete: active queue recommendation is ESI-5."
+      }
+    },
+    "ai_esi_label": "ESI-5 \u2014 Non-Urgent / No Resources",
+    "ai_esi_level": 5,
+    "ai_priority_score": 1.5,
+    "arrival_time": "2026-07-10T11:15:46",
+    "chief_complaint": "Other",
+    "disease_probability": 0.9745415449142456,
+    "esi_label": "ESI-5 \u2014 Non-Urgent / No Resources",
+    "esi_level": 5,
+    "esi_result": {
+      "data_quality_warnings": [],
+      "escalation_required": false,
+      "esi_label": "ESI-5 \u2014 Non-Urgent / No Resources",
+      "esi_level": 5,
+      "fast_track_eligible": true,
+      "human_override_required": true,
+      "likely_resources": [],
+      "priority_score": 1.5,
+      "rationale": [
+        "Stable presentation with no obvious ED resource requirement."
+      ],
+      "recommended_next_actions": [
+        "Low-acuity fast-track if appropriate",
+        "Provide discharge/self-care guidance only after clinician review"
+      ],
+      "red_flags": [],
+      "resource_count": 0,
+      "review_interval_minutes": 120,
+      "source": "Deterministic ESI-style acuity engine + cardiac ML overlay only when active cardiac context is confirmed",
+      "urgency": "Low-acuity fast-track / self-care education candidate"
+    },
+    "fast_track_eligible": true,
+    "final_nurse_esi": "-",
+    "final_nurse_esi_level": null,
+    "next_action": "Low-acuity fast-track if appropriate",
+    "notes": "",
+    "nurse_decision": null,
+    "nurse_override_reason": "",
+    "override": null,
+    "patient_id": "P-007",
+    "priority_score": 1.5,
+    "reassessment_interval": 120,
+    "recommended_resources": [],
+    "red_flag_count": 0,
+    "red_flags": [],
+    "report": "**Expert System Clinical Assessment:**\n\n- Disease Probability (XGBoost): 97.5%\n- ESI-Style Priority Score: 1.5/10\n- Risk Level: **Non-Urgent**\n\n## \ud83d\udea6 ESI-Style Acuity / Priority Engine\n- **Recommended Acuity:** **ESI-5 \u2014 Non-Urgent / No Resources**\n- **Clinical Priority Score:** **1.5/10**\n- **Urgency:** Low-acuity fast-track / self-care education candidate\n- **Escalation Required:** **No immediate escalation trigger**\n- **Fast Track Eligible:** **YES**\n- **Recommended Reassessment:** Within 120 minutes\n\n**Why this acuity was selected:**\n- Stable presentation with no obvious ED resource requirement.\n\n**Recommended Next Actions:**\n- Low-acuity fast-track if appropriate\n- Provide discharge/self-care guidance only after clinician review\n\n*Safety note: This is a demo decision-support layer. A licensed clinician must confirm or override the recommendation.*\n\n*Note: This decision was made using deterministic ESI-style triage rules plus the XGBoost probability, without LLM synthesis.*",
+    "sex": "Male",
+    "status": "Waiting \u2014 Fast Track",
+    "vitals": {
+      "active_chest_pain": false,
+      "age": 50,
+      "anticoagulants": false,
+      "arrival_mode": "Walk-in",
+      "can_walk": true,
+      "cardiac_ml_chest_pain_feature": "No active chest pain / not applicable",
+      "chief_complaint": "Other",
+      "chol": 200,
+      "cp": 4,
+      "expected_resources": [],
+      "fbs": 0,
+      "immunocompromised": false,
+      "mental_status": "Alert",
+      "oxygen_saturation": 98,
+      "pain_score": 0,
+      "pregnant": false,
+      "respiratory_rate": 16,
+      "sex": 1,
+      "suicidal_homicidal": false,
+      "temperature_f": 98.6,
+      "thalach": 80,
+      "trestbps": 120
+    }
+  },
+  {
+    "patient_id": "P-008",
+    "arrival_time": "2026-07-10T11:17:29",
+    "chief_complaint": "Trauma / fall / injury",
+    "age": 50,
+    "sex": "Male",
+    "esi_level": 3,
+    "esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+    "priority_score": 6.0,
+    "ai_esi_level": 3,
+    "ai_esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+    "ai_priority_score": 6.0,
+    "final_nurse_esi": "-",
+    "final_nurse_esi_level": null,
+    "nurse_decision": null,
+    "nurse_override_reason": "",
+    "red_flags": [],
+    "red_flag_count": 0,
+    "fast_track_eligible": false,
+    "recommended_resources": [
+      "Imaging",
+      "Wound/procedure care",
+      "Pain control"
+    ],
+    "reassessment_interval": 30,
+    "next_action": "Place in urgent queue and monitor while waiting",
+    "status": "Waiting",
+    "vitals": {
+      "age": 50,
+      "sex": 1,
+      "cp": 4,
+      "trestbps": 120,
+      "chol": 200,
+      "fbs": 0,
+      "thalach": 80,
+      "chief_complaint": "Trauma / fall / injury",
+      "active_chest_pain": false,
+      "cardiac_ml_chest_pain_feature": "No active chest pain / not applicable",
+      "temperature_f": 98.6,
+      "respiratory_rate": 16,
+      "oxygen_saturation": 98,
+      "pain_score": 0,
+      "mental_status": "Alert",
+      "arrival_mode": "Walk-in",
+      "expected_resources": [],
+      "immunocompromised": false,
+      "pregnant": false,
+      "anticoagulants": false,
+      "suicidal_homicidal": false,
+      "can_walk": true
+    },
+    "notes": "",
+    "disease_probability": 0.9745415449142456,
+    "report": "**Expert System Clinical Assessment:**\n\n- Disease Probability (XGBoost): 97.5%\n- ESI-Style Priority Score: 6.0/10\n- Risk Level: **Urgent**\n\n## \ud83d\udea6 ESI-Style Acuity / Priority Engine\n- **Recommended Acuity:** **ESI-3 \u2014 Urgent / Multiple Resources**\n- **Clinical Priority Score:** **6.0/10**\n- **Urgency:** Urgent ED evaluation; monitor while waiting\n- **Escalation Required:** **No immediate escalation trigger**\n- **Fast Track Eligible:** **NO**\n- **Recommended Reassessment:** Within 30 minutes\n\n**Likely ED Resources:**\n- Imaging\n- Wound/procedure care\n- Pain control\n\n**Why this acuity was selected:**\n- Stable but likely needs two or more ED resources, or confirmed cardiac-context ML risk is moderate/high.\n\n**Recommended Next Actions:**\n- Place in urgent queue and monitor while waiting\n- Prepare likely diagnostic resources\n- Reassess vital signs within 30 minutes or sooner if symptoms worsen\n\n*Safety note: This is a demo decision-support layer. A licensed clinician must confirm or override the recommendation.*\n\n*Note: This decision was made using deterministic ESI-style triage rules plus the XGBoost probability, without LLM synthesis.*",
+    "esi_result": {
+      "esi_level": 3,
+      "esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+      "urgency": "Urgent ED evaluation; monitor while waiting",
+      "priority_score": 6.0,
+      "review_interval_minutes": 30,
+      "escalation_required": false,
+      "fast_track_eligible": false,
+      "red_flags": [],
+      "rationale": [
+        "Stable but likely needs two or more ED resources, or confirmed cardiac-context ML risk is moderate/high."
+      ],
+      "likely_resources": [
+        "Imaging",
+        "Wound/procedure care",
+        "Pain control"
+      ],
+      "resource_count": 3,
+      "recommended_next_actions": [
+        "Place in urgent queue and monitor while waiting",
+        "Prepare likely diagnostic resources",
+        "Reassess vital signs within 30 minutes or sooner if symptoms worsen"
+      ],
+      "data_quality_warnings": [],
+      "human_override_required": true,
+      "source": "Deterministic ESI-style acuity engine + cardiac ML overlay only when active cardiac context is confirmed"
+    },
+    "agent_outputs": {
+      "safety_sentinel": {
+        "name": "Safety Sentinel Agent",
+        "icon": "\ud83d\udee1\ufe0f",
+        "status": "Monitor",
+        "severity": "medium",
+        "summary": "Safety review complete: active queue recommendation is ESI-3.",
+        "findings": [
+          "No ESI-1/ESI-2 red-flag trigger detected by the deterministic engine."
+        ],
+        "recommendation": "Keep in urgent queue and reassess within target window.",
+        "guardrail": "The deterministic ESI engine remains the safety source of truth; this agent explains and flags risk only."
+      },
+      "documentation": {
+        "name": "Documentation Agent",
+        "icon": "\ud83d\udcdd",
+        "status": "SBAR ready",
+        "severity": "info",
+        "summary": "Generated an SBAR-style handoff and audit-friendly triage note.",
+        "sbar": {
+          "Situation": "Patient presents with Trauma / fall / injury. Deterministic acuity recommendation is ESI-3.",
+          "Background": "XGBoost cardiac-risk probability: 97.5%. Arrival mode: Walk-in. Mental status: Alert.",
+          "Assessment": "No high-risk red-flag trigger documented by the ESI engine.",
+          "Recommendation": "Place in urgent queue and monitor while waiting; Prepare likely diagnostic resources; Reassess vital signs within 30 minutes or sooner if symptoms worsen"
+        },
+        "handoff_note": "ESI-3 generated for chief complaint: Trauma / fall / injury. Escalation required: no. Fast-track eligible: no. Reassessment target: Within 30 minutes. Likely resources: Imaging, Wound/procedure care, Pain control.",
+        "audit_summary": "Trauma / fall / injury \u2192 ESI-3; escalation=no; reassess=Within 30 minutes."
+      }
+    },
+    "override": null
+  },
+  {
+    "patient_id": "P-009",
+    "arrival_time": "2026-07-10T11:18:25",
+    "chief_complaint": "Fever / infection concern",
+    "age": 50,
+    "sex": "Male",
+    "esi_level": 3,
+    "esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+    "priority_score": 6.0,
+    "ai_esi_level": 3,
+    "ai_esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+    "ai_priority_score": 6.0,
+    "final_nurse_esi": "-",
+    "final_nurse_esi_level": null,
+    "nurse_decision": null,
+    "nurse_override_reason": "",
+    "red_flags": [],
+    "red_flag_count": 0,
+    "fast_track_eligible": false,
+    "recommended_resources": [
+      "Troponin / cardiac labs",
+      "Sepsis screen",
+      "Labs",
+      "Cultures",
+      "IV fluids/meds"
+    ],
+    "reassessment_interval": 30,
+    "next_action": "Place in urgent queue and monitor while waiting",
+    "status": "Waiting",
+    "vitals": {
+      "age": 50,
+      "sex": 1,
+      "cp": 4,
+      "trestbps": 120,
+      "chol": 200,
+      "fbs": 0,
+      "thalach": 80,
+      "chief_complaint": "Fever / infection concern",
+      "active_chest_pain": false,
+      "cardiac_ml_chest_pain_feature": "No active chest pain / not applicable",
+      "temperature_f": 98.6,
+      "respiratory_rate": 16,
+      "oxygen_saturation": 98,
+      "pain_score": 5,
+      "mental_status": "Alert",
+      "arrival_mode": "Walk-in",
+      "expected_resources": [
+        "Troponin / cardiac labs"
+      ],
+      "immunocompromised": false,
+      "pregnant": false,
+      "anticoagulants": false,
+      "suicidal_homicidal": false,
+      "can_walk": true
+    },
+    "notes": "",
+    "disease_probability": 0.9745415449142456,
+    "report": "**Multi-Agent Committee Assessment (Groq - llama-3.3-70b-versatile):**\n\n- Disease Probability (XGBoost): 97.5%\n- ESI-Style Priority Score: 6.0/10\n- Recommended Acuity: **ESI-3 \u2014 Urgent / Multiple Resources**\n\n## \ud83d\udea6 ESI-Style Acuity / Priority Engine\n- **Recommended Acuity:** **ESI-3 \u2014 Urgent / Multiple Resources**\n- **Clinical Priority Score:** **6.0/10**\n- **Urgency:** Urgent ED evaluation; monitor while waiting\n- **Escalation Required:** **No immediate escalation trigger**\n- **Fast Track Eligible:** **NO**\n- **Recommended Reassessment:** Within 30 minutes\n\n**Likely ED Resources:**\n- Troponin / cardiac labs\n- Sepsis screen\n- Labs\n- Cultures\n- IV fluids/meds\n\n**Why this acuity was selected:**\n- Stable but likely needs two or more ED resources, or confirmed cardiac-context ML risk is moderate/high.\n\n**Recommended Next Actions:**\n- Place in urgent queue and monitor while waiting\n- Prepare likely diagnostic resources\n- Reassess vital signs within 30 minutes or sooner if symptoms worsen\n\n*Safety note: This is a demo decision-support layer. A licensed clinician must confirm or override the recommendation.*\n\n---\n\n**ESI Acuity:** ESI-3 \u2014 Urgent / Multiple Resources\n**Escalation Required:** No immediate escalation trigger\n\n**Subjective:**\nThe patient presents with a chief complaint of 'Fever / infection concern' and a predicted 97.5% probability of heart disease by the XGBoost model. The patient denies active chest pain or anginal equivalents. The patient's medical history, including the absence of immunocompromised status and fever over 100.4\u00b0F, has been considered in the assessment.\n\n**Objective:**\nThe patient's vital signs are stable, with a temperature of 98.6\u00b0F, respiratory rate of 16, oxygen saturation of 98%, and a pain score of 0. The patient is alert and able to walk. The XGBoost model predicts a high probability of heart disease, which warrants further evaluation and monitoring.\n\n**Assessment:**\nBased on the patient's presentation and the predicted high probability of heart disease, the patient is assessed as requiring urgent evaluation and management. The ESI-style acuity engine output recommends an **ESI-3 \u2014 Urgent / Multiple Resources** acuity level, which is appropriate given the potential need for multiple resources, including Troponin / cardiac labs, sepsis screen, labs, cultures, and potential IV fluids/meds.\n\n**Plan:**\nThe patient will be placed in the urgent queue and monitored while waiting. The likely diagnostic resources will be prepared, and the patient's vital signs will be reassessed within 30 minutes or sooner if symptoms worsen. The patient's condition will be closely monitored, and further evaluation and management will be provided as necessary.\n\nThe assessment and plan have been guided by the clinical guidelines, including [1] **7. Immunocompromised Patients** and [2] **1. Chest Pain and Cardiac Risk Protocols**. The patient's stable presentation and lack of high-risk features do not immediately trigger high-risk protocols, but the predicted high probability of heart disease necessitates thorough evaluation and monitoring.\n\n*A licensed clinician must review and confirm or override this assessment.*\n\n**Safety Considerations:**\nThe patient's safety has been considered throughout the assessment, with attention to potential red flags and the need for close monitoring and further evaluation. The ESI-style acuity engine output and the XGBoost model predictions have been used to inform the assessment and plan, with the goal of providing appropriate care and ensuring patient safety.\n\n**Recommendations:**\nThe patient's condition will be closely monitored, and the following recommendations will be considered:\n\n* Reassess vital signs within 30 minutes or sooner if symptoms worsen\n* Prepare likely diagnostic resources, including Troponin / cardiac labs, sepsis screen, labs, cultures, and potential IV fluids/meds\n* Place the patient in the urgent queue and monitor while waiting\n* Consider further evaluation and management as necessary to ensure the patient receives appropriate care.",
+    "esi_result": {
+      "esi_level": 3,
+      "esi_label": "ESI-3 \u2014 Urgent / Multiple Resources",
+      "urgency": "Urgent ED evaluation; monitor while waiting",
+      "priority_score": 6.0,
+      "review_interval_minutes": 30,
+      "escalation_required": false,
+      "fast_track_eligible": false,
+      "red_flags": [],
+      "rationale": [
+        "Stable but likely needs two or more ED resources, or confirmed cardiac-context ML risk is moderate/high."
+      ],
+      "likely_resources": [
+        "Troponin / cardiac labs",
+        "Sepsis screen",
+        "Labs",
+        "Cultures",
+        "IV fluids/meds"
+      ],
+      "resource_count": 5,
+      "recommended_next_actions": [
+        "Place in urgent queue and monitor while waiting",
+        "Prepare likely diagnostic resources",
+        "Reassess vital signs within 30 minutes or sooner if symptoms worsen"
+      ],
+      "data_quality_warnings": [],
+      "human_override_required": true,
+      "source": "Deterministic ESI-style acuity engine + cardiac ML overlay only when active cardiac context is confirmed"
+    },
+    "agent_outputs": {
+      "safety_sentinel": {
+        "name": "Safety Sentinel Agent",
+        "icon": "\ud83d\udee1\ufe0f",
+        "status": "Monitor",
+        "severity": "medium",
+        "summary": "Safety review complete: active queue recommendation is ESI-3.",
+        "findings": [
+          "No ESI-1/ESI-2 red-flag trigger detected by the deterministic engine."
+        ],
+        "recommendation": "Keep in urgent queue and reassess within target window.",
+        "guardrail": "The deterministic ESI engine remains the safety source of truth; this agent explains and flags risk only."
+      },
+      "documentation": {
+        "name": "Documentation Agent",
+        "icon": "\ud83d\udcdd",
+        "status": "SBAR ready",
+        "severity": "info",
+        "summary": "Generated an SBAR-style handoff and audit-friendly triage note.",
+        "sbar": {
+          "Situation": "Patient presents with Fever / infection concern. Deterministic acuity recommendation is ESI-3.",
+          "Background": "XGBoost cardiac-risk probability: 97.5%. Arrival mode: Walk-in. Mental status: Alert.",
+          "Assessment": "No high-risk red-flag trigger documented by the ESI engine.",
+          "Recommendation": "Place in urgent queue and monitor while waiting; Prepare likely diagnostic resources; Reassess vital signs within 30 minutes or sooner if symptoms worsen"
+        },
+        "handoff_note": "ESI-3 generated for chief complaint: Fever / infection concern. Escalation required: no. Fast-track eligible: no. Reassessment target: Within 30 minutes. Likely resources: Troponin / cardiac labs, Sepsis screen, Labs, Cultures, IV fluids/meds.",
+        "audit_summary": "Fever / infection concern \u2192 ESI-3; escalation=no; reassess=Within 30 minutes."
+      }
+    },
+    "override": null
+  }
+]

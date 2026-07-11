@@ -1,0 +1,124 @@
+{
+  "stage": "Stage 3 - Substitution Rules Seed Data",
+  "description": "Demo-approved substitution options. These are portfolio-demo rules, not clinical policy.",
+  "rules": {
+    "Oxygen Mask": [
+      {
+        "substitute_item": "Nasal Cannula",
+        "clinical_fit": "Partial",
+        "suitability_score": 0.62,
+        "notes": "Use only for lower-acuity oxygen support scenarios; not equivalent for all respiratory needs."
+      }
+    ],
+    "Nasal Cannula": [
+      {
+        "substitute_item": "Oxygen Mask",
+        "clinical_fit": "Partial",
+        "suitability_score": 0.70,
+        "notes": "May be acceptable when higher-flow oxygen delivery is appropriate."
+      }
+    ],
+    "Nitrile Gloves Medium": [
+      {
+        "substitute_item": "Nitrile Gloves Large",
+        "clinical_fit": "Operational",
+        "suitability_score": 0.82,
+        "notes": "Acceptable short-term PPE substitution if fit is adequate for staff."
+      }
+    ],
+    "Nitrile Gloves Large": [
+      {
+        "substitute_item": "Nitrile Gloves Medium",
+        "clinical_fit": "Operational",
+        "suitability_score": 0.74,
+        "notes": "Acceptable only where fit is safe for the user."
+      }
+    ],
+    "PPE Gown": [
+      {
+        "substitute_item": "Nitrile Gloves Large",
+        "clinical_fit": "Not Equivalent",
+        "suitability_score": 0.20,
+        "notes": "Not a true replacement; included to show rejection behavior."
+      }
+    ],
+    "IV Start Kit": [
+      {
+        "substitute_item": "Syringe 10ml",
+        "clinical_fit": "Component Only",
+        "suitability_score": 0.35,
+        "notes": "Only solves part of the kit shortage. Requires manual kit build."
+      },
+      {
+        "substitute_item": "Saline Flush",
+        "clinical_fit": "Component Only",
+        "suitability_score": 0.30,
+        "notes": "Only a component; not a full IV start kit replacement."
+      }
+    ],
+    "Syringe 10ml": [
+      {
+        "substitute_item": "IV Start Kit",
+        "clinical_fit": "Component Source",
+        "suitability_score": 0.40,
+        "notes": "Could break kits only as last resort."
+      }
+    ],
+    "Sterile Gauze": [
+      {
+        "substitute_item": "Wound Care Pack",
+        "clinical_fit": "Good",
+        "suitability_score": 0.78,
+        "notes": "Wound care pack may contain gauze or acceptable dressing material."
+      }
+    ],
+    "Wound Care Pack": [
+      {
+        "substitute_item": "Sterile Gauze",
+        "clinical_fit": "Partial",
+        "suitability_score": 0.58,
+        "notes": "Only supports simple dressing needs; not a full pack replacement."
+      }
+    ],
+    "Blood Draw Kit": [
+      {
+        "substitute_item": "Syringe 10ml",
+        "clinical_fit": "Component Only",
+        "suitability_score": 0.32,
+        "notes": "May support collection workflow only with additional supplies."
+      }
+    ],
+    "Surgical Tray": [
+      {
+        "substitute_item": "Wound Care Pack",
+        "clinical_fit": "Not Equivalent",
+        "suitability_score": 0.25,
+        "notes": "Not a true surgical-tray replacement; should trigger escalation."
+      }
+    ],
+    "Patient Monitoring Leads": [
+      {
+        "substitute_item": "Nasal Cannula",
+        "clinical_fit": "Not Equivalent",
+        "suitability_score": 0.10,
+        "notes": "Not clinically equivalent; included to show rejection behavior."
+      }
+    ],
+    "Foley Catheter Kit": [
+      {
+        "substitute_item": "Sterile Gauze",
+        "clinical_fit": "Component Only",
+        "suitability_score": 0.22,
+        "notes": "Not a kit replacement; only one sterile component."
+      }
+    ],
+    "Saline Flush": [
+      {
+        "substitute_item": "IV Start Kit",
+        "clinical_fit": "Component Source",
+        "suitability_score": 0.30,
+        "notes": "Could source a flush from a kit only as last resort."
+      }
+    ]
+  }
+}
