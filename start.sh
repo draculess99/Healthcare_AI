@@ -42,6 +42,5 @@ PIDS+=("$!")
 
 echo "Healthcare AI Control Tower is available on port ${PORT}."
 
-# Exit if any required child process exits; Railway will restart the service.
-wait -n
-exit 1
+# Wait for all background processes to finish instead of exiting on the first failure.
+wait
