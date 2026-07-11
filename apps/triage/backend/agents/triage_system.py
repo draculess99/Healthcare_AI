@@ -95,7 +95,11 @@ def run_multi_agent_pipeline(vitals, notes, model_name, prob, priority_score, es
     )
     # Retrieve RAG Guidelines
     rag_query = f"Patient presenting with {vitals.get('chief_complaint', 'unknown')}, pain {vitals.get('pain_score', 0)}/10, heart rate {vitals.get('thalach', 0)}."
-    rag_context = retrieve_guidelines(rag_query)
+    try:
+        rag_context = retrieve_guidelines(rag_query)
+    except Exception as e:
+        print(f"Failed to retrieve guidelines: {e}")
+        rag_context = "Guidelines unavailable due to internal error."
 
     analyst_prompt = (
         f"Analyze the following patient data.\n"
@@ -185,10 +189,14 @@ def run_multi_agent_pipeline(vitals, notes, model_name, prob, priority_score, es
 
 
 def evaluate_patient(session_id, notes, engine_type, vitals, model_name, llm_model_name, dataset_name="UCI Cleveland Original"):
-    model_vitals = get_model_vitals(vitals)
-    prob = get_disease_probability(**model_vitals, model_name=model_name, dataset_name=dataset_name)
-    esi = assess_esi_acuity(vitals, notes, prob)
-    priority_score = esi["priority_score"]
+    try:
+        model_vitals = get_model_vitals(vitals)
+        prob = get_disease_probability(**model_vitals, model_name=model_name, dataset_name=dataset_name)
+        esi = assess_esi_acuity(vitals, notes, prob)
+        priority_score = esi["priority_score"]
+    except Exception as e:
+        yield json.dumps({"error": f"Backend initialization error: {str(e)}", "tokens": 0, "esi": None}) + "\n"
+        return
 
     if engine_type == "Local Expert System (0 Tokens)":
         yield json.dumps({"step": "⚙️ Applying deterministic ESI-style triage rules..."}) + "\n"
