@@ -29,10 +29,10 @@ sleep 5
 
 # Four Streamlit applications, routed as pages under one public domain.
 COMMON_ST=(--server.address=127.0.0.1 --server.headless=true --server.fileWatcherType=none --browser.gatherUsageStats=false)
-run_bg "SafeStaff page" /app/apps/safestaff env API_BASE_URL=http://127.0.0.1:5101 streamlit run frontend/dashboard.py --server.port=8601 --server.baseUrlPath=safestaff "${COMMON_ST[@]}"
-run_bg "MedPack page" /app/apps/medpack env MEDPACK_API_BASE_URL=http://127.0.0.1:5102 MEDPACK_LOCAL_API_BASE_URL=http://127.0.0.1:5102 streamlit run frontend/dashboard.py --server.port=8602 --server.baseUrlPath=medpack "${COMMON_ST[@]}"
-run_bg "Triage page" /app/apps/triage env TRIAGE_API_URL=http://127.0.0.1:5103/api streamlit run frontend/app.py --server.port=8603 --server.baseUrlPath=triage "${COMMON_ST[@]}"
-run_bg "BedFlow page" /app/apps/bedflow env BEDFLOW_API_URL=http://127.0.0.1:5104/api BEDFLOW_DATA_DIR=/tmp/bedflow-data streamlit run frontend/dashboard.py --server.port=8604 --server.baseUrlPath=bedflow "${COMMON_ST[@]}"
+run_bg "SafeStaff page" /app/apps/safestaff env PYTHONPATH=. API_BASE_URL=http://127.0.0.1:5101 streamlit run frontend/dashboard.py --server.port=8601 --server.baseUrlPath=safestaff "${COMMON_ST[@]}"
+run_bg "MedPack page" /app/apps/medpack env PYTHONPATH=. MEDPACK_API_BASE_URL=http://127.0.0.1:5102 MEDPACK_LOCAL_API_BASE_URL=http://127.0.0.1:5102 streamlit run frontend/dashboard.py --server.port=8602 --server.baseUrlPath=medpack "${COMMON_ST[@]}"
+run_bg "Triage page" /app/apps/triage env PYTHONPATH=. TRIAGE_API_URL=http://127.0.0.1:5103/api streamlit run frontend/app.py --server.port=8603 --server.baseUrlPath=triage "${COMMON_ST[@]}"
+run_bg "BedFlow page" /app/apps/bedflow env PYTHONPATH=. BEDFLOW_API_URL=http://127.0.0.1:5104/api BEDFLOW_DATA_DIR=/tmp/bedflow-data streamlit run frontend/dashboard.py --server.port=8604 --server.baseUrlPath=bedflow "${COMMON_ST[@]}"
 
 # Render Railway's dynamic public port into nginx config.
 envsubst '${PORT}' < /app/nginx/default.conf.template > /etc/nginx/conf.d/default.conf
