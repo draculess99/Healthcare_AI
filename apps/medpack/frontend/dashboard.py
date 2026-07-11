@@ -888,7 +888,7 @@ with col1:
                 fallback_res = requests.post(
                     f"{MEDPACK_API_BASE_URL}/api/run-medpack-committee",
                     json=fallback_payload,
-                    timeout=25,
+                    timeout=120,
                 )
                 if fallback_res.status_code == 200:
                     return fallback_res.json()
@@ -1454,7 +1454,7 @@ with col1:
                     res = requests.post(
                         f"{MEDPACK_API_BASE_URL}/api/run-medpack-committee-fast",
                         json=request_payload,
-                        timeout=(5, 30),
+                        timeout=(10, 120),
                     )
                 if res.status_code == 200:
                     result = res.json()
@@ -1748,7 +1748,7 @@ with col1:
         queue_res = requests.post(
             f"{MEDPACK_API_BASE_URL}/api/packing-queue",
             json=queue_payload,
-            timeout=30,
+            timeout=120,
         )
         if queue_res.status_code == 200:
             queue_response = queue_res.json()
