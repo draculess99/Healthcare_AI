@@ -19,6 +19,12 @@ API_URL = os.getenv("TRIAGE_API_URL", "http://127.0.0.1:5103/api").rstrip("/")
 
 st.set_page_config(page_title="Triage Assist AI", layout="wide")
 
+if "override_save_notice" in st.session_state and st.session_state["override_save_notice"]:
+    notice = st.session_state["override_save_notice"]
+    icon = "⚠️" if "⚠️" in notice else "✅"
+    st.toast(notice, icon=icon)
+    st.session_state["override_save_notice"] = None
+
 st.markdown("""
 <style>
     .main-hero {
@@ -443,11 +449,6 @@ def render_latest_evaluation_result_panel():
     esi = st.session_state.get("last_esi")
     patient = st.session_state.get("last_patient_record") or {}
     report = st.session_state.get("last_report", "")
-
-    override_notice = st.session_state.get("override_save_notice")
-    if override_notice:
-        st.success(override_notice)
-        st.session_state["override_save_notice"] = None
 
     if not esi and not patient:
         st.markdown(
