@@ -4,7 +4,7 @@ import os
 ROOT_DIR = os.path.dirname(os.path.dirname(__file__))
 DATA_DIR = os.path.join(ROOT_DIR, 'data')
 GUIDELINES_DIR = os.path.join(DATA_DIR, 'guidelines')
-CHROMA_DB_DIR = os.path.join(DATA_DIR, 'chromadb')
+CHROMA_DB_DIR = os.path.join(DATA_DIR, 'chromadb_v2')
 
 def _get_client():
     import chromadb
