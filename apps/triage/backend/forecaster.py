@@ -22,7 +22,7 @@ METRICS_PATH = os.path.join(DATA_DIR, 'metrics.json')
 DATASET_FILE = os.path.join(DATA_DIR, 'current_dataset.txt')
 
 MODEL_PATHS = {
-    'XGBoost': os.path.join(DATA_DIR, 'xgboost_model.json'),
+    'XGBoost': os.path.join(DATA_DIR, 'xgboost_model.pkl'),
     'Random Forest': os.path.join(DATA_DIR, 'rf_model.pkl'),
     'Logistic Regression': os.path.join(DATA_DIR, 'lr_model.pkl')
 }
@@ -59,11 +59,8 @@ def train_models(dataset_name="UCI Cleveland Original"):
             y_pred = model.predict(X_test)
             
         # Save models
-        if name == 'XGBoost':
-            model.save_model(MODEL_PATHS[name])
-        else:
-            with open(MODEL_PATHS[name], 'wb') as f:
-                pickle.dump(model, f)
+        with open(MODEL_PATHS[name], 'wb') as f:
+            pickle.dump(model, f)
                 
         # Calculate metrics
         all_metrics[name] = {
@@ -103,12 +100,8 @@ def get_disease_probability(age, sex, cp, trestbps, chol, fbs, thalach, model_na
     else:
         X_input = X
         
-    if model_name == 'XGBoost':
-        model = xgb.XGBClassifier()
-        model.load_model(MODEL_PATHS['XGBoost'])
-    else:
-        with open(MODEL_PATHS[model_name], 'rb') as f:
-            model = pickle.load(f)
+    with open(MODEL_PATHS[model_name], 'rb') as f:
+        model = pickle.load(f)
             
     probability = model.predict_proba(X_input)[0][1]
     return float(probability)
@@ -141,17 +134,15 @@ def get_xai_data(model_name='XGBoost', dataset_name="UCI Cleveland Original"):
     features = X.columns.tolist()
     
     try:
+        with open(MODEL_PATHS[model_name], 'rb') as f:
+            model = pickle.load(f)
+            
         if model_name == 'XGBoost':
-            model = xgb.XGBClassifier()
-            model.load_model(MODEL_PATHS['XGBoost'])
             imp_vals = model.feature_importances_
-        else:
-            with open(MODEL_PATHS[model_name], 'rb') as f:
-                model = pickle.load(f)
-            if model_name == 'Random Forest':
-                imp_vals = model.feature_importances_
-            elif model_name == 'Logistic Regression':
-                imp_vals = np.abs(model.coef_[0])
+        elif model_name == 'Random Forest':
+            imp_vals = model.feature_importances_
+        elif model_name == 'Logistic Regression':
+            imp_vals = np.abs(model.coef_[0])
         
         # Normalize importances
         total = sum(imp_vals)
