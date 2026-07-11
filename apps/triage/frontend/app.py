@@ -1675,6 +1675,7 @@ def render_command_board(latest_esi=None, key_prefix="queue", show_actions=True)
     event = st.dataframe(
         df, 
         use_container_width=True, 
+        height=350,
         hide_index=True,
         on_select="rerun",
         selection_mode="single-row",
