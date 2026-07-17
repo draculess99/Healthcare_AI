@@ -1,0 +1,9 @@
+GENERAL PRIOR-AUTHORIZATION POLICY GUIDE
+
+Confirm active member eligibility, benefit coverage, servicing provider network status, and whether the requested service requires prior authorization before evaluating medical necessity.
+
+A complete request typically includes the ordering provider, diagnosis, requested service or drug, requested units or duration, relevant history, prior treatment, objective findings, and supporting records. Missing required evidence should pause submission preparation rather than be guessed or created.
+
+Urgent review should only be selected when delay could seriously jeopardize life, health, functional recovery, or the ability to regain maximum function. Urgent routing changes the review clock; it does not weaken documentation requirements.
+
+Out-of-network requests may require a network exception, continuity-of-care rationale, or redirection to an available in-network provider. Verify current payer-specific language before acting.

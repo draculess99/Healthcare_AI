@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuthGuard-AI | Prior Authorization Command Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --bg-card: rgba(30, 41, 59, 0.4);
+      --bg-card-hover: rgba(30, 41, 59, 0.8);
+      --border: rgba(148, 163, 184, 0.1);
+      --border-accent: rgba(56, 189, 248, 0.3);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent: #38bdf8;
+      --accent-glow: 0 0 20px rgba(56, 189, 248, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.05), transparent 50%);
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 24px 48px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(11, 15, 25, 0.8);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      color: var(--accent);
+      font-size: 1.5rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+    }
+
+    /* Hero */
+    .hero {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent);
+      border: 1px solid var(--border-accent);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      margin-bottom: 24px;
+      line-height: 1.1;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin-bottom: 40px;
+    }
+
+    /* Buttons */
+    .btn-group {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background-color: var(--accent);
+      color: #000;
+      border: 1px solid var(--accent);
+      box-shadow: var(--accent-glow);
+    }
+
+    .btn-primary:hover {
+      background-color: #7dd3fc;
+      border-color: #7dd3fc;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.3);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--text-main);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Features / Architecture */
+    .content-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+      width: 100%;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      transition: all 0.3s;
+      backdrop-filter: blur(8px);
+    }
+
+    .card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--border-accent);
+      transform: translateY(-2px);
+    }
+
+    .card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Architecture Box */
+    .arch-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+      text-align: left;
+    }
+
+    .arch-box h2 {
+      font-size: 1.5rem;
+      margin-bottom: 24px;
+      color: var(--text-main);
+    }
+
+    /* Flowchart CSS */
+    .flowchart {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding: 20px 0;
+    }
+
+    .flow-node {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      padding: 16px 24px;
+      border-radius: 8px;
+      text-align: center;
+      min-width: 280px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .flow-node h4 {
+      color: var(--text-main);
+      margin-bottom: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .flow-node ul {
+      list-style-type: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-align: left;
+      padding-left: 24px;
+    }
+
+    .flow-node ul li {
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .flow-node ul li::before {
+      content: "→";
+      color: var(--accent);
+      position: absolute;
+      left: -20px;
+    }
+
+    .flow-arrow {
+      width: 2px;
+      height: 30px;
+      background: var(--accent);
+      position: relative;
+      z-index: 1;
+    }
+
+    .flow-arrow::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: -5px;
+      border-width: 6px 6px 0;
+      border-style: solid;
+      border-color: var(--accent) transparent transparent transparent;
+    }
+
+    .flow-split {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      width: 100%;
+      max-width: 700px;
+      position: relative;
+      margin-bottom: 50px;
+      /* Space for bottom arrow lines */
+    }
+
+    .split-line-top {
+      position: absolute;
+      top: -30px;
+      left: 25%;
+      right: 25%;
+      height: 2px;
+      background: var(--accent);
+      z-index: 1;
+    }
+
+    .split-line-bottom {
+      position: absolute;
+      bottom: -50px;
+      left: 25%;
+      right: 25%;
+      height: 2px;
+      background: var(--accent);
+      z-index: 1;
+    }
+
+    .split-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      position: relative;
+    }
+
+    .split-arrow-down {
+      width: 2px;
+      height: 30px;
+      background: var(--accent);
+      position: absolute;
+      top: -30px;
+      z-index: 1;
+    }
+
+    .split-arrow-down::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: -5px;
+      border-width: 6px 6px 0;
+      border-style: solid;
+      border-color: var(--accent) transparent transparent transparent;
+    }
+
+    .split-arrow-up {
+      width: 2px;
+      height: 50px;
+      background: var(--accent);
+      position: absolute;
+      bottom: -50px;
+      z-index: 1;
+    }
+
+    /* Screenshot Section */
+    .screenshot-section { max-width: 1200px; margin: 0 auto 60px; padding: 0 24px; text-align: center; }
+    .screenshot-container { background: var(--bg-card); border: 1px solid var(--border-accent); border-radius: 12px; padding: 12px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); margin-bottom: 16px; }
+    .screenshot-image { width: 100%; height: auto; border-radius: 8px; display: block; }
+    .screenshot-caption { color: var(--text-muted); font-size: 0.95rem; font-style: italic; }
+
+    /* Why Matters Section */
+    .why-matters-section { max-width: 900px; margin: 0 auto 60px; padding: 0 24px; }
+    .why-matters-section h2 { font-size: 2rem; margin-bottom: 24px; text-align: center; color: var(--text-main); }
+    .why-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+    .why-list li { background: var(--bg-card); border: 1px solid var(--border); padding: 20px 20px 20px 50px; border-radius: 8px; position: relative; }
+    .why-list li::before { content: "✓"; color: var(--accent); position: absolute; left: 20px; font-size: 1.2rem; font-weight: bold; }
+
+    /* Highlights Flow Diagram */
+    .highlights-section { max-width: 1200px; margin: 0 auto 80px; padding: 0 24px; }
+    .highlight-flow {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+    }
+    .highlight-node {
+      background: rgba(11, 15, 25, 0.6);
+      border: 1px solid var(--border-accent);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      width: 22%;
+      position: relative;
+      z-index: 2;
+      transition: transform 0.2s;
+    }
+    .highlight-node:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: var(--accent-glow); }
+    .highlight-node h4 { color: var(--accent); font-size: 1rem; font-weight: 600; line-height: 1.4; }
+    
+    .highlight-connector {
+      flex: 1;
+      height: 2px;
+      background: var(--border-accent);
+      position: relative;
+      z-index: 1;
+    }
+    .highlight-connector::after {
+      content: '';
+      position: absolute;
+      right: -2px;
+      top: -4px;
+      border-width: 5px 0 5px 6px;
+      border-style: solid;
+      border-color: transparent transparent transparent var(--border-accent);
+    }
+
+    /* CTA Section */
+    .cta-section { max-width: 900px; margin: 0 auto 80px; padding: 40px 24px; text-align: center; background: var(--bg-card); border-radius: 12px; border: 1px solid var(--border); }
+    .cta-section h2 { margin-bottom: 30px; font-size: 2rem; }
+    .cta-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px; }
+
+    footer {
+      text-align: center;
+      padding: 32px;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      header {
+        padding: 16px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .highlight-flow {
+        flex-direction: column;
+        padding: 24px;
+        gap: 0;
+      }
+      .highlight-node {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+      }
+      .highlight-connector {
+        width: 2px;
+        height: 24px;
+        flex: none;
+        margin: 0 auto;
+      }
+      .highlight-connector::after {
+        right: -4px;
+        top: auto;
+        bottom: -2px;
+        border-width: 6px 5px 0 5px;
+        border-color: var(--border-accent) transparent transparent transparent;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="brand">
+      <span class="brand-icon">🛡️</span> AuthGuard-AI
+    </div>
+    <div class="nav-links">
+      <a href="https://github.com/draculess99/AuthGuard-AI" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/gammaconsult/" target="_blank">LinkedIn</a>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="badge">SYSTEM STATUS: OPERATIONAL</div>
+    <h1>Prior Authorization<br>Command Center</h1>
+    <p class="hero-desc">
+      A human-governed, multi-agent decision support system. AuthGuard-AI evaluates clinical risk, local payer policy,
+      and operational compliance using a deterministic debate-based reasoning architecture.
+    </p>
+    <div class="btn-group">
+      <a href="https://authguard-ai-production.up.railway.app/" target="_blank" class="btn btn-primary">Launch
+        Application</a>
+      <a href="https://github.com/draculess99/AuthGuard-AI" target="_blank" class="btn btn-outline">View
+        Architecture</a>
+    </div>
+  </section>
+
+  <section class="screenshot-section">
+    <div class="screenshot-container">
+      <img src="docs/images/01-command-center.png" alt="AuthGuard-AI Command Center" class="screenshot-image">
+    </div>
+    <p class="screenshot-caption">“AuthGuard-AI command center showing denial-risk scoring, multi-agent review, governed routing, and human oversight.”</p>
+  </section>
+
+  <section class="why-matters-section">
+    <h2>Why AuthGuard-AI Matters</h2>
+    <ul class="why-list">
+      <li>Prior-authorization decisions require eligibility, documentation, evidence, risk, and policy review.</li>
+      <li>AuthGuard combines XGBoost, RAG, structured rules, and multi-agent reasoning.</li>
+      <li>Guardrails and human review control uncertain or high-risk decisions.</li>
+    </ul>
+  </section>
+
+  <section class="screenshot-section" style="margin-bottom: 80px;">
+    <div class="screenshot-container">
+      <img src="docs/images/architecture-diagram.png" alt="AuthGuard-AI Architecture and Data Flow" class="screenshot-image">
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="grid">
+      <div class="card">
+        <h3>🧠 XGBoost Risk Model</h3>
+        <p>Analyzes structured features to predict denial risk probabilities and operational urgency, anchoring LLM
+          outputs with deterministic baseline logic.</p>
+      </div>
+      <div class="card">
+        <h3>⚖️ Multi-Agent Debate</h3>
+        <p>A specialized committee of agents evaluates cases from adversarial angles, exposing disagreement and ensuring
+          decisions adhere strictly to guardrails.</p>
+      </div>
+      <div class="card">
+        <h3>📚 Local Policy RAG</h3>
+        <p>Retrieves precise payer documentation and clinical guidelines, ensuring all recommendations are cited against
+          verified ground-truth rules.</p>
+      </div>
+    </div>
+
+    <div class="arch-box">
+      <h2>System Architecture</h2>
+      <div class="flowchart">
+        <div class="flow-node">
+          <h4>Patient / Authorization Request</h4>
+        </div>
+
+        <div class="flow-arrow"></div>
+
+        <div class="flow-node">
+          <h4>Data Validation</h4>
+        </div>
+
+        <div class="flow-arrow"></div>
+
+        <div class="flow-node">
+          <h4>XGBoost Risk Model</h4>
+          <ul>
+            <li>Denial risk probability</li>
+            <li>Operational urgency score</li>
+            <li>Predictive routing signal</li>
+          </ul>
+        </div>
+
+        <div class="flow-arrow" style="height: 30px;"></div>
+
+        <div class="flow-split">
+          <div class="split-line-top"></div>
+
+          <div class="split-col">
+            <div class="split-arrow-down"></div>
+            <div class="flow-node" style="height: 100%;">
+              <h4>RAG Knowledge Search</h4>
+              <ul>
+                <li>Local payer guidance</li>
+                <li>Clinical documentation</li>
+                <li>Appeal best practices</li>
+              </ul>
+            </div>
+            <div class="split-arrow-up"></div>
+          </div>
+
+          <div class="split-col">
+            <div class="split-arrow-down"></div>
+            <div class="flow-node" style="height: 100%;">
+              <h4>Expert Rules Logic</h4>
+              <ul>
+                <li>Eligibility checks</li>
+                <li>Missing document flags</li>
+                <li>Escalation triggers</li>
+              </ul>
+            </div>
+            <div class="split-arrow-up"></div>
+          </div>
+
+          <div class="split-line-bottom"></div>
+        </div>
+
+        <div class="flow-arrow" style="height: 30px;"></div>
+
+        <div class="flow-node">
+          <h4>Decision Orchestration</h4>
+        </div>
+
+        <div class="flow-arrow"></div>
+
+        <div class="flow-node">
+          <h4>Recommendation + Explanation</h4>
+        </div>
+
+        <div class="flow-arrow"></div>
+
+        <div class="flow-node" style="border-color: #f59e0b; box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);">
+          <h4 style="color: #f59e0b;">Human Review / Escalation</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <h2>Ready to dive in?</h2>
+    <div class="cta-grid">
+      <a href="https://authguard-ai-production.up.railway.app/" target="_blank" class="btn btn-primary">Launch Live Demo</a>
+      <a href="https://github.com/draculess99/AuthGuard-AI" target="_blank" class="btn btn-outline">View GitHub Repository</a>
+      <a href="https://github.com/draculess99/AuthGuard-AI/blob/main/README.md" target="_blank" class="btn btn-outline">Read Technical README</a>
+      <a href="https://draculess99.github.io/" class="btn btn-outline">Return to Portfolio</a>
+    </div>
+  </section>
+
+  <footer>
+    Wil Low / Draculess99 • AI Decision Support Prototypes
+  </footer>
+
+</body>
+
+</html>

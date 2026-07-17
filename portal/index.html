@@ -10,7 +10,7 @@
     .wrap{width:min(1180px,92%);margin:auto;padding:64px 0}.eyebrow{color:var(--accent);font-weight:800;letter-spacing:.16em;text-transform:uppercase;font-size:.78rem}
     h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.02;margin:.5rem 0 1rem;max-width:900px}.lead{color:var(--muted);font-size:1.15rem;max-width:760px;line-height:1.7}
     .status{display:inline-flex;gap:.55rem;align-items:center;border:1px solid var(--line);border-radius:999px;padding:.55rem .9rem;margin-top:1.2rem;color:#cde8d8;background:#0b1c27}.dot{width:.55rem;height:.55rem;border-radius:50%;background:var(--good);box-shadow:0 0 16px var(--good)}
-    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:44px}.card{background:linear-gradient(145deg,rgba(18,39,65,.96),rgba(10,24,41,.96));border:1px solid var(--line);border-radius:20px;padding:28px;min-height:245px;display:flex;flex-direction:column;transition:.2s transform,.2s border-color}.card:hover{transform:translateY(-4px);border-color:#3d6d98}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;margin-top:44px}.card{background:linear-gradient(145deg,rgba(18,39,65,.96),rgba(10,24,41,.96));border:1px solid var(--line);border-radius:20px;padding:28px;min-height:245px;display:flex;flex-direction:column;transition:.2s transform,.2s border-color}.card:hover{transform:translateY(-4px);border-color:#3d6d98}
     .num{font-size:.78rem;color:var(--accent);font-weight:800}.card h2{font-size:1.65rem;margin:.7rem 0}.card p{color:var(--muted);line-height:1.65;flex:1}.card a{display:inline-flex;align-items:center;justify-content:center;background:var(--accent);color:#042033;text-decoration:none;font-weight:800;padding:.85rem 1rem;border-radius:11px;width:fit-content}.card a:hover{filter:brightness(1.08)}
     footer{color:#70869e;margin-top:38px;font-size:.9rem}@media(max-width:760px){.grid{grid-template-columns:1fr}.wrap{padding-top:38px}}
   </style>
@@ -18,13 +18,14 @@
 <body><main class="wrap">
   <div class="eyebrow">William Low · Decision Intelligence Portfolio</div>
   <h1>Healthcare AI Control Tower</h1>
-  <p class="lead">One Railway service. Four operational decision-support applications. Choose a module below to open its full interactive dashboard.</p>
+  <p class="lead">One Railway service. Five operational decision-support applications. Choose a module below to open its full interactive dashboard.</p>
   <div class="status"><span class="dot"></span> Unified service online</div>
   <section class="grid">
     <article class="card"><div class="num">01 · WORKFORCE</div><h2>SafeStaff AI</h2><p>ER wait-time forecasting, nurse staffing recommendations, safety guardrails, agent debate and human approval.</p><a href="/safestaff/">Open SafeStaff →</a></article>
     <article class="card"><div class="num">02 · SUPPLY CHAIN</div><h2>MedPack AI</h2><p>Hospital supply-demand forecasting, shortage detection, packing priorities, committee recommendations and what-if analysis.</p><a href="/medpack/">Open MedPack →</a></article>
     <article class="card"><div class="num">03 · CLINICAL TRIAGE</div><h2>Triage Assist AI</h2><p>Patient acuity decision support, queue management, explainable risk models, clinical guidance retrieval and nurse override.</p><a href="/triage/">Open Triage Assist →</a></article>
     <article class="card"><div class="num">04 · PATIENT FLOW</div><h2>BedFlow AI</h2><p>Discharge readiness, readmission risk, bed-flow optimization, agentic committee review and auditable human decisions.</p><a href="/bedflow/">Open BedFlow →</a></article>
+    <article class="card"><div class="num">05 · PRIOR AUTHORIZATION</div><h2>AuthGuard AI</h2><p>Prior-authorization denial-risk scoring, policy RAG, deterministic guardrails, multi-agent review and human-governed routing.</p><a href="/authguard/">Open AuthGuard →</a></article>
   </section>
   <footer>Designed as a portfolio demonstration. Clinical and operational recommendations require qualified human review.</footer>
 </main></body></html>

@@ -20,19 +20,21 @@ run_bg() {
 }
 
 # Internal APIs
-run_bg "SafeStaff API" /app/apps/safestaff env PORT=5101 HOST=127.0.0.1 FLASK_DEBUG=false python -m backend.server
-run_bg "MedPack API" /app/apps/medpack env MEDPACK_BACKEND_PORT=5102 PORT=5102 MEDPACK_FORCE_LOCAL_COMMITTEE=true MEDPACK_ALLOW_FULL_COMMITTEE_ROUTE=false MEDPACK_ALLOW_COMMITTEE_STREAM=false USE_LLM_AGENTS=false DEFAULT_AGENT_MODE=local python -m backend.server
+run_bg "SafeStaff API" /app/apps/safestaff env PORT=5101 HOST=127.0.0.1 FLASK_DEBUG=false python -m backend.run_api
+run_bg "MedPack API" /app/apps/medpack env MEDPACK_BACKEND_PORT=5102 PORT=5102 MEDPACK_FORCE_LOCAL_COMMITTEE=true MEDPACK_ALLOW_FULL_COMMITTEE_ROUTE=false MEDPACK_ALLOW_COMMITTEE_STREAM=false USE_LLM_AGENTS=false DEFAULT_AGENT_MODE=local python -m backend.run_api
 run_bg "Triage API" /app/apps/triage env TRIAGE_API_HOST=127.0.0.1 TRIAGE_API_PORT=5103 python backend/app.py
 run_bg "BedFlow API" /app/apps/bedflow env BEDFLOW_API_HOST=127.0.0.1 BEDFLOW_API_PORT=5104 BEDFLOW_DATA_DIR=/tmp/bedflow-data python -m backend.api
+run_bg "AuthGuard API" /app/apps/authguard env AUTHGUARD_API_PORT=5105 AUTHGUARD_DATA_DIR=/tmp/authguard-data python -m backend.run_api
 
 sleep 5
 
-# Four Streamlit applications, routed as pages under one public domain.
+# Five Streamlit applications, routed as pages under one public domain.
 COMMON_ST=(--server.address=127.0.0.1 --server.headless=true --server.fileWatcherType=none --browser.gatherUsageStats=false)
 run_bg "SafeStaff page" /app/apps/safestaff env PYTHONPATH=. API_BASE_URL=http://127.0.0.1:5101 streamlit run frontend/dashboard.py --server.port=8601 --server.baseUrlPath=safestaff "${COMMON_ST[@]}"
 run_bg "MedPack page" /app/apps/medpack env PYTHONPATH=. MEDPACK_API_BASE_URL=http://127.0.0.1:5102 MEDPACK_LOCAL_API_BASE_URL=http://127.0.0.1:5102 streamlit run frontend/dashboard.py --server.port=8602 --server.baseUrlPath=medpack "${COMMON_ST[@]}"
 run_bg "Triage page" /app/apps/triage env PYTHONPATH=. TRIAGE_API_URL=http://127.0.0.1:5103/api streamlit run frontend/app.py --server.port=8603 --server.baseUrlPath=triage "${COMMON_ST[@]}"
 run_bg "BedFlow page" /app/apps/bedflow env PYTHONPATH=. BEDFLOW_API_URL=http://127.0.0.1:5104/api BEDFLOW_DATA_DIR=/tmp/bedflow-data streamlit run frontend/dashboard.py --server.port=8604 --server.baseUrlPath=bedflow "${COMMON_ST[@]}"
+run_bg "AuthGuard page" /app/apps/authguard env PYTHONPATH=. AUTHGUARD_API_URL=http://127.0.0.1:5105/api AUTHGUARD_DATA_DIR=/tmp/authguard-data streamlit run frontend/dashboard.py --server.port=8605 --server.baseUrlPath=authguard "${COMMON_ST[@]}"
 
 # Render Railway's dynamic public port into nginx config.
 envsubst '${PORT}' < /app/nginx/default.conf.template > /etc/nginx/conf.d/default.conf

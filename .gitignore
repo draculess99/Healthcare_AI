@@ -27,3 +27,10 @@ Thumbs.db
 # Logs and temporary files
 *.log
 *.tmp
+
+# Data and Models
+apps/triage/data/chromadb_v2/
+*.pkl
+*.json
+temp_data/
+test*.py

@@ -1,0 +1,7 @@
+DENIAL PREVENTION AND APPEAL GUIDE
+
+Before submission, challenge the package from the payer reviewer perspective: identify the precise policy criterion, point to the record that satisfies it, and surface any criterion that remains unsupported.
+
+A prior denial should not be resubmitted unchanged. Compare the denial reason against the new evidence, correct demographic or coding errors, add missing documentation, and write a concise medical-necessity summary tied to the applicable criteria.
+
+Model scores are triage aids only. A high predicted denial risk should trigger document review, policy verification, and qualified human escalation; it should never be treated as a coverage determination.

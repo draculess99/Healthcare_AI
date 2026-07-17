@@ -48,14 +48,16 @@ def main():
     ]
 
     bedflow_data_dir = os.path.join(base_dir, "temp_data", "bedflow-data")
+    authguard_data_dir = os.path.join(base_dir, "temp_data", "authguard-data")
     os.makedirs(bedflow_data_dir, exist_ok=True)
+    os.makedirs(authguard_data_dir, exist_ok=True)
 
     # 1. SafeStaff API
     run_bg(
         "SafeStaff API",
         os.path.join(base_dir, "apps", "safestaff"),
         {"PORT": "5101", "HOST": "127.0.0.1", "FLASK_DEBUG": "false"},
-        [sys.executable, "-m", "backend.server"]
+        [sys.executable, "-m", "backend.run_api"]
     )
 
     # 2. MedPack API
@@ -71,7 +73,7 @@ def main():
             "USE_LLM_AGENTS": "false",
             "DEFAULT_AGENT_MODE": "local"
         },
-        [sys.executable, "-m", "backend.server"]
+        [sys.executable, "-m", "backend.run_api"]
     )
 
     # 3. Triage API
@@ -90,9 +92,17 @@ def main():
         [sys.executable, "-m", "backend.api"]
     )
 
+    # 5. AuthGuard API
+    run_bg(
+        "AuthGuard API",
+        os.path.join(base_dir, "apps", "authguard"),
+        {"AUTHGUARD_API_PORT": "5105", "AUTHGUARD_DATA_DIR": authguard_data_dir},
+        [sys.executable, "-m", "backend.run_api"]
+    )
+
     time.sleep(5)
 
-    # 5. SafeStaff Streamlit
+    # 6. SafeStaff Streamlit
     run_bg(
         "SafeStaff page",
         os.path.join(base_dir, "apps", "safestaff"),
@@ -100,7 +110,7 @@ def main():
         [sys.executable, "-m", "streamlit", "run", "frontend/dashboard.py", "--server.port=8601", "--server.baseUrlPath=safestaff"] + common_st
     )
 
-    # 6. MedPack Streamlit
+    # 7. MedPack Streamlit
     run_bg(
         "MedPack page",
         os.path.join(base_dir, "apps", "medpack"),
@@ -111,7 +121,7 @@ def main():
         [sys.executable, "-m", "streamlit", "run", "frontend/dashboard.py", "--server.port=8602", "--server.baseUrlPath=medpack"] + common_st
     )
 
-    # 7. Triage Streamlit
+    # 8. Triage Streamlit
     run_bg(
         "Triage page",
         os.path.join(base_dir, "apps", "triage"),
@@ -119,12 +129,20 @@ def main():
         [sys.executable, "-m", "streamlit", "run", "frontend/app.py", "--server.port=8603", "--server.baseUrlPath=triage"] + common_st
     )
 
-    # 8. BedFlow Streamlit
+    # 9. BedFlow Streamlit
     run_bg(
         "BedFlow page",
         os.path.join(base_dir, "apps", "bedflow"),
         {"BEDFLOW_API_URL": "http://127.0.0.1:5104/api", "BEDFLOW_DATA_DIR": bedflow_data_dir},
         [sys.executable, "-m", "streamlit", "run", "frontend/dashboard.py", "--server.port=8604", "--server.baseUrlPath=bedflow"] + common_st
+    )
+
+    # 10. AuthGuard Streamlit
+    run_bg(
+        "AuthGuard page",
+        os.path.join(base_dir, "apps", "authguard"),
+        {"AUTHGUARD_API_URL": "http://127.0.0.1:5105/api", "AUTHGUARD_DATA_DIR": authguard_data_dir},
+        [sys.executable, "-m", "streamlit", "run", "frontend/dashboard.py", "--server.port=8605", "--server.baseUrlPath=authguard"] + common_st
     )
 
     print("\nAll services started!")
@@ -133,6 +151,7 @@ def main():
     print(" - MedPack:   http://127.0.0.1:8602/medpack")
     print(" - Triage:    http://127.0.0.1:8603/triage")
     print(" - BedFlow:   http://127.0.0.1:8604/bedflow")
+    print(" - AuthGuard: http://127.0.0.1:8605/authguard")
     print("\nPress Ctrl+C to stop all services.")
 
     try:
