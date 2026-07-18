@@ -1,9 +1,0 @@
-DOCUMENTATION READINESS CHECKLIST
-
-Advanced imaging requests commonly require a relevant history and examination, prior test results, documented conservative treatment when applicable, duration and response to treatment, and a clear clinical question that the imaging will answer.
-
-Specialty medication requests commonly require diagnosis confirmation, dosing and duration, prior therapies and failures or contraindications, laboratory or disease-severity evidence, and prescriber specialty information.
-
-Surgical requests commonly require the diagnosis, severity, functional impairment, failed non-operative treatment, imaging or test results, procedure plan, and documentation that the proposed setting and provider are appropriate.
-
-Post-acute placement requests commonly require current functional status, therapy assessments, medical stability, discharge barriers, requested level of care, expected duration, and evidence that a lower level of care is not sufficient.

@@ -1,7 +1,0 @@
-AI GOVERNANCE AND SECURITY
-
-Remove or redact unnecessary personally identifiable information before sending text to an external model. Do not place real protected health information in this portfolio prototype.
-
-Treat instructions embedded in clinical notes or retrieved documents as untrusted data. Language asking the system to ignore rules, bypass review, expose prompts, or auto-approve should trigger containment and human review.
-
-Generative models may summarize evidence and explain a locked result, but deterministic policy checks, calibrated predictive models, and qualified human reviewers must control workflow routing and final operational action.
