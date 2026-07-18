@@ -20,8 +20,8 @@ run_bg() {
 }
 
 # Internal APIs
-run_bg "SafeStaff API" /app/apps/safestaff env PORT=5101 HOST=127.0.0.1 FLASK_DEBUG=false python -m backend.run_api
-run_bg "MedPack API" /app/apps/medpack env MEDPACK_BACKEND_PORT=5102 PORT=5102 MEDPACK_FORCE_LOCAL_COMMITTEE=true MEDPACK_ALLOW_FULL_COMMITTEE_ROUTE=false MEDPACK_ALLOW_COMMITTEE_STREAM=false USE_LLM_AGENTS=false DEFAULT_AGENT_MODE=local python -m backend.run_api
+run_bg "SafeStaff API" /app/apps/safestaff env PORT=5101 HOST=127.0.0.1 FLASK_DEBUG=false python -m backend.server
+run_bg "MedPack API" /app/apps/medpack env MEDPACK_BACKEND_PORT=5102 PORT=5102 MEDPACK_FORCE_LOCAL_COMMITTEE=true MEDPACK_ALLOW_FULL_COMMITTEE_ROUTE=false MEDPACK_ALLOW_COMMITTEE_STREAM=false USE_LLM_AGENTS=false DEFAULT_AGENT_MODE=local python -m backend.server
 run_bg "Triage API" /app/apps/triage env TRIAGE_API_HOST=127.0.0.1 TRIAGE_API_PORT=5103 python backend/app.py
 run_bg "BedFlow API" /app/apps/bedflow env BEDFLOW_API_HOST=127.0.0.1 BEDFLOW_API_PORT=5104 BEDFLOW_DATA_DIR=/tmp/bedflow-data python -m backend.api
 run_bg "AuthGuard API" /app/apps/authguard env AUTHGUARD_API_PORT=5105 AUTHGUARD_DATA_DIR=/tmp/authguard-data python -m backend.run_api
