@@ -1,12 +1,10 @@
 # Healthcare AI Control Tower — One Railway Service
 
-This repository combines five healthcare decision-support applications into one Railway service and one public domain:
+This repository combines three healthcare decision-support applications into one Railway service and one public domain:
 
-- `/safestaff/` — SafeStaff AI
 - `/medpack/` — MedPack AI
 - `/triage/` — Triage Assist AI
 - `/bedflow/` — BedFlow AI
-- `/authguard/` — AuthGuard AI (prior authorization / OffGuard module)
 - `/` — unified portfolio/control-tower landing page
 - `/health` — Railway health check
 
@@ -19,11 +17,9 @@ Browser
   |
   v
 Nginx :$PORT
-  |-- /safestaff/ --> Streamlit :8601 --> Flask :5101
   |-- /medpack/   --> Streamlit :8602 --> Flask :5102
   |-- /triage/    --> Streamlit :8603 --> Flask :5103
-  |-- /bedflow/   --> Streamlit :8604 --> Flask :5104
-  `-- /authguard/ --> Streamlit :8605 --> Flask :5105
+  `-- /bedflow/   --> Streamlit :8604 --> Flask :5104
 ```
 
 ## Railway deployment
@@ -34,11 +30,10 @@ Nginx :$PORT
 4. Add any optional API-key variables used by the apps:
    - `GROQ_API_KEY`
    - `GOOGLE_API_KEY` or `GEMINI_API_KEY` for Gemini-enabled modules
-   - `AUTHGUARD_DATA_DIR` only when mounting a persistent volume for AuthGuard JSON history
-5. Deploy. Do not create five Railway services; this repository is designed to be one service.
+5. Deploy. Do not create three Railway services; this repository is designed to be one service.
 6. Generate a Railway domain. The home page appears at the root URL.
 
-The health check is configured as `/health` with a 120-second startup allowance because the machine-learning libraries and five dashboards may need time to initialize.
+The health check is configured as `/health` with a 120-second startup allowance because the machine-learning libraries and three dashboards may need time to initialize.
 
 ## Local Docker test
 
@@ -51,7 +46,7 @@ Then open `http://localhost:8080`.
 
 ## Resource warning
 
-This is one billable Railway service, but it still runs ten Python application processes plus Nginx. Consolidation removes the overhead of five separately provisioned services, domains, and containers; it does not make the five applications consume the memory of only one application. ChromaDB, sentence-transformers, FAISS, XGBoost, and five Streamlit runtimes can require substantial RAM.
+This is one billable Railway service, but it still runs six Python application processes plus Nginx. Consolidation removes the overhead of three separately provisioned services, domains, and containers; it does not make the three applications consume the memory of only one application. ChromaDB, sentence-transformers, FAISS, XGBoost, and three Streamlit runtimes can require substantial RAM.
 
 For the lowest cost, keep LLM agents optional, avoid retraining on startup, and consider removing unused local embedding models or large duplicated datasets after confirming each page works.
 
@@ -62,7 +57,7 @@ For the lowest cost, keep LLM agents optional, avoid retraining on startup, and 
 - `portal/index.html` — unified landing page
 - `Dockerfile` — Railway container build
 - `railway.toml` — Railway build, start, restart, and health-check settings
-- `apps/` — the five embedded projects, kept in separate directories to avoid Python import collisions
+- `apps/` — the three embedded projects, kept in separate directories to avoid Python import collisions
 
 ## Persistence
 

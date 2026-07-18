@@ -20,12 +20,12 @@ The app demonstrates how an AI-assisted triage workflow can support nurses with:
 
 ## Project Links
 
-- **Live Demo:** https://safestaff-liinkedin-demo-production.up.railway.app/
-- **GitHub Repository:** https://github.com/draculess99/SafeStaff-LIinkedIn-DEMO
+- **Live Demo:** https://healthcareai-production-a736.up.railway.app/triage/
+- **GitHub Repository:** https://github.com/draculess99/Healthcare_AI
 - **LinkedIn:** https://www.linkedin.com/in/gammaconsult/
 - **Portfolio:** https://draculess99.github.io/
 
-> **Prototype notice:** SafeStaff AI is a demonstration and decision-support prototype. It is not clinically validated and must not be used for real patient-care or staffing decisions without hospital governance, validation, security review, and human supervision. The system is intended to support nurse managers and staffing coordinators, not replace clinical or operational judgment.
+> **Prototype notice:** Triage Assist AI is a demonstration and decision-support prototype. It is not clinically validated and must not be used for real patient-care or staffing decisions without hospital governance, validation, security review, and human supervision. The system is intended to support nurse managers and staffing coordinators, not replace clinical or operational judgment.
 
 ---
 

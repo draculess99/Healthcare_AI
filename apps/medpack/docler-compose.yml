@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: backend/Dockerfile
-    container_name: safestaff-backend
+    container_name: medpack-backend
     ports:
       - "5000:5000"
     environment:
@@ -23,7 +23,7 @@ services:
     build:
       context: .
       dockerfile: frontend/Dockerfile
-    container_name: safestaff-frontend
+    container_name: medpack-frontend
     ports:
       - "8501:8501"
     environment:
